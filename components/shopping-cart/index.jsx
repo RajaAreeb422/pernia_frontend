@@ -178,7 +178,8 @@ export default ShoppingCart
 
 
 const Container = styled.div`
-margin-top:90px;
+margin-top:10px;
+margin-bottom:20px;
 `;
 
 const Wrapper = styled.div`
@@ -315,11 +316,12 @@ const Summary = styled.div`
   border: 0.5px solid lightgray;
   border-radius: 10px;
   padding: 20px;
-  height: 50vh;
+  
 `;
 
-const SummaryTitle = styled.h1`
-  font-weight: 200;
+const SummaryTitle = styled.h3`
+  font-weight: 300;
+  text-align:center;
 `;
 
 const SummaryItem = styled.div`

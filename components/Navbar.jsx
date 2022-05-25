@@ -268,15 +268,12 @@ const Navbar2 = () => {
           {/* } */}
         </div>
       </div>
-      <hr />
-      
-      <hr />
-     
+    
       <Navbar
         variant="dark"
         bg="dark"
         expand="lg"
-        style={{ marginTop: "-50px" }} 
+   
       >
         <Container fluid>
           <Navbar.Brand href="#home"></Navbar.Brand>
