@@ -25,8 +25,8 @@ const Slider = () => {
       <div style={{marginBottom:'60px'}}>
     <Carousel>
       <Carousel>
-   {sliderItems.map(it=>(
-     <Carousel.Item interval={5000}>
+   {sliderItems.map((it,key)=>(
+     <Carousel.Item key={key} interval={5000}>
      <img
        style={{width:'100%',padding:'10px'}}
        src={it.img}
