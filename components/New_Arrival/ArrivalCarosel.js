@@ -38,18 +38,23 @@ const ArrivalCarosel = () => {
 
   useEffect(() => {
         let list=[]
-     axios.get(`http://localhost:8080/ecom-api/tag`)
+     axios.get(`https://perniacouture.pk/pernia-api/tag`)
      .then(res=>{
         res.data.data.map(tt=>{
           if(tt.name=='Newly Coming')
           {
           setTagId(tt.id)
-          axios.get(`http://localhost:8080/ecom-api/collections`)
+          axios.get(`https://perniacouture.pk/pernia-api/collections`)
      .then(resp=>{
        console.log("res",resp.data.data)
         resp.data.data.map(it=>{
           if(it.tag_id==tt.id)
-          {
+          { 
+           
+            let pp = 'https://perniacouture.pk/pernia-api/' + it.path;
+            pp=pp.toString();
+            it['path']=pp
+            console.log("ppp",pp)
             list.push(it)
           }
         

@@ -100,13 +100,17 @@ const Category = () => {
     })
     useEffect(() => {
         let list=[]
-      axios.get(`http://localhost:8080/ecom-api/products`)
+      axios.get(`https://perniacouture.pk/pernia-api/products`)
       .then(resp=>{
         console.log("res",resp.data.data)
          resp.data.data.map(it=>{
            console.log("cid",it.collection_id,id)
            if(it.collection_id==id)
            {
+            let pp = 'https://perniacouture.pk/pernia-api/' + it.path;
+            pp=pp.toString();
+            it['path']=pp
+            console.log("ppp",pp)
              list.push(it)
              console.log("list",list)
            }
@@ -116,7 +120,7 @@ const Category = () => {
          setItems(list)
       }).catch(err=>console.log(err))
            
-    }, [])
+    }, [id])
 
     const handleSelectChange=(e)=>{     
         
@@ -248,16 +252,14 @@ const Title = styled.h1`
 `;
 
 const FilterContainer = styled.div`
-margin-top:100px;
+  margin-top:60px;
   display: flex;
   justify-content: space-between;
 `;
 const GridArea = styled.div`
   display: flex;
   flex-direction:row;
- 
-  
-  
+   
 `;
 
 const Filter = styled.div`
@@ -280,7 +282,8 @@ const FilterHome = styled.div`
 const LeftBar = styled.div`
   margin-left:30px;
   margin-top:25px;
-  width:350px;
+  flex:1;
+ 
   height:800px;
   margin-right:30px;
   // border-style:groove;
@@ -313,15 +316,16 @@ const FilterTitle = styled.span`
 
 const Select = styled.select`
   padding: 10px;
+  
   margin-right: 20px;
 `;
 const Option = styled.option``;
 
 const Productshow = styled.div`
-    padding: 20px;
+    padding: 10px;
+    flex:4;
     display: flex;
     flex-direction:row;
-    
     flex-wrap: wrap;
-    justify-content: space-between;
+    margin-left:70px;
 `;

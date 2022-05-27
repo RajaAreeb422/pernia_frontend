@@ -37,7 +37,7 @@ const ASlide = (props) => {
               props.deal.map((it,i) => (
              
                 <Link key={it.id} href="/category/[id]" as={`/category/${it.id}`}> 
-                  <img src={box[0].img} style={{ height: "450px" }}/>
+                  <img src={it.path} style={{ height: "450px",width:'350px' }}/>
                   </Link>     
           
               ))

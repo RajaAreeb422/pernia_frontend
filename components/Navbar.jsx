@@ -93,7 +93,7 @@ const Navbar2 = () => {
     }
     let list = [];
     axios
-      .get(`http://localhost:8080/ecom-api/suppliers`)
+      .get(`https://perniacouture.pk/pernia-api/suppliers`)
       .then((resp) => {
         resp.data.data.map((it, i) => {
           list.push(it);
@@ -103,13 +103,13 @@ const Navbar2 = () => {
       .catch((err) => console.log(err));
 
     axios
-      .get(`http://localhost:8080/ecom-api/categories`)
+      .get(`https://perniacouture.pk/pernia-api/categories`)
       .then((resp) => {
         setCats(resp.data.data);
       })
       .catch((err) => console.log(err));
     axios
-      .get(`http://localhost:8080/ecom-api/collections`)
+      .get(`https://perniacouture.pk/pernia-api/collections`)
       .then((respo) => {
         setColl(respo.data.data);
       })
@@ -286,17 +286,7 @@ const Navbar2 = () => {
                 title="NewIn"
                 menuVariant="dark"
               >
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
+                
               </NavDropdown>
 
               <NavDropdown
@@ -305,7 +295,7 @@ const Navbar2 = () => {
                 title="Brands"
                 menuVariant="dark"
               >
-                {testitems.map((cl) => (
+                {items.map((cl) => (
                   <Link key={cl.id} href="/brand/[id]" as={`/brand/${cl.id}`}>
                     <NavDropdown.Item href="brand/`${cl.id}`">
                       {cl.name}

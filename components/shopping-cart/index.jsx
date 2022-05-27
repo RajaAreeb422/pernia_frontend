@@ -115,7 +115,7 @@ const ShoppingCart = () => {
                     price={item.price}
                     count={item.count}
                     variant={item.variant}
-                    image={item.img}
+                    image={item.image}
                   />
                   </>
                 ))}

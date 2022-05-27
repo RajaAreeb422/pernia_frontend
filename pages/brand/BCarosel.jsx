@@ -10,9 +10,9 @@ import { DeleteOutline, Edit } from '@material-ui/icons';
 import axios from "axios";
 import { List } from "reactstrap";
 import BSlide from "./BSlide";
-const BCarosel = () => {
+const BCarosel = ({products}) => {
   const [tagid, setTagId] = useState(null)
-  const [deals, setDeals] = useState([])
+  const [pro, setPro] = useState([])
   const [box, setBox] = useState([
     {
       id: 1,
@@ -37,30 +37,34 @@ const BCarosel = () => {
   ]);
 
   useEffect(() => {
-        let list=[]
-     axios.get(`http://localhost:8080/ecom-api/tag`)
-     .then(res=>{
-        res.data.data.map(tt=>{
-          if(tt.name=='Deals of the Day'||tt.name=='deals of the day'||tt.name=='Deals of the day')
-          {
-          setTagId(tt.id)
-          axios.get(`http://localhost:8080/ecom-api/collections`)
-     .then(resp=>{
-       console.log("res",resp.data.data)
-        resp.data.data.map(it=>{
-          if(it.tag_id==tt.id)
-          {
-            list.push(it)
-          }
+
+
+    console.log("productss",products)
+    setPro(products)
+    //     let list=[]
+    //  axios.get(`http://localhost:8080/ecom-api/tag`)
+    //  .then(res=>{
+    //     res.data.data.map(tt=>{
+    //       if(tt.name=='Deals of the Day'||tt.name=='deals of the day'||tt.name=='Deals of the day')
+    //       {
+    //       setTagId(tt.id)
+    //       axios.get(`http://localhost:8080/ecom-api/collections`)
+    //  .then(resp=>{
+    //    console.log("res",resp.data.data)
+    //     resp.data.data.map(it=>{
+    //       if(it.tag_id==tt.id)
+    //       {
+    //         list.push(it)
+    //       }
         
-        })
-        console.log("list",list)
-        setDeals(list)
-     }).catch(err=>console.log(err))
-          console.log("id",tt.id)
-          }
-        })
-     }).catch(err=>console.log(err))
+    //     })
+    //     console.log("list",list)
+    //     setDeals(list)
+    //  }).catch(err=>console.log(err))
+    //       console.log("id",tt.id)
+    //       }
+    //     })
+    //  }).catch(err=>console.log(err))
      
            
   }, [])
@@ -79,20 +83,21 @@ const BCarosel = () => {
       >
         {/* <BSlide deal={box} /> */}
 
-          {box.length!=0?
+          {pro.length!=0?
+
              <Carousel style={{ width: "400px!important" }} show={3.9} slide={1} swiping={true} leftArrow={<B_ItemLeft/>} rightArrow={<B_ItemRight/>}>
              {
-             box.map((it,i) => (
+             pro.map((it,i) => (
                <div key={i} style={{width:'360px'}}>
-               <Link href="/category/[id]" as={`/category/${it.id}`}> 
-                 <img src={it.img} style={{ height: "450px" }}/>
+               <Link href="/product/[id]" as={`/product/${it.id}`}> 
+                 <img src={it.image_paths} style={{ height: "450px" }}/>
                  </Link>     
               </div>
              ))
              }
-         </Carousel>
-           :''
-          }
+         </Carousel>:''
+           
+            }
    
       </div>
     </>

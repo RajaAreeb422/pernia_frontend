@@ -28,25 +28,20 @@ import {
         {/* <Circle /> */}
         {/* <div style={{display:'flex',flexDirection:'column'}}> */}
         {/* <Image src={item.img}/> */}
-        <Image src='https://cdn.shopify.com/s/files/1/2337/7003/products/54_34eb250d-e0b3-415d-8668-db1f2de4120a_300x.jpg?v=1637756407'/>
+        <Image src={item.path} height='200px' width='200px'/>
         {/* <PriceCol>
             {item.name}
         </PriceCol> */}
        {/* </div> */}
 
         <Info>
-          <Icon>
-            <ShoppingCartOutlined />
-          </Icon>
+          
           <Link href='/product/[id]' as={`/product/${item.id}`} >
             <Icon >
               <SearchOutlined />
             </Icon>
           </Link>
-          <Icon>
-            <FavoriteBorderOutlined />
-          </Icon>
-  
+          
         </Info>
         
       </Container>
@@ -76,7 +71,7 @@ import {
   `;
   
   const Container = styled.div`
-    flex: 1;
+    
     margin: 5px;
     min-width: 280px;
     height: 350px;

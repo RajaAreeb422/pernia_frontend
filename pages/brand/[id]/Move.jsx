@@ -14,77 +14,57 @@ import Newsletter from "../../../components/foot/Newsletter";
 import Footer from "../../../components/foot/Footer";
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import Move from "./Move";
-const Brand = () => {
-    const router = useRouter();
-    const { id } = router.query;
-    const [items, setItems] = useState([
-      {id:1,name:'Test1'},
-      {id:2,name:'Test2'},
-      {id:3,name:'Test3'},
-      {id:4,name:'Test4'},
-    ])
-    const [pro, setPro] = useState([])
-      
-    const [cat, setCategory] = useState({
-        id:null,
-        name:'',
-        parent:'',
-        status:0
-    })
+const Move = ({id}) => {
+    // const router = useRouter();
+    // const { id } = router.query;
+  
+      const [prod,setPro]=useState([])
+
     useEffect(() => {
         let list=[]
-      axios.get(`https://perniacouture.pk/pernia-api/collections`)
-      .then(resp=>{
-        console.log("res",resp.data.data)
-         resp.data.data.map(it=>{
-           if(it.brand_id==id)
-           {
-             
-             list.push(it)
-           }
-         
-         })
-         console.log("listtrtdhhf",list)
-         setItems(list)
-      }).catch(err=>console.log(err))
+      
+             axios.get(`https://perniacouture.pk/pernia-api/products/collection/${id}`).then(ress=>{
+               ress.data.data.map(pr=>{
+
+                let pp = 'https://perniacouture.pk/pernia-api/' + pr.image_paths;
+                pp=pp.toString();
+                if(pp.includes(','))
+                {
+                    let pt=pp.split(',')
+                    pp=pt[0]
+                    pr['image_paths']=pt[0]
+                }
+                else{
+                pr['image_paths']=pp
+                }
+                console.log("ppp",pp)
+                list.push(pr)
+               })
+               setPro(list)
+             }).catch(err=>console.log(err))
+            
+        
            
     }, [])
-
-    const handleSelectChange=(e)=>{     
-        
-      
-        
-    }
-    function Sort(slist,value)
-    {
-      
-    }
-
 
        
 
     return (
       <>
-      <Navbar2 style={{marginBottom:'120px'}}/>
-      <img style={{marginTop:'90px'}} width='100%' src='https://cdn.shopify.com/s/files/1/2337/7003/files/Gul-Ahmed-X-Laam-Desktop.jpg?v=1626338215'/>
-      <Container>
-       {items.map(cl=>(
-          <div key={cl.id} style={{padding:'10px'}}>
-            <h1 style={{marginLeft:'650px',marginRight:'auto',padding:'20px'}}>{cl.name}</h1>
-            <Move id={cl.id}/>
-          </div> 
-       ))
-
-       }   
-      </Container>
-      <Newsletter/>
-      <Footer />
+     
+      
+       
+          {prod.length!=0?
+          <>
+          {console.log('proo',prod)}
+          <BCarosel products={prod} />
+          </>:''}  
+      
        </>
     );
 };
 
-export default Brand;
+export default Move;
 
 
 

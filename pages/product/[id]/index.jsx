@@ -36,8 +36,7 @@ const Product = () => {
   const toggle = () => setModal(!modal);
   const [slideIndex, setSlideIndex] = useState(0);
   const [path, setPath] = useState([
-    "https://cdn.shopify.com/s/files/1/2337/7003/products/16_0e6df57b-33fd-4c82-9f77-7caf40d1bdc9_700x.jpg?v=1631001480",
-    "https://cdn.shopify.com/s/files/1/2337/7003/products/16_0e6df57b-33fd-4c82-9f77-7caf40d1bdc9_700x.jpg?v=1631001480",
+   
   ]);
 
   const [icon, setIcon] = useState([
@@ -207,7 +206,7 @@ const Product = () => {
       price: item.price,
       count: count,
       variant:item.variants,
-      image:'https://cdn.shopify.com/s/files/1/2337/7003/products/54_34eb250d-e0b3-415d-8668-db1f2de4120a_300x.jpg?v=1637756407'
+      image:path[0]
 
     }
   ))
@@ -217,15 +216,22 @@ const Product = () => {
 }
   useEffect(() => {
     let list=[]
- axios.get(`http://localhost:8080/ecom-api/products/${id}`)
+ axios.get(`https://perniacouture.pk/pernia-api/products/${id}`)
  .then(res=>{
-  console.log("name",res.data.data)
+   let path_list=[]
+   res.data.data.images.map(im=>{
+    let pp = 'https://perniacouture.pk/pernia-api/' + im;
+    path_list.push(pp)
+   })
+  setPath(path_list)
+  console.log("name",path_list)
+
    setItem(res.data.data)  
-      axios.get(`http://localhost:8080/ecom-api/collections/${res.data.data.collection_id}`)
+      axios.get(`https://perniacouture.pk/pernia-api/collections/${res.data.data.collection_id}`)
  .then(resp=>{
   
        setColName(resp.data.data.name)
-       axios.get(`http://localhost:8080/ecom-api/suppliers/${resp.data.data.brand_id}`)
+       axios.get(`https://perniacouture.pk/pernia-api/suppliers/${resp.data.data.brand_id}`)
        .then(resp=>{
              setSuppName(resp.data.data.name)
           
