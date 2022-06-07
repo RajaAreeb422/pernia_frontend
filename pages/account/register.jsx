@@ -1,12 +1,12 @@
 
-import router, { useRouter } from 'next/router';
+// import router, { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import styled from "styled-components";
 import { useState } from 'react';
 import axios from 'axios';
-
+import router from 'next/router';
 import Head from 'next/head'
 
 const Register = () => {
@@ -73,7 +73,10 @@ const Register = () => {
 
     }
 
+    const go = () => {
+        router.push('/account/login')
 
+    };
 
 
     // const onSubmitHandler = (data) => {
@@ -120,10 +123,13 @@ const Register = () => {
                     <Button type="submit">
                         Register
                     </Button>
-                    <Link href="/account/login" className="btn btn-link">Cancel</Link>
+                    
+                        <p className="btn btn-link" onClick={()=>go()}> Cancel</p>
+                        
                     {/* </form> */}
                 </Form>
             </Wrapper>
+
         </Container>
     );
 };

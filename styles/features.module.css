@@ -5,7 +5,11 @@
 
   .outline{
     background-color: white;
-    
+    margin-left: auto;
+    margin-right: auto;
+    width:100% !important;
+    margin-top:20px;
+    margin-bottom:20px;
   }
 
   .spacing{
@@ -16,7 +20,12 @@
   }
 
   .alignment{
-      margin-left: 80px; 
+    display:flex;
+    flex-direction:row;
+    margin-left: auto;
+    margin-right: auto;
+  
+    width:1350px;
   }
 .imgSize{
     height:112px;

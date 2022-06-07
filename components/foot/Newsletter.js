@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import css  from './newsletter.module.css';
-
+import Image from 'next/image'
 const Newsletter = () => {
     return (
         <>
@@ -10,7 +10,7 @@ const Newsletter = () => {
         <div className="row footer_row news-row">
             <div className="col-lg-7 col-md-6 col-sm-12 col-xs-12 ">
                 <div className="logo-social-area">
-                <span><img alt="Pernia " className="footer-logo" itemProp="logo" src="./pernia.png" width={150}/></span>
+                <span><Image alt="Pernia " className="footer-logo"  src="/pernia.png" height={150} width={150}/></span>
                 <div className="footer-newletter-wrapper" style={{display:'inlne',float:'right',marginLeft:'-20px'}}>
                     <h2> Hey, wait...</h2>
                     <h3>Subscribe to our newsletter!</h3>

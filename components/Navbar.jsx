@@ -145,16 +145,17 @@ const Navbar2 = () => {
           {/* alt={user.first_name} */}
           {/* {loggedIn? */}
 
-          <Link href="/cart" as={`/cart`}>
+         
             <div className={nav.Link}>
               <div className={nav.StyledLink}>
                 <div className={nav.icons}>
-                  <div className={nav.SearchContainer}>
-                    <input type="text" placeholder="Search Product" />
-                    <div
+                  <div className={nav.SearchContainer} style={{borderRadius:'8px'}}>
+                    <input type="search" placeholder="Search Product" style={{border:'0.1px solid white',padding:'6px'}}/>
+                    <Search style={{color:'black'}}/>
+                    {/* <div
                       className={nav.Search}
                       style={{ color: "gray", fontSize: 18 }}
-                    />
+                    /> */}
                   </div>
                   <LocalShippingOutlined
                     color="action"
@@ -165,6 +166,7 @@ const Navbar2 = () => {
                       marginRight: "20px",
                     }}
                   />
+                   <Link href="/cart" as={`/cart`}>
                   {cartItems.length > -1 && (
                     <Badge badgeContent={cartItems.length} color="primary">
                       <ShoppingCartOutlined
@@ -178,17 +180,12 @@ const Navbar2 = () => {
                       />
                     </Badge>
                   )}
+                  </Link>
                 </div>
-                {/* {cartItems.length > -1 &&
-                                <>
-                                    <Badge badgeContent={cartItems.length} color="primary" >
-                                        <ShoppingCartOutlined color="action" style={{cursor:'pointer',color:'white'}} />
-                                    </Badge>
-                                </>
-                            } */}
+              
               </div>
             </div>
-          </Link>
+         
 {/*          
           <div className={nav.NavbarDropdown}>
               <div className={nav.MeniItems}>

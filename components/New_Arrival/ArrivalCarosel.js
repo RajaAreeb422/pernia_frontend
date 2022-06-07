@@ -50,12 +50,22 @@ const ArrivalCarosel = () => {
         resp.data.data.map(it=>{
           if(it.tag_id==tt.id)
           { 
-           
             let pp = 'https://perniacouture.pk/pernia-api/' + it.path;
             pp=pp.toString();
             it['path']=pp
             console.log("ppp",pp)
             list.push(it)
+         
+            axios.get(`https://perniacouture.pk/pernia-api/suppliers/${it.brand_id}`)
+            .then(res=>{
+              it['brand']=res.data.data.name
+            }
+              )
+            .catch(err=>console.log(err))
+           
+            
+          
+             
           }
         
         })

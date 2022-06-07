@@ -51,9 +51,7 @@ const Move = ({id}) => {
 
     return (
       <>
-     
-      
-       
+    
           {prod.length!=0?
           <>
           {console.log('proo',prod)}

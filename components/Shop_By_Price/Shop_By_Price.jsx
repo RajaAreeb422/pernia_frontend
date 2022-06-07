@@ -49,7 +49,7 @@ const Shop_By_Price = () => {
       <div className={shop.outline}>
           <div  className={shop}>
           <img src='https://cdn.shopify.com/s/files/1/2337/7003/files/Women_s-Day_Desktop_1500x.jpg?v=1646405855'
-            width='100%'/>
+           style={{ width:'100%'}}/>
           </div>
       </div>
 

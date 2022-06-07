@@ -57,10 +57,10 @@ const Features = () => {
 
   return (
     <>
-      <div className={fea.outline}>
+      <div className={fea.outline} >
         <div className={fea.borderstyle}>
           <h2 className={fea.spacing}>Features Brands</h2>
-          <div className={fea.alignment}>
+          <div className={fea.alignment}  >
             {box.map((it) => (
               <img key={it.id} src={it.img} className={fea.imgSize} />
             ))}
@@ -70,6 +70,7 @@ const Features = () => {
       <div className={fea.outline}>
           <div  className={fea.borderstyle}>
           <img src='//cdn.shopify.com/s/files/1/2337/7003/files/Faster-_-Better-Desktop-Local_1500x.jpg?v=1646410350'
+            style={{width:'100%'}}
             />
           </div>
       </div>

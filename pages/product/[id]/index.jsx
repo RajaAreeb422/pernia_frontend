@@ -18,8 +18,9 @@ import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 //import { Carousel } from 'react-responsive-carousel';
 import router from "next/router";
 import Head from 'next/head'
-//import {toast} from 'react-toastify';
-//import 'react-toastify/dist/ReactToastify.css';
+
+import {toast,ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 //toast.configure()
 import ImageMagnifier from "./ImageMagnifier";
 //import Rating from '@material-ui/lab/Rating';
@@ -211,7 +212,7 @@ const Product = () => {
     }
   ))
   // settoggle(true)
- // toast(`${item.name} Added Successfully`)
+ toast(`${item.name} Added Successfully`)
   //router.push('/cart')
 }
   useEffect(() => {
@@ -255,7 +256,7 @@ const Product = () => {
     <>
      <Navbar />
     <Container>
-     
+     <ToastContainer/>
       <Wrapper>
         <Boxx>
           <Arrow direction="left" onClick={() => handleClick("left")}>
@@ -312,7 +313,7 @@ const Product = () => {
               </span>
     
               <span>
-                <p className={css.counter}>{count}</p>
+                <p style={{marginTop:'13px'}} className={css.counter}>{count}</p>
               </span>
               <span>
                 <button className={css.add_btn} onClick={() => ChkCount()} >
@@ -371,7 +372,7 @@ const Product = () => {
                       : { backgroundColor: "white", color: "black" }
                   }
                 >
-                  {ic.name}
+                  <small style={{textAlign:'center'}}>{ic.name}</small>
                 </Icon>
               ))}
             </SizeArea>
@@ -510,11 +511,11 @@ const Size = styled.div`
 `;
 
 const Icon = styled.div`
-  height: 40px;
+  height: 35px;
   width: 40px;
   cursor: pointer;
   margin-right: 6px;
-
+  
   border-radius: 10px;
   text-align: center;
   border-style: groove;
@@ -556,11 +557,12 @@ const FilterSizeOpt = styled.span`
 `;
 const Container = styled.div`
   background-color: whitesmoke;
-  margin-top:40px;
+  margin-top:10px;
 `;
 
 const Wrapper = styled.div`
   padding: 50px;
+  padding-top:10px;
   margin-left: 150px;
   margin-right: 150px;
   display: flex;
@@ -571,7 +573,7 @@ const Boxx = styled.div`
   height: 100vh;
   display: flex;
   position: relative;
-  margin-top: 100px;
+  margin-top: 30px;
   overflow: hidden;
 `;
 
@@ -597,7 +599,7 @@ const Image = styled.img`
 const InfoContainer = styled.div`
   margin-left: 30px;
   width: 600px;
-  margin-top: 100px;
+  margin-top: 30px;
   background-color: white;
 `;
 

@@ -18,6 +18,8 @@ const Category = () => {
     const router = useRouter();
     const { id } = router.query;
     const [items, setItems] = useState([])
+    const [colname, setColName] = useState('')
+    const [catname, setCatName] = useState('')
     const [pro, setPro] = useState([
         {
             id:1,
@@ -100,6 +102,12 @@ const Category = () => {
     })
     useEffect(() => {
         let list=[]
+        axios.get(`https://perniacouture.pk/pernia-api/collections/${id}`)
+        .then(res=>{
+           setColName(res.data.data.name)
+           axios.get(`https://perniacouture.pk/pernia-api/categories/${res.data.data.category_id}`)
+           .then(respo=>setCatName(respo.data.data.name))
+        }).catch(err=>console.log(err))
       axios.get(`https://perniacouture.pk/pernia-api/products`)
       .then(resp=>{
         console.log("res",resp.data.data)
@@ -159,7 +167,7 @@ const Category = () => {
                     <HomeOutlined/>
                     </FilterHomeText>
                     <FilterHomeText>
-                        {">"} Unstiched {">"} Lawn
+                        {">"} {catname} {">"} {colname}
                     </FilterHomeText>
             </FilterHome>
                 

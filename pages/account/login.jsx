@@ -6,11 +6,16 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import styled from "styled-components";
 import axios from 'axios';
-import router, { useRouter } from 'next/router';
-
+// import router, { useRouter } from 'next/router';
+import router from 'next/router';
 import Head from 'next/head'
 
 const Login = () => {
+
+  useEffect(() => {
+    
+  }, []);
+
   // form validation rules 
   const [mydiv, setMyDiv] = useState(false)
   const schema = Yup.object().shape({
@@ -48,11 +53,16 @@ const Login = () => {
       }).catch(err => console.log(err));
   }
 
+  const go=()=>{
+    router.push('/account/register')
+  }
 
   return (
 
     <Container>
-
+     <Head>
+       Login page
+     </Head>
       <Wrapper>
         <Title>LOG IN</Title>
         <Form onSubmit={handleSubmit(onSubmitHandler)}>
@@ -69,7 +79,7 @@ const Login = () => {
             <Error>Invalid email or password</Error>
           }
           <Link>Forget Password</Link>
-          <Link href="/account/register">Create a new Account</Link>
+          <p style={{marginRight:'auto',fontSize:'13px',marginLeft:'-11px'}} className="btn btn-link" onClick={()=>go()}> Create a new Account</p>
           {/* </form> */}
         </Form>
       </Wrapper>

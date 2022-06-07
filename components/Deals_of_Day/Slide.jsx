@@ -37,7 +37,15 @@ const Slide = (props) => {
               props.deal.map((it,i) => (
              
                 <Link key={it.id} href="/category/[id]" as={`/category/${it.id}`}> 
+                 
+
+                  <div>
                   <img src={it.path} style={{ height: "450px",width:'350px' }}/>
+                  <div style={{backgroundColor:'white',height:'70px',width:'300px',border:'2px solid whitesmoke',marginLeft:'25px',}}>
+                   <h5 style={{textAlign:'center',marginTop:'15px'}}>{it.name}</h5>
+
+                  </div>
+                  </div> 
                   </Link>     
           
               ))

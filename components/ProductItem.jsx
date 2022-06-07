@@ -6,6 +6,7 @@ import {
   import styled from "styled-components";
   import Link from "next/link";
   import { useEffect, useState } from 'react';
+import { ItemAssignmentContext } from "twilio/lib/rest/numbers/v2/regulatoryCompliance/bundle/itemAssignment";
   
   
   
@@ -28,7 +29,16 @@ import {
         {/* <Circle /> */}
         {/* <div style={{display:'flex',flexDirection:'column'}}> */}
         {/* <Image src={item.img}/> */}
-        <Image src={item.path} height='200px' width='200px'/>
+        <Link href='/product/[id]' as={`/product/${item.id}`} >
+          <div>
+        <Border>
+        <Image src={item.path} height='350px' width='250px'/>
+        <Context >
+        <h5>{item.name}</h5>
+        <p>{item.price} Rs</p> 
+        </Context>
+        </Border>
+        
         {/* <PriceCol>
             {item.name}
         </PriceCol> */}
@@ -36,13 +46,15 @@ import {
 
         <Info>
           
-          <Link href='/product/[id]' as={`/product/${item.id}`} >
+          
             <Icon >
               <SearchOutlined />
             </Icon>
-          </Link>
+         
           
         </Info>
+        </div>
+        </Link>
         
       </Container>
     );
@@ -50,9 +62,26 @@ import {
   
   export default ProductItem;
   
+  const Context = styled.div`
+   background:white;
+   border:1px solid lightgrey;
+  
+   padding:5px;
+   align-items:space-between;
+   
+`;
+
   
   
+  const Border = styled.div`
+  display:flex;
   
+  flex-direction:column;
+   border:1px solid lightgrey;
+   height:350px;
+   min-width: 250px;
+`;
+
   const Info = styled.div`
     opacity: 0;
     width: 100%;
@@ -72,13 +101,14 @@ import {
   
   const Container = styled.div`
     
-    margin: 5px;
-    min-width: 280px;
+    margin: 30px;
+    margin-bottom:80px;
+    min-width: 250px;
     height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
-   
+      
     position: relative;
     &:hover ${Info}{
       opacity: 1;

@@ -14,6 +14,9 @@ import Newsletter from "../components/foot/Newsletter";
 import ArrivalCarosel from '../components/New_Arrival/ArrivalCarosel'
 import 'bootstrap/dist/css/bootstrap.css'
 
+import Link from "next/link";
+
+import styled from "styled-components";
 
 export default function Home() {
   return (
@@ -30,14 +33,17 @@ export default function Home() {
     <div className={styles.container}>
      <Navbar2/>
      <Slider/>
-     <ArrivalCarosel/>
+      <ArrivalCarosel/>
       <Deals_Carosel/>
       <Features/>
-      <Finish_Touch/>
+      {/* <Finish_Touch/> */}
       <Shop_By_Price/>
       <Newsletter/>
+
       <Footer />
     </div>
     </>
   )
 }
+
+

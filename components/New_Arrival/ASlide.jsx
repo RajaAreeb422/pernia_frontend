@@ -11,6 +11,7 @@ import axios from "axios";
 import { List } from "reactstrap";
 const ASlide = (props) => {
   const [tagid, setTagId] = useState(null)
+  const [bname, setBName] = useState([])
   const [deals, setDeals] = useState([])
   const [box, setBox] = useState([
     {
@@ -24,6 +25,19 @@ const ASlide = (props) => {
   
   useEffect(() => {
         console.log("props",props)
+        // let list=[]
+        // props.deal.map(it=>{
+        //   axios.get(`https://perniacouture.pk/pernia-api/suppliers/${it.brand_id}`)
+        // .then(res=>{
+        //   it['brand']=res.data.data.name
+        //   list.push(res.data.data.name)
+        //   console.log("data",res.data.data.name)
+        // }
+        //   )
+        // .catch(err=>console.log(err))
+        // })
+       
+        // setBName(list)
            
   }, [])
 
@@ -36,8 +50,17 @@ const ASlide = (props) => {
               {
               props.deal.map((it,i) => (
              
-                <Link key={it.id} href="/category/[id]" as={`/category/${it.id}`}> 
-                  <img src={it.path} style={{ height: "450px",width:'350px' }}/>
+                <Link key={it.id} href="/category/[id]" as={`/category/${it.id}`}>
+                  <div>
+                  <img src={it.path} style={{ height: "450px",width:'350px'}}/>
+                  <div style={{backgroundColor:'white',height:'70px',width:'300px',border:'2px solid whitesmoke',marginLeft:'25px'}}>
+                  <h4 style={{textAlign:'center',marginTop:'8px'}}>{it.brand}</h4>
+                  <h5 style={{textAlign:'center',marginTop:'15px'}}>{it.name}</h5>
+              
+                  </div>
+                  </div> 
+                 
+                  
                   </Link>     
           
               ))
