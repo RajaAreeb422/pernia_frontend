@@ -50,7 +50,7 @@ const Register = () => {
         const json = JSON.stringify(data);
         console.log(json);
 
-        axios.post(`http://localhost:8080/ecom-api/users`, json,
+        axios.post(`https://perniacouture.pk/pernia-api/users`, json,
 
             { headers: { 'content-type': 'application/json' } }
         )
@@ -74,7 +74,7 @@ const Register = () => {
     }
 
     const go = () => {
-        router.push('/account/login')
+        router.push('/')
 
     };
 
@@ -119,12 +119,19 @@ const Register = () => {
 
                     <Input name="date_of_birth" type="date" label="Date of Birth" {...register('date_of_birth')} className={`form-control ${errors.date_of_birth ? 'is-invalid' : ''}`} />
                     <Error >{errors.date_of_birth?.message}</Error>
-
-                    <Button type="submit">
+                   
+                   {/* <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}> */}
+                   
+                   <center>
+                   <Button type="submit">
                         Register
                     </Button>
-                    
-                        <p className="btn btn-link" onClick={()=>go()}> Cancel</p>
+                    </center> 
+                    {/* <Button type="submit" onClick={()=>move}>
+                        Back to Home
+                    </Button> */}
+                    {/* </div> */}
+                        <p style={{fontFamily:'Helvetica',textDecoration:'none'}} className="btn btn-link" onClick={()=>go()}>  Back to Home</p>
                         
                     {/* </form> */}
                 </Form>
@@ -148,6 +155,7 @@ const Container = styled.div`
       center;
   background-size: cover;
   display: flex;
+  height:auto;
   align-items: center;
   justify-content: center;
 `;

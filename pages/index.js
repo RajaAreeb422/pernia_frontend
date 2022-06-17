@@ -38,7 +38,7 @@ export default function Home() {
       <Features/>
       {/* <Finish_Touch/> */}
       <Shop_By_Price/>
-      <Newsletter/>
+      {/* <Newsletter/> */}
 
       <Footer />
     </div>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Carousel from "../../../components/Carosel";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/foot/Footer";
-import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
+import { ArrowLeftOutlined, ArrowRightOutlined,Details,Description } from "@material-ui/icons";
 import { useEffect, useState} from "react";
 //import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -140,8 +140,10 @@ const Product = () => {
   const decCount = () => {
     setCount(count - 1);
   };
-
+  
+  const [sizeImg ,setSizeImg] = useState(false);
   const [thrddiv, setThrdDiv] = useState(false);
+  const [pdescription, setPDescription] = useState(false);
   const [color, setColor] = React.useState();
   const [mat, setMaterial] = React.useState();
   const [size, setSize] = React.useState();
@@ -166,7 +168,7 @@ const Product = () => {
   const { id } = router.query;
 
   const handleCount = () => {
-    if (count === 1) {
+    if (count ==1 || count==0) {
       setCount(count);
     } else {
       let x = count;
@@ -176,6 +178,7 @@ const Product = () => {
   };
 
   const [comb, setcomb] = useState("");
+  const [viewcart, setViewCart] = useState(false);
   const [vid, setvid] = useState();
   const [strr, setstrr] = useState("");
   const [variant_name, setvariant_name] = useState("");
@@ -198,6 +201,18 @@ const Product = () => {
     setCount(count=>count+1)
  }
  
+
+ const viewCart = () => {
+  router.push('/cart')
+ }
+
+
+ const handleSizeImg = () => {
+
+  console.log('helooo image')
+  setSizeImg(!sizeImg)
+ }
+
  const addToCart = () => {
     
   dispatch(addProduct(
@@ -213,6 +228,7 @@ const Product = () => {
   ))
   // settoggle(true)
  toast(`${item.name} Added Successfully`)
+ setViewCart(true)
   //router.push('/cart')
 }
   useEffect(() => {
@@ -307,7 +323,7 @@ const Product = () => {
                 {count!=0?item.price*count:item.price} Rs
               </p>
               <span>
-              <button className={css.minus_btn}onClick={() => handleCount(setCount(count - 1))} >
+              <button className={css.minus_btn}onClick={() => handleCount()} >
                   -
               </button>
               </span>
@@ -377,8 +393,13 @@ const Product = () => {
               ))}
             </SizeArea>
           </Size>
+          {count==0?'':<Button onClick={() => addToCart()}>ADD TO CART</Button>}
+          
+          {viewcart==true?
+          <Button onClick={() => viewCart()}>VIEW CART</Button>:''
 
-          <Button onClick={() => addToCart()}>ADD TO CART</Button>
+          }
+         
           <hr width="580px" />
           <div
             style={{
@@ -387,17 +408,35 @@ const Product = () => {
               marginLeft: "40px",
             }}
           >
-            <h5>SIZE GUIDE</h5>
+            <Details  style={{marginTop:'15px'}}/>
+            <h6 style={{marginLeft:'6px',marginTop:'15px'}}>SIZE GUIDE</h6>
+            {sizeImg!=true?
             <h2
               style={{
                 marginLeft: "auto",
                 marginRight: "20px",
-                cursor: "pointer",
+                cursor:'pointer'
               }}
+              onClick={()=>handleSizeImg()}
             >
               +
-            </h2>
+            </h2>:
+             <h2
+             style={{
+               marginLeft: "auto",
+               marginRight: "20px",
+               cursor:'pointer'
+             }}
+             onClick={()=>handleSizeImg()}
+           >
+             -
+           </h2>
+}
+
           </div>
+          {sizeImg?
+           <img src="/sizes.PNG" style={{width:'80%',margin:'20px',marginLeft:'60px'}}></img>:''
+           }
           <hr width="580px" />
           <div
             style={{
@@ -406,36 +445,38 @@ const Product = () => {
               marginLeft: "40px",
             }}
           >
-            <h5>PRODUCT DESCRIPTION</h5>
+            <Description style={{marginTop:'15px'}}/>
+            <h6 style={{marginLeft:'6px',marginTop:'15px'}}>PRODUCT DESCRIPTION</h6>
+            {pdescription!=true?
             <h2
               style={{
                 marginLeft: "auto",
                 marginRight: "20px",
-                cursor: "pointer",
+                cursor:'pointer'
               }}
+              onClick={()=>setPDescription(!pdescription)}
             >
               +
-            </h2>
+            </h2>:
+             <h2
+             style={{
+               marginLeft: "auto",
+               marginRight: "20px",
+               cursor:'pointer'
+             }}
+             onClick={()=>setPDescription(!pdescription)}
+           >
+             -
+           </h2>
+}
           </div>
+          {pdescription&&
+          <div style={{width:'80%',padding:'20px',margin:'20px'}} >
+          <p style={{marginLeft:'auto',marginRight:'auto'}}>{item.product_description}</p>
+          </div>
+}
           <hr width="580px" />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              marginLeft: "40px",
-            }}
-          >
-            <h5>PRICE QUERY AND CUSTOMIZATION</h5>
-            <h2
-              style={{
-                marginLeft: "auto",
-                marginRight: "20px",
-                cursor: "pointer",
-              }}
-            >
-              +
-            </h2>
-          </div>
+          
         </InfoContainer>
 
         {/* {localStorage.getItem('token') &&
@@ -579,7 +620,7 @@ const Boxx = styled.div`
 
 const ImgWrapper = styled.div`
   height: 100%;
-  width: 500px;
+  width: auto;
   margin-top: -60px;
   display: flex;
   transition: all 1.5s ease;
@@ -656,7 +697,7 @@ const AmountBtn = styled.span`
 `;
 const Slide = styled.div`
   width: 500px;
-  height: 100vh;
+  
   display: flex;
   align-items: center;
   background-color: #${(props) => props.bg};

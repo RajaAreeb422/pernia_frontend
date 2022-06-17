@@ -35,7 +35,7 @@ const Login = () => {
     const json = JSON.stringify(data);
     console.log(json);
 
-    axios.post(`http://localhost:8080/ecom-api/users/login`, json,
+    axios.post(`https://perniacouture.pk/pernia-api/users/login`, json,
 
       { headers: { 'content-type': 'application/json' } }
     )
@@ -56,6 +56,12 @@ const Login = () => {
   const go=()=>{
     router.push('/account/register')
   }
+
+  const backToHome=()=>{
+    router.push('/')
+  }
+
+
 
   return (
 
@@ -79,7 +85,11 @@ const Login = () => {
             <Error>Invalid email or password</Error>
           }
           <Link>Forget Password</Link>
+          <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
           <p style={{marginRight:'auto',fontSize:'13px',marginLeft:'-11px'}} className="btn btn-link" onClick={()=>go()}> Create a new Account</p>
+          <p style={{fontSize:'13px'}} className="btn btn-link" onClick={()=>backToHome()}> Back to Home</p>
+         
+          </div>
           {/* </form> */}
         </Form>
       </Wrapper>

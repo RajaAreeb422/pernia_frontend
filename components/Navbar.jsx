@@ -32,12 +32,7 @@ const Navbar2 = () => {
     first_name: "",
   });
   const [items, setItems] = useState([]);
-  const [testitems, setTestItems] = useState([
-    {id:1,name:'Test1'},
-    {id:2,name:'Test2'},
-    {id:3,name:'Test3'},
-    {id:4,name:'Test4'},
-  ])
+  const [text, setText] = useState('')
   const [cats, setCats] = useState([]);
   const [coll, setColl] = useState([]);
   const [show, setShow] = useState(false);
@@ -70,6 +65,28 @@ const Navbar2 = () => {
        localStorage.removeItem('token')
         router.push('/')
   };
+
+  const handleChange = (e) => {
+    setText(e.target.value)
+};
+
+
+  
+  const showText=()=>{
+    let status=false
+ 
+     if(text=='')
+     {
+      
+     }
+    else{
+   router.push(
+     { pathname: "/allproducts", query: { text: text } }
+    
+   );
+   }
+ }
+
   // useEffect(() => {
   //   if(localStorage.getItem('token'))
   //   {
@@ -150,12 +167,9 @@ const Navbar2 = () => {
               <div className={nav.StyledLink}>
                 <div className={nav.icons}>
                   <div className={nav.SearchContainer} style={{borderRadius:'8px'}}>
-                    <input type="search" placeholder="Search Product" style={{border:'0.1px solid white',padding:'6px'}}/>
-                    <Search style={{color:'black'}}/>
-                    {/* <div
-                      className={nav.Search}
-                      style={{ color: "gray", fontSize: 18 }}
-                    /> */}
+                     <input type="search" value={text}  onChange={(e)=>setText(e.target.value)} placeholder="Search Product" style={{border:'0.1px solid white',padding:'6px'}}/>
+                    {/* <Search  style={{color:'black'}}/>  */}
+                   <Search style={{color:'black',cursor:'pointer'}} onClick={()=>showText()}/>
                   </div>
                   <LocalShippingOutlined
                     color="action"

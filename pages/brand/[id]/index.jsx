@@ -49,7 +49,7 @@ const Brand = () => {
          setItems(list)
       }).catch(err=>console.log(err))
            
-    }, [])
+    }, [id])
 
     const handleSelectChange=(e)=>{     
         

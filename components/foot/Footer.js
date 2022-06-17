@@ -13,19 +13,19 @@ return (
 		<div className={fot.column} style={{marginTop:'20px', marginLeft:'20px'}}>
 			{/* <Heading>About Us</Heading> */}
 			
-			<div className={fot.footlink} ><Link href='/sellAt' as={`/sellAt`}>Become a Partner</Link></div>
-			<div className={fot.footlink} > <Link href='/blog' as={`/blog`}>Editorial Blog</Link></div>
-			<div className={fot.footlink} > <Link href='/rewards' as={`/rewards`}>Pernia Rewards</Link></div>
-			<div className={fot.footlink} > <Link href='/rewards' as={`/rewards`}>Pernia Disclaimers</Link></div>
+			<div className={fot.footlink} ><Link href='/sellAt' as={`/sellAt`}><p className={fot.footlink}>Become a Partner</p></Link></div>
+			<div className={fot.footlink} > <Link href='/blog' as={`/blog`}><p className={fot.footlink}>Editorial Blog</p></Link></div>
+			<div className={fot.footlink} > <Link href='/rewards' as={`/rewards`}><p className={fot.footlink}>Pernia Rewards</p></Link></div>
+			<div className={fot.footlink} > <Link href='/rewards' as={`/rewards`}><p className={fot.footlink}>Pernia Disclaimers</p></Link></div>
 		</div>
 		<div className={fot.column}>
 			<div className={fot.heading}>Help center</div>
-			<div className={fot.footlink}><Link href='/track' as={`/track`}>Track your Order</Link></div>
-			<div className={fot.footlink}><Link href='/shipanddlv' as={`/shipanddlv`}>Shipping and Delivery</Link></div>
-			<div className={fot.footlink} ><Link href='/cancellation' as={`/cancellation`}>Cancellations</Link></div>
+			<div className={fot.footlink}><Link href='/track' as={`/track`}><p className={fot.footlink}>Track your Order</p></Link></div>
+			<div className={fot.footlink}><Link href='/shipanddlv' as={`/shipanddlv`}><p className={fot.footlink}>Shipping and Delivery</p></Link></div>
+			<div className={fot.footlink} ><Link href='/cancellation' as={`/cancellation`}><p className={fot.footlink}>Cancellations</p></Link></div>
 			<div className={fot.cootlink} >FAQs</div>
-			<div className={fot.footlink}><Link href='/exchange' as={`/exchange`}>Returns</Link></div>
-			<div className={fot.footlink}><Link href='/refund' as={`/refund`}>Refund Policy</Link></div>
+			{/* <div className={fot.footlink}><Link href='/exchange' as={`/exchange`}><p className={fot.footlink}>Returns</p></Link></div>
+			<div className={fot.footlink}><Link href='/refund' as={`/refund`}><p className={fot.footlink}>Refund Policy</p></Link></div> */}
 		</div>
 		<div className={fot.column}>
 			{/* <Heading>Contact Us</Heading>
@@ -34,13 +34,13 @@ return (
 			<FooterLink href="#">Indore</FooterLink>
 			<FooterLink href="#">Mumbai</FooterLink> */}
 
-			<div className={fot.heading}>Contact Us</div>
+			<div  className={fot.heading}>Contact Us</div>
 			<div className={fot.footlink} href="#">Whatsapp: +090078601</div>
 			<div className={fot.footlink} href="#">Email: customercare@pernia.pk</div>
 			
-			<div className={fot.heading}>Partner with Pernia</div>
-			<div className={fot.footlink} ><Link href='/sellAt' as={`/sellAt`}>Sell at Pernia</Link></div>
-			<div className={fot.footlink}><Link href='/connect' as={`/connect`} >Connect with us</Link></div>
+			<div style={{marginTop:'10px'}} className={fot.heading}>Partner with Pernia</div>
+			<div className={fot.footlink} ><Link href='/sellAt' as={`/sellAt`}><p className={fot.footlink}>Sell at Pernia</p></Link></div>
+			<div className={fot.footlink}><Link href='/connect' as={`/connect`} ><p className={fot.footlink}>Connect with us</p></Link></div>
 		</div>
 		<div className={fot.column}>
 			{/* <Heading>Social Media</Heading> */}

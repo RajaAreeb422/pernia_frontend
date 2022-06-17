@@ -1,99 +1,27 @@
 import styled from "styled-components";
 //import Announcement from "../../../components/Announcement";
-import Navbar2 from "../../../components/Navbar"
-import Footer from "../../../components/foot/Footer";
+import Navbar2 from "../components/Navbar"
+import Footer from "../components/foot/Footer";
 import { useEffect, useState } from 'react';
-import css from '../index.module.css';
+ import css from '../styles/index.module.css';
 
 import {
-    HomeOutlined
+    HomeOutlined,Info
   } from "@material-ui/icons";
 import axios from "axios";
-import ProductItem from "../../../components/ProductItem";
+import ProductItem from "../components/ProductItem";
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Newsletter from "../../../components/foot/Newsletter";
+import Newsletter from "../components/foot/Newsletter";
+import { FlexFlowContext } from "twilio/lib/rest/flexApi/v1/flexFlow";
 
-const Category = () => {
+const All_Products = () => {
     const router = useRouter();
-    const { id } = router.query;
+   
     const [items, setItems] = useState([])
     const [colname, setColName] = useState('')
     const [catname, setCatName] = useState('')
-    const [pro, setPro] = useState([
-        {
-            id:1,
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/33_bd16bfee-54ca-48c2-8003-31873146bada_300x.jpg?v=1645728681',
-            name:'ABA',
-            price:4000
-        },
-        {
-            id:2,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/6_fe6aec3c-6c0b-4cec-8e29-0ed6f0708b99_300x.jpg?v=1643117474',
-            price:6000
-        },
-        {
-            id:3,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/47_07f61de4-5425-4719-923f-7ed46d3b5d9a_300x.jpg?v=1640871315',
-            price:7000
-        },
-        {
-            id:4,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/18_32a7bdbd-342c-444b-9bed-2bf0bd4b76bc_300x.jpg?v=1645729065',
-            price:4000
-        },
-        {
-            id:5,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/34_c3b08635-8f70-40fe-972b-f98415bc9e96_300x.jpg?v=1640871557',
-            price:9000
-        },
-        {
-            id:6,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/15_4378d18b-0701-4a7e-8abf-8712f57eef8f_300x.jpg?v=1637755377',
-            price:7000
-        },
-        {
-            id:8,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/65_3d68470d-de58-4c2b-9b09-3567722e2bc9_300x.jpg?v=1637756270',
-            price:3000
-        },
-        {
-            id:9,
-            name:'ABA',
-            img:'//cdn.shopify.com/s/files/1/2337/7003/products/2_ae09fef5-fd82-4c9b-aa0f-12383c54d218_300x.jpg?v=1646656226',
-            price:4000
-        },
-        {
-            id:10,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/54_34eb250d-e0b3-415d-8668-db1f2de4120a_300x.jpg?v=1637756407',
-            price:9000
-        },
-        {
-            id:11,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/85_9b729e8e-a389-460b-adf6-68b3ba5c5c04_300x.jpg?v=1645728747',
-            price:7000
-        },
-        {
-            id:12,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/248716558_2194102894063222_9121287402918461509_n_300x.jpg?v=1640211339',
-            price:7000
-        },
-        {
-            id:13,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/26_76b7ea66-5056-4ab1-a1b0-f5928c4b612d_300x.jpg?v=1637755257',
-            price:7000
-        },
-    ])
+    
     const [cat, setCategory] = useState({
         id:null,
         name:'',
@@ -101,34 +29,40 @@ const Category = () => {
         status:0
     })
     useEffect(() => {
-        let list=[]
-        axios.get(`https://perniacouture.pk/pernia-api/collections/${id}`)
-        .then(res=>{
-           setColName(res.data.data.name)
-           axios.get(`https://perniacouture.pk/pernia-api/categories/${res.data.data.category_id}`)
-           .then(respo=>setCatName(respo.data.data.name))
-        }).catch(err=>console.log(err))
+        // let list=[]
+        // axios.get(`https://perniacouture.pk/pernia-api/collections/${id}`)
+        // .then(res=>{
+        //    setColName(res.data.data.name)
+        //    axios.get(`https://perniacouture.pk/pernia-api/categories/${res.data.data.category_id}`)
+        //    .then(respo=>setCatName(respo.data.data.name))
+        // }).catch(err=>console.log(err))
+        if(router.query.text==''|| router.query.text==undefined)
+        {
+            setItems([])
+        }
+        else{
       axios.get(`https://perniacouture.pk/pernia-api/products`)
       .then(resp=>{
-        console.log("res",resp.data.data)
+        let list=[]
          resp.data.data.map(it=>{
-           console.log("cid",it.collection_id,id)
-           if(it.collection_id==id)
+            console.log("name",it.name)
+            console.log("text",router.query.text)
+           if(it.name==router.query.text)
            {
             let pp = 'https://perniacouture.pk/pernia-api/' + it.path;
             pp=pp.toString();
             it['path']=pp
             console.log("ppp",pp)
              list.push(it)
-             console.log("list",list)
+             
            }
          
          })
          console.log("list",list)
          setItems(list)
       }).catch(err=>console.log(err))
-           
-    }, [id])
+    }      
+    }, [router.query.text])
 
     const handleSelectChange=(e)=>{     
         
@@ -157,9 +91,7 @@ const Category = () => {
       <Navbar2/>
         <Container>
            
-            
-
-            
+           {items.length!=0?
             <FilterContainer>
             
             <FilterHome>
@@ -167,7 +99,7 @@ const Category = () => {
                     <HomeOutlined/>
                     </FilterHomeText>
                     <FilterHomeText>
-                        {">"} {catname} {">"} {colname}
+                        
                     </FilterHomeText>
             </FilterHome>
                 
@@ -179,10 +111,10 @@ const Category = () => {
                         <Option>Price (desc)</Option>
                     </Select>
                
-               
+            </FilterContainer>:''}
 
-            </FilterContainer>
 
+            {items.length!=0?
             <GridArea>
             <LeftBar>
             <Filter>  
@@ -234,7 +166,17 @@ const Category = () => {
             </Productshow>
 
 
-            </GridArea>
+            </GridArea>:
+            <center>
+            <div style={{marginBottom:'100px',marginTop:'40px'}}>
+            <div style={{display:'flex',flexDirection:'row',justifyContent:'center',width:'100%'}}>
+                <Info style={{fontSize:'28px'}}/>
+                <p>No Product Found...</p>
+                
+                </div>
+                </div>
+                </center>
+                }
             
             <Newsletter/>
             <Footer/>
@@ -245,7 +187,7 @@ const Category = () => {
     );
 };
 
-export default Category;
+export default All_Products;
 
 
 
