@@ -4,65 +4,9 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 //import { mobile } from "../../pages/responsive";
 import Link from 'next/link'
-
+import router, { useRouter } from "next/router";
 const ShoppingCart = () => {
-    const [cartItem, setPro] = useState([
-        {
-            id:1,
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/33_bd16bfee-54ca-48c2-8003-31873146bada_300x.jpg?v=1645728681',
-            name:'Lawn',
-            price:4000
-        },
-        {
-            id:2,
-            name:'Cotton',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/6_fe6aec3c-6c0b-4cec-8e29-0ed6f0708b99_300x.jpg?v=1643117474',
-            price:6000
-        },
-        {
-            id:3,
-            name:'Unstiched',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/47_07f61de4-5425-4719-923f-7ed46d3b5d9a_300x.jpg?v=1640871315',
-            price:7000
-        },
-        {
-            id:4,
-            name:'Lehnga',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/18_32a7bdbd-342c-444b-9bed-2bf0bd4b76bc_300x.jpg?v=1645729065',
-            price:4000
-        },
-        {
-            id:5,
-            name:'Mexi',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/34_c3b08635-8f70-40fe-972b-f98415bc9e96_300x.jpg?v=1640871557',
-            price:9000
-        },
-        {
-            id:6,
-            name:'Wool',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/15_4378d18b-0701-4a7e-8abf-8712f57eef8f_300x.jpg?v=1637755377',
-            price:7000
-        },
-        {
-            id:8,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/65_3d68470d-de58-4c2b-9b09-3567722e2bc9_300x.jpg?v=1637756270',
-            price:3000
-        },
-        {
-            id:9,
-            name:'ABA',
-            img:'//cdn.shopify.com/s/files/1/2337/7003/products/2_ae09fef5-fd82-4c9b-aa0f-12383c54d218_300x.jpg?v=1646656226',
-            price:4000
-        },
-        {
-            id:10,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/54_34eb250d-e0b3-415d-8668-db1f2de4120a_300x.jpg?v=1637756407',
-            price:9000
-        },
-        
-    ])
+    const [cartItem, setPro] = useState([])
   const { cartItems } = useSelector(state => state.cart);
 
   const priceTotal = useSelector(state => {
@@ -75,6 +19,13 @@ const ShoppingCart = () => {
     return totalPrice;
   })
 
+  const move=()=>{
+    router.push(
+      { pathname: "/allproducts", query: { text: 'cart' } }
+     
+    );
+  }
+
   return (
     <Container>
 
@@ -85,7 +36,7 @@ const ShoppingCart = () => {
         <Top>
          
             
-          <Link href="/Products"><TopButton>CONTINUE SHOPPING</TopButton></Link>
+          <TopButton onClick={()=>move()}>CONTINUE SHOPPING</TopButton>
           <TopTexts>
             <TopText>Shopping Bag({cartItems.length})</TopText>
             <TopText>Your Wishlist (0)</TopText>

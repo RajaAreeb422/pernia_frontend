@@ -66,19 +66,35 @@ const Brand = () => {
 
     return (
       <>
+        <Head>
+        <title>Brand</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com"  />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
       <Navbar2 style={{marginBottom:'120px'}}/>
-      <img style={{marginTop:'90px'}} width='100%' src='https://cdn.shopify.com/s/files/1/2337/7003/files/Gul-Ahmed-X-Laam-Desktop.jpg?v=1626338215'/>
+      <img style={{marginTop:'60px'}} width='100%' src='https://cdn.shopify.com/s/files/1/2337/7003/files/Gul-Ahmed-X-Laam-Desktop.jpg?v=1626338215'/>
       <Container>
+        
+       {items.length!=0?
+       <> 
        {items.map(cl=>(
           <div key={cl.id} style={{padding:'10px'}}>
             <h1 style={{marginLeft:'650px',marginRight:'auto',padding:'20px'}}>{cl.name}</h1>
             <Move id={cl.id}/>
           </div> 
        ))
-
-       }   
+        }
+        </>:
+        <>
+        <center><h5>OOps! .No Collections is Available for now</h5></center>
+        </>
+}
       </Container>
-      <Newsletter/>
+      {/* <Newsletter/> */}
       <Footer />
        </>
     );
@@ -94,6 +110,7 @@ export default Brand;
 const Container = styled.div`
 display:flex;
 flex-direction:column;
+margin-bottom:20px;
 `;
 
 const Title = styled.h1`

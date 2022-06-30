@@ -14,14 +14,15 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Newsletter from "../components/foot/Newsletter";
 import { FlexFlowContext } from "twilio/lib/rest/flexApi/v1/flexFlow";
+import { Button } from "@material-ui/core";
 
 const All_Products = () => {
     const router = useRouter();
-   
+    const [priceSelected, setPrice] = useState('')
     const [items, setItems] = useState([])
     const [colname, setColName] = useState('')
     const [catname, setCatName] = useState('')
-    
+    const [allProducts, setAllProducts] = useState([])
     const [cat, setCategory] = useState({
         id:null,
         name:'',
@@ -39,6 +40,27 @@ const All_Products = () => {
         if(router.query.text==''|| router.query.text==undefined)
         {
             setItems([])
+        }
+        else if(router.query.text=='cart')
+        {
+          axios.get(`https://perniacouture.pk/pernia-api/products`)
+      .then(resp=>{
+        let list1=[]
+         resp.data.data.map(it=>{
+           
+            let pat = 'https://perniacouture.pk/pernia-api/' + it.path;
+            pat=pat.toString();
+            it['path']=pat
+            
+             list1.push(it)
+             
+           
+         
+         })
+        
+         setItems(list1)
+         setAllProducts(list1)
+      }).catch(err=>console.log(err))
         }
         else{
       axios.get(`https://perniacouture.pk/pernia-api/products`)
@@ -60,21 +82,73 @@ const All_Products = () => {
          })
          console.log("list",list)
          setItems(list)
+         setAllProducts(list)
       }).catch(err=>console.log(err))
     }      
     }, [router.query.text])
 
-    const handleSelectChange=(e)=>{     
-        
-      
-        
+    const onValueChange=(value)=>{     
+      setPrice(value)
+      console.log("value",value)
+      let list=[]
+      let price1,price2;
+      if(value=='5-10')
+      {  
+      price1=5000;
+      price2=10000
+      }
+      else if(value=='10-20')
+      {
+        price1=11000;
+      price2=20000
+      }
+      else{
+        price1=30000;
+      price2=40000
+      }
+
+
+      allProducts.map(it=>{
+        if(it.price==price1 || it.price==price2)
+        {
+          list.push(it)
+        }
+      })
+      console.log("list",list,allProducts)
+        setItems(list)
     }
-    function Sort(slist,value)
+    function move()
     {
-      
+      setPrice('')
+      setItems(allProducts);
     }
 
+  const handleSelling=e=>{
+    
+    console.log("in asending")
+    if(e.target.value=="asc")
+    {
+    let list=items
+    let sortedData = items.slice().sort((a, b) => a.price - b.price);
+    list.sort(function(a, b){
+      if(a.price<b.price)
+      return 1;
+  });
+  console.log("list",sortedData)
+  setItems(sortedData)
+}
+else{
+  let list=items
+    let sortedData = items.slice().sort((a, b) => b.price - a.price);
+    list.sort(function(a, b){
+      if(a.price<b.price)
+      return 1;
+  });
+  console.log("list",sortedData)
+  setItems(sortedData)
 
+}
+  }
 
 {/* {items.length==0? <div style={{marginLeft:'auto',marginRight:'auto',marginTop:'200px',fontSize:'22px'}}>
                 Sorry! ..Stock is Empty of this Category</div>:
@@ -88,6 +162,15 @@ const All_Products = () => {
 
     return (
       <>
+        <Head>
+        <title> Products</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com"  />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
       <Navbar2/>
         <Container>
            
@@ -105,10 +188,10 @@ const All_Products = () => {
                 
                 
                     <SortText></SortText>
-                    <Select>
-                        <Option selected>Best Selling</Option>
-                        <Option>Price (asc)</Option>
-                        <Option>Price (desc)</Option>
+                    <Select onChange={(e)=>handleSelling(e)}>
+                        <Option selected disabled>Best Selling</Option>
+                        <Option value="asc">Price (asc)</Option>
+                        <Option value="desc">Price (desc)</Option>
                     </Select>
                
             </FilterContainer>:''}
@@ -121,25 +204,24 @@ const All_Products = () => {
             <FilterTitle style={{backgroundColor:'white'}}>FILTER PRODUCTS</FilterTitle>
             </Filter> 
             
-            <Filter>
-            <FilterTitle>Price</FilterTitle> 
-              <FilterText className={css.pricebox}>
-                  <input type='checkbox' id='' style={{display:'none'}}/>  
-                  <input className={css.pricein} type='checkbox' id='price'/>
-                    <label className={css.pricela} htmlFor="price">Rs. 5,000-10,000</label>  <br/>
-                  <input className={css.pricein} type='checkbox' id='price'/>
-                    <label className={css.pricela} htmlFor="price">Rs. 10,000-20,000</label> <br/>
-                  <input className={css.pricein} type='checkbox' id='price'/>
-                    <label className={css.pricela} htmlFor="price">Rs. 30,000-40,000</label>
-              </FilterText>  
-            </Filter>
+            
             
             <Filter>
-            <FilterTitle>Delivery</FilterTitle> 
+            <FilterTitle>Price</FilterTitle> 
               <FilterText> 
-                <input className={css.pricein} type='checkbox' id='w1'/><label className={css.pricela} htmlFor="w1">1-2 Weeks </label><br />
-                <input className={css.pricein} type='checkbox' id='w1'/><label className={css.pricela} htmlFor="w1">3-4 Weeks </label><br />
-                <input className={css.pricein} type='checkbox' id='w1'/><label className={css.pricela} htmlFor="w1">5-6 Weeks </label><br />
+              <input className={css.pricein} type='radio'
+                   value='5-10'  
+                   name="price"
+                   checked={priceSelected==='5-10'}
+                   onChange={()=>onValueChange('5-10')}
+                  />
+                    <label style={{marginLeft:'10px'}} className={css.pricela} htmlFor="5-10">Rs. 5,000-10,000</label>  <br/>
+                  <input className={css.pricein} type='radio' value='10-20'
+                    name="price"  checked={priceSelected==='10-20'}  onChange={()=>onValueChange('10-20')}/>
+                    <label style={{marginLeft:'10px'}} className={css.pricela} htmlFor="10-20" >Rs. 10,000-20,000</label> <br/>
+                  <input  className={css.pricein} type='radio' value='30-40' 
+                   name="price"  checked={priceSelected==='30-40'}  onChange={()=>onValueChange('30-40')}/>
+                    <label style={{marginLeft:'10px'}} className={css.pricela} htmlFor="30-40" >Rs. 30,000-40,000</label>
               </FilterText>  
             </Filter>
 
@@ -167,7 +249,7 @@ const All_Products = () => {
 
 
             </GridArea>:
-            <center>
+            <center style={{marginBottom:'60px'}}>
             <div style={{marginBottom:'100px',marginTop:'40px'}}>
             <div style={{display:'flex',flexDirection:'row',justifyContent:'center',width:'100%'}}>
                 <Info style={{fontSize:'28px'}}/>
@@ -175,10 +257,12 @@ const All_Products = () => {
                 
                 </div>
                 </div>
+
+                <Button onClick={()=>move()}>Back To All Products</Button>
                 </center>
                 }
             
-            <Newsletter/>
+            {/* <Newsletter/> */}
             <Footer/>
            
         </Container>
@@ -234,7 +318,7 @@ const LeftBar = styled.div`
   margin-top:25px;
   flex:1;
  
-  height:800px;
+  height:700px;
   margin-right:30px;
   // border-style:groove;
   box-shadow: 0 2px 2px rgb(11 25 28 / 10%);
@@ -267,12 +351,13 @@ const FilterTitle = styled.span`
 const Select = styled.select`
   padding: 10px;
   
-  margin-right: 20px;
+  margin-right: 5%;
 `;
 const Option = styled.option``;
 
 const Productshow = styled.div`
     padding: 10px;
+
     flex:4;
     display: flex;
     flex-direction:row;

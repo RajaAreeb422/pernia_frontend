@@ -33,9 +33,7 @@ const ShoppingCart = ({ name, id, count, price, image,variant }) => {
     ))
   }
   const setProductSumCount = (count) => {
-    if (count <= 0) {
-      return false;
-    }
+    
 
     count=count+1;
 

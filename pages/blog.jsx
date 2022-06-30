@@ -1,7 +1,7 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import { useState } from "react";
 import styled from "styled-components";
-
+import Head from 'next/head'
 // import { mobile } from "../pages/responsive";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
@@ -11,6 +11,15 @@ import Newsletter from "../components/foot/Newsletter";
 const Blog = () => {
     return(
         <>
+          <Head>
+        <title>Blog</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com"  />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
         <Navbar/>
         <Container>
             <div style={{display:'flex',flexDirection:'row'}}>

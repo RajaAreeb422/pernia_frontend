@@ -12,6 +12,15 @@ import Newsletter from "../components/foot/Newsletter";
 const SellAt = () => {
     return(
         <>
+          <Head>
+        <title>Sell At</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com"  />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
         <Navbar/>
         <Container>
          <ImgWrap src='https://cdn.shopify.com/s/files/1/2337/7003/files/Cover-Desktop_1_1500x.progressive.jpg?v=1629117255'>

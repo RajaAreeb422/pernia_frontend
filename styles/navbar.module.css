@@ -47,6 +47,8 @@
  .Logo {
    display:inline;
    margin-bottom:-30px;
+   margin-left: 600px;
+   margin-top: 10px;
  }
 
 .SearchContainer{
@@ -140,4 +142,53 @@ text-decoration: none;
  .styles-module_item-container__a8zaY{
     width:360px !important;
     background-color: red;
+ }
+
+ .src{
+   border:0.1px solid white;
+   padding:6px;
+ }
+ .srcIcon{
+   color:black;
+      cursor:pointer;
+ }
+ .shipping{
+   cursor: pointer;
+   color: black;
+   font-size: 38px;
+   margin-right: 20px;
+ }
+
+ .lgSc{
+   display:block !important;
+}
+.smallSc{
+   display: none!important;
+}
+ @media screen and (max-width: 760px) {
+   .Logo{
+      margin-left: 0px;
+      margin-top: -10px;
+   }
+   .Wrapper{
+     align-items: flex-start !important;
+     margin-top: 20px;
+     
+     width:100%;
+   }
+   .src{
+     display: none;
+   }
+   .srcIcon{
+      display: none !important;
+   }
+   .shipping{
+      display: none !important;
+   }
+   .lgSc{
+      display: none !important;
+   }
+   .smallSc{
+      display: block !important;
+   }
  }

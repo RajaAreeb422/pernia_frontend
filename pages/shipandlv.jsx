@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 // import { mobile } from "../pages/responsive";
 import Link from "next/link";
+import Head from 'next/head'
 import Navbar from "../components/Navbar";
 import Footer from "../components/foot/Footer";
 import { Button } from "reactstrap";
@@ -11,6 +12,15 @@ import Newsletter from "../components/foot/Newsletter";
 const ShipAndDlv = () => {
 return(
     <>
+      <Head>
+        <title>Ship and Dlv</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com"  />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
     <Navbar/>
     <Container1>
         <Img src='https://cdn.shopify.com/s/files/1/2337/7003/files/New_Project_8_256x256_crop_center.png?v=1623912436'></Img>

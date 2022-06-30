@@ -12,6 +12,15 @@ import Newsletter from "../components/foot/Newsletter";
 const Connect_With_Us = () => {
 return(
     <>
+      <Head>
+        <title>Connect</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com"  />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
     <Navbar/>
     <Container>
     <div style={{marginTop:'160px',marginLeft:'140px'}}>
@@ -23,7 +32,7 @@ return(
     </Contact>
     <ButtonC>Connect on WhatsApp</ButtonC>
     </Container>
-    <Newsletter/>
+    {/* <Newsletter/> */}
     <Footer/>
     </>
 )
@@ -33,7 +42,7 @@ export default Connect_With_Us;
 const Container = styled.div`
     background-color:whitesmoke;
     margin-top:-68px;
-    
+    margin-bottom:20px;
   `;
   const Contact = styled.div`
   margin-left:170px;

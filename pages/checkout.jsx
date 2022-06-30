@@ -330,7 +330,7 @@ const [accountbill, setAccountBill] = useState({
     console.log('json',order_json);
     setModal(true)
   
-    axios.post(`http://localhost:8080/ecom-api/orders`,order_json)
+    axios.post(`https://perniacouture.pk/pernia-api/orders`,order_json)
     .then(res=>{
       console.log('order postation fhfhftch',res.data)
       toggle()
@@ -451,7 +451,7 @@ const [accountbill, setAccountBill] = useState({
 
 
   const getToken=()=>{
-   axios.get(`http://localhost:8080/ecom-api/payment`)
+   axios.get(`https://perniacouture.pk/pernia-api/payment`)
    .then(res=>{
     // console.log("res",res.data.clientToken)
      if(res.err)
@@ -489,7 +489,7 @@ const [accountbill, setAccountBill] = useState({
 
   const handleApply = () => {
     
-    axios.get(`http://localhost:8080/ecom-api/coupons/byuser`)
+    axios.get(`https://perniacouture.pk/pernia-api/coupons/byuser`)
     .then(res=>{
       let curr=new Date()
       setErrorDiv(true)
@@ -522,7 +522,7 @@ const [accountbill, setAccountBill] = useState({
             }
             else{
               console.log('heloooo',ucid)
-              axios.get(`http://localhost:8080/ecom-api/coupons/user_coupon_id/${ucid}`)
+              axios.get(`https://perniacouture.pk/pernia-api/coupons/user_coupon_id/${ucid}`)
               .then(resp=>{
                 console.log(resp)
                 if(resp.data.success==0)
@@ -532,7 +532,7 @@ const [accountbill, setAccountBill] = useState({
                   // ucid=ucid+user_Id+coupon.id
                   // ucid=parseInt(ucid)
                   console.log('uciddryd',coupon.id)
-                  axios.post(`http://localhost:8080/ecom-api/coupons/user_coupon_id`,{id:ucid, cid:coupon.id,usage:coupon.total_usage},
+                  axios.post(`https://perniacouture.pk/pernia-api/coupons/user_coupon_id`,{id:ucid, cid:coupon.id,usage:coupon.total_usage},
                   { headers: { 'content-type': 'application/json' } },
                   )
                   .then(res=>{
@@ -563,7 +563,7 @@ const [accountbill, setAccountBill] = useState({
                     let lim=resp.data.data.user_limit;
                     console.log('lim',lim,'and res .dataa',resp.data.limit)
                     lim=lim+1
-                    axios.put(`http://localhost:8080/ecom-api/coupons/user_coupon_id/${ucid}`,{limit:lim,cid:coupon.id,usage:coupon.total_usage},
+                    axios.put(`https://perniacouture.pk/pernia-api/coupons/user_coupon_id/${ucid}`,{limit:lim,cid:coupon.id,usage:coupon.total_usage},
                     { headers: { 'content-type': 'application/json' } },)                
                     .then(response=>{
                       setSuccess('coupon applied successfully')
@@ -705,7 +705,7 @@ const submitShipHandler=(e)=>{
   })
   setShipping(ship_arr)
   console.warn("rsponsegsffsdfd")
-  axios.put(`http://localhost:8080/ecom-api/addresses/${editship.id}`,put_s)
+  axios.put(`https://perniacouture.pk/pernia-api/addresses/${editship.id}`,put_s)
   .then(response=>{
     console.warn("rsponse",response)
   })
@@ -719,7 +719,7 @@ const submitShipHandler=(e)=>{
     
       // const ship_arr = [];
       // axios
-      //   .get(`http://localhost:8080/ecom-api/addresses/${user_Id}`, config)
+      //   .get(`https://perniacouture.pk/pernia-api/addresses/${user_Id}`, config)
       //   .then(response => {
       //     var i = 0;
       //     response.data.data.map(item => {
@@ -760,7 +760,7 @@ const submitEditBillHandler=(e)=>{
   console.log('ship_details details',address)
   setEditBilling(false)
  // setTitle(false)
-  axios.put(`http://localhost:8080/ecom-api/addresses/${address.id}`,billput)
+  axios.put(`https://perniacouture.pk/pernia-api/addresses/${address.id}`,billput)
   .then(response=>{
     setBill(address)
     console.warn("rsponse",response)
@@ -775,7 +775,7 @@ const submitEditBillHandler=(e)=>{
     
       // const ship_arr = [];
       // axios
-      //   .get(`http://localhost:8080/ecom-api/addresses/${user_Id}`, config)
+      //   .get(`https://perniacouture.pk/pernia-api/addresses/${user_Id}`, config)
       //   .then(response => {
       //     var i = 0;
       //     response.data.data.map(item => {
@@ -841,7 +841,7 @@ const submitAddShipHandler=(e)=>{
 else{
   addship.type='shipping'
 
-  axios.post(`http://localhost:8080/ecom-api/addresses/${user_Id}`,addship,
+  axios.post(`https://perniacouture.pk/pernia-api/addresses/${user_Id}`,addship,
 
 {headers: { 'content-type': 'application/json' }}
 )
@@ -867,7 +867,7 @@ else{
   const ship_arr = [];
   const selected_ship = [];
   axios
-    .get(`http://localhost:8080/ecom-api/addresses/${user_Id}`, config)
+    .get(`https://perniacouture.pk/pernia-api/addresses/${user_Id}`, config)
     .then(response => {
       var i = 0;
       response.data.data.map(item => {
@@ -943,7 +943,7 @@ else{
 
   address.type='billing'
 
-  axios.post(`http://localhost:8080/ecom-api/addresses/${user_Id}`,address,
+  axios.post(`https://perniacouture.pk/pernia-api/addresses/${user_Id}`,address,
 
 {headers: { 'content-type': 'application/json' }}
 )
@@ -1018,7 +1018,7 @@ const move=()=>{
       
       const u_id = decoded.result.id;
       setUserId(u_id)
-      axios.get(`http://localhost:8080/ecom-api/users/${u_id}`,
+      axios.get(`https://perniacouture.pk/pernia-api/users/${u_id}`,
 
         { headers: { "Authorization": `Bearer ${token}` } }
       )
@@ -1032,7 +1032,7 @@ const move=()=>{
         });
         const ship_arr = [];
      
-        axios.get(`http://localhost:8080/ecom-api/shipping`)
+        axios.get(`https://perniacouture.pk/pernia-api/shipping`)
         .then(response => {
           console.log('shipping',response.data.data)
           response.data.data.map(sh=>{
@@ -1048,7 +1048,7 @@ const move=()=>{
         });
     
     axios
-      .get(`http://localhost:8080/ecom-api/addresses/${u_id}`, config)
+      .get(`https://perniacouture.pk/pernia-api/addresses/${u_id}`, config)
       .then(response => {
         
          var i = 0;
@@ -1112,7 +1112,7 @@ const move=()=>{
 //         payment_method_nonce:nonce,
 //         amount:ptotal
 //       }
-//     axios.post(`http://localhost:8080/ecom-api/payment`,paymentData)
+//     axios.post(`https://perniacouture.pk/pernia-api/payment`,paymentData)
 //     .then(res=>{
 //       console.log('payment response',res)
 //       if(res.err)
@@ -1286,7 +1286,7 @@ const move=()=>{
                   <div >
               
               <InputDiv> <label>Street Address:</label>
-                <Input name='user_address' onChange={handleChange} placeholder="Street Address: Line 1" value={editship.user_address}  />
+                <Input name='user_address' onChange={()=>handleChange} placeholder="Street Address: Line 1" value={editship.user_address}  />
                 <Error >{errors.user_address?.type === 'required' && "Street Address is required"}</Error>
 
                 <Input placeholder="Line 2" {...register("street_address2")} />
@@ -1294,7 +1294,7 @@ const move=()=>{
 
               <InputDivC>
                 <InputDivS>
-                  <Select name='country' {...register("country", { required: true })} onChange={handleChange} >
+                  <Select name='country' {...register("country", { required: true })} onChange={()=>handleChange} >
                     <option value={editship.country} disabled selected>{editship.country}</option>
                     <option value="AF">Afghanistan</option>
                     <option value="AX">Åland Islands</option>
@@ -1309,7 +1309,7 @@ const move=()=>{
                 </InputDivS>
 
                 <InputDivS>
-                  <Select name='province' {...register("province", { required: true })} onChange={handleChange}>
+                  <Select name='province' {...register("province", { required: true })} onChange={()=>handleChange}>
                     <option value={editship.province} disabled selected>{editship.province}</option>
                     <option value="Azad Kashmir">Azad Kashmir</option>
                     <option value="Balochistan">Balochistan</option>
@@ -1328,7 +1328,7 @@ const move=()=>{
 
               <InputDivC>
                 <InputDivS>
-                  <Select name='city'{...register("city", { required: true })} onChange={handleChange}>
+                  <Select name='city'{...register("city", { required: true })} onChange={()=>handleChange}>
                     <option value={editship.city} disabled selected>{editship.city} </option>
                     <option value="Islamabad">Islamabad</option>
                     <option value="" disabled>Punjab Cities</option>
@@ -1576,11 +1576,11 @@ const move=()=>{
                 </InputDivS>
 
                 <InputDivS>
-                  <Input name='postal_code' placeholder="Zip/ Postal code" {...register("postal_code", { required: true })} value={editship.postal_code} onChange={handleChange}/>
+                  <Input name='postal_code' placeholder="Zip/ Postal code" {...register("postal_code", { required: true })} value={editship.postal_code} onChange={()=>handleChange}/>
                   <Error >{errors.postal_code?.type === 'required' && "Zip/ Postal code is required"}</Error>
                 </InputDivS>
               </InputDivC>
-              <DoneButton  onClick={submitShipHandler} > OK</DoneButton>
+              <DoneButton  onClick={()=>submitShipHandler} > OK</DoneButton>
               </div>
               </FormDiv>
 }
@@ -1591,7 +1591,7 @@ const move=()=>{
             <div >
         
         <InputDiv> <label>Street Address:</label>
-          <Input name='user_address' onChange={handleAddChange} placeholder="Street Address: Line 1" value={addship.user_address}  />
+          <Input name='user_address' onChange={()=>handleAddChange} placeholder="Street Address: Line 1" value={addship.user_address}  />
           <Error >{adderror.user_address}</Error>
 
           <Input placeholder="Line 2" {...register("street_address2")} />
@@ -1599,7 +1599,7 @@ const move=()=>{
 
         <InputDivC>
           <InputDivS>
-            <Select name='country' {...register("country", { required: true })} onChange={handleAddChange} >
+            <Select name='country' {...register("country", { required: true })} onChange={()=>handleAddChange} >
               <option value='' disabled selected>Select Country</option>
               <option value="AF">Afghanistan</option>
               <option value="AX">Åland Islands</option>
@@ -1613,7 +1613,7 @@ const move=()=>{
           </InputDivS>
 
           <InputDivS>
-            <Select name='province' {...register("province", { required: true })} onChange={handleAddChange}>
+            <Select name='province' {...register("province", { required: true })} onChange={()=>handleAddChange}>
               <option value='' disabled selected>Your Province</option>
               <option value="Azad Kashmir">Azad Kashmir</option>
               <option value="Balochistan">Balochistan</option>
@@ -1631,7 +1631,7 @@ const move=()=>{
 
         <InputDivC>
           <InputDivS>
-            <Select name='city'{...register("city", { required: true })} onChange={handleAddChange}>
+            <Select name='city'{...register("city", { required: true })} onChange={()=>handleAddChange}>
               <option value='' disabled selected>Select City </option>
               <option value="Islamabad">Islamabad</option>
               <option value="" disabled>Punjab Cities</option>
@@ -1879,11 +1879,11 @@ const move=()=>{
           </InputDivS>
 
           <InputDivS>
-            <Input name='postal_code' placeholder="Zip/ Postal code" {...register("postal_code", { required: true })} value={addship.postal_code} onChange={handleAddChange}/>
+            <Input name='postal_code' placeholder="Zip/ Postal code" {...register("postal_code", { required: true })} value={addship.postal_code} onChange={()=>handleAddChange}/>
             <Error >{adderror.postal_code}</Error>
           </InputDivS>
         </InputDivC>
-        <DoneButton  onClick={submitAddShipHandler} > OK</DoneButton>
+        <DoneButton  onClick={()=>submitAddShipHandler} > OK</DoneButton>
         <CloseButton  onClick={()=>setAddDiv(false)} > Close</CloseButton>
         </div>
         </FormDiv>
@@ -1922,7 +1922,7 @@ const move=()=>{
              
               <InputDiv> <label>Street Address:</label>
                 <Input name='user_address'  {...register("user_address", { required: true })} 
-                 placeholder="Street Address: Line 1" value={accountship.user_address} onChange={handleAChange} />
+                 placeholder="Street Address: Line 1" value={accountship.user_address} onChange={()=>handleAChange} />
                 <Error >{errors.user_address?.type === 'required' && "Street Address is required"}</Error>
 
                 <Input placeholder="Line 2" {...register("street_address2")} />
@@ -1930,7 +1930,7 @@ const move=()=>{
 
               <InputDivC>
                 <InputDivS>
-                  <Select name='country' {...register("country", { required: true })} onChange={handleAChange}  >
+                  <Select name='country' {...register("country", { required: true })} onChange={()=>handleAChange}  >
                     <option value={accountship.country} disabled selected>{accountship.country}</option>
                     <option value="AF">Afghanistan</option>
                     <option value="AX">Åland Islands</option>
@@ -1944,7 +1944,7 @@ const move=()=>{
                 </InputDivS>
 
                 <InputDivS>
-                  <Select name='province' {...register("province", { required: true })} onChange={handleAChange} >
+                  <Select name='province' {...register("province", { required: true })} onChange={()=>handleAChange} >
                     <option value={accountship.province} disabled selected>{accountship.province}</option>
                     <option value="Azad Kashmir">Azad Kashmir</option>
                     <option value="Balochistan">Balochistan</option>
@@ -2210,7 +2210,7 @@ const move=()=>{
                 </InputDivS>
 
                 <InputDivS>
-                  <Input name='postal_code' placeholder="Zip/ Postal code" {...register("postal_code", { required: true })} value={accountship.postal_code} onChange={handleAChange}/>
+                  <Input name='postal_code' placeholder="Zip/ Postal code" {...register("postal_code", { required: true })} value={accountship.postal_code} onChange={()=>handleAChange}/>
                   <Error >{errors.postal_code?.type === 'required' && "Zip/ Postal code is required"}</Error>
                 </InputDivS>
               </InputDivC>
@@ -2219,11 +2219,11 @@ const move=()=>{
               <br /><label>Contact</label>
               <InputDivC>
                 <InputDivS>
-                  <Input placeholder="Mobile no." value={accountship.mobile} {...register("mobile", { required: true })} onChange={handleAChange}  />
+                  <Input placeholder="Mobile no." value={accountship.mobile} {...register("mobile", { required: true })} onChange={()=>handleAChange}  />
                   <Error >{errors.mobile?.type === 'required' && "mobile no. is required"}</Error>
                 </InputDivS>
                 <InputDivS>
-                  <Input placeholder="Phone no." value={accountship.phone} {...register("phone", { required: true })}  onChange={handleAChange}  />
+                  <Input placeholder="Phone no." value={accountship.phone} {...register("phone", { required: true })}  onChange={()=>handleAChange}  />
                   <Error >{errors.phone?.type === 'required' && "Phone no. is required"}</Error>
                 </InputDivS>
               </InputDivC>
@@ -2240,10 +2240,10 @@ const move=()=>{
                              <div >
                             <input
                               type="radio"
-                              name="address"
+                          div key={i} style={{cursor:'pointer',display:'flex',flexDirection:'row'}}    name="address"
                               value={item.id}
                               checked={radio.selected === item.id?true:radio.selected==item.id}
-                              onChange={handleradioChange(item)}
+                              onChange={()=>handleradioChange(item)}
                             />
                             <label >
                               {item.user_address}
@@ -2271,7 +2271,7 @@ const move=()=>{
             <label style={{ margin: '20px' }} >
               <input type="checkbox"
                 name="checkbox"
-                value="Geeks" checked={passchecked} onChange={handleChangepass} />
+                value="Geeks" checked={passchecked} onChange={()=>handleChangepass} />
               Create account
             </label>
 }
@@ -2302,7 +2302,7 @@ const move=()=>{
             <label style={{ margin: '20px' }} >
               <input type="checkbox"
                 name="checkbox"
-                value="billing" checked={billing} onChange={handleChangebill} />
+                value="billing" checked={billing} onChange={()=>handleChangebill} />
               My billing and shipping address are the same
             </label>
 }
@@ -2322,7 +2322,7 @@ const move=()=>{
   <label style={{ margin: '20px' }} >
     <input type="checkbox"
       name="checkbox"
-      value="billing" checked={billing} onChange={handleChangebillingList} />
+      value="billing" checked={billing} onChange={()=>handleChangebillingList} />
     My billing and shipping address are the same
   </label>
   </FormDiv>
@@ -2337,7 +2337,7 @@ const move=()=>{
   <br />
   <InputDiv> <label>Street Address:</label>
   {/* {...register("Bstreet_address1", { required: true })} */}
-    <Input name='user_address' placeholder="Street Address: Line 1" value={accountbill.user_address} onChange={handleEditAChange('user_address')} />
+    <Input name='user_address' placeholder="Street Address: Line 1" value={accountbill.user_address} onChange={()=>handleEditAChange('user_address')} />
     <Error >{accountbill.user_address}</Error>
 
     <Input placeholder="Line 2" {...register("Bstreet_address2")} />
@@ -2346,7 +2346,7 @@ const move=()=>{
   <InputDivC>
     <InputDivS>
     {/* {...register("Bcountry", { required: true })}  */}
-      <Select name='country' onChange={handleEditAChange('country')} >
+      <Select name='country' onChange={()=>handleEditAChange('country')} >
         <option value="" disabled selected>Country</option>
         <option value="AF">Afghanistan</option>
         <option value="AX">Åland Islands</option>
@@ -2361,7 +2361,7 @@ const move=()=>{
 
     <InputDivS>
     {/* {...register("Bstate", { required: true })} */}
-      <Select name='province' onChange={handleEditAChange('province')} >
+      <Select name='province' onChange={()=>handleEditAChange('province')} >
         <option value="" disabled selected>State/Province</option>
         <option value="Azad Kashmir">Azad Kashmir</option>
         <option value="Balochistan">Balochistan</option>
@@ -2380,7 +2380,7 @@ const move=()=>{
   <InputDivC>
     <InputDivS>
     {/* {...register("Bcity", { required: true })} */}
-      <Select name='city' onChange={handleEditAChange('city')} >
+      <Select name='city' onChange={()=>handleEditAChange('city')} >
         <option value="" disabled selected>City</option>
         <option value="Islamabad">Islamabad</option>
         <option value="" disabled>Punjab Cities</option>
@@ -2972,14 +2972,14 @@ const move=()=>{
               
                   <div>
                   
-                  {/* onChange={()=>handleCredit('creditcard')} */}
-                  {/* onChange={()=>handleCredit('COD')} */}
-                  <Label> <input  {...register("payment", { required: true })} type="radio" value="COD" /> Cash On Delivery</Label>
-                  <Label style={{width:'600px'}}> <input required  {...register("payment", { required: true })}   type="radio" value="credit card" />
+                  {/* onChange={handleCredit('creditcard')} */}
+                  {/* onChange={handleCredit('COD')} */}
+                  <Label> <input  {...register("payment", { required: true })} type="radio" value="COD" /> <p style={{marginTop:'-6px',marginLeft:'4px'}}>Cash On Delivery</p></Label>
+                  {/* <Label style={{width:'600px'}}> <input required  {...register("payment", { required: true })}   type="radio" value="credit card" />
                    For Credit Card (Visa ,Master Card and Amercian Express)
                    <img style={{width:'40px',height:'25px',marginLeft:'10px'}} src="https://www.pngfind.com/pngs/m/471-4717614_visa-logo-png-transparent-visa-card-vector-png.png"/>
                    <img style={{width:'50px',height:'25px'}} src="https://freepngimg.com/thumb/mastercard/70535-credit-vector-card-mastercard-logo-free-frame.png"/>
-                   </Label>
+                   </Label> */}
                   <Error >{errors.payment?.type === 'required' && "Payment method is required"}</Error>
               
                 </div>
@@ -3012,9 +3012,9 @@ const move=()=>{
                   {/* <div >
                   <TitleBlock><LocalShippingOutlined style={{ paddingRight: '50px' }} /> Shipping Method</TitleBlock>
                   <Label> <input {...register("shippers", { required: true })} type="radio" value="standard" 
-                  onChange={()=>handleSMethod('strandard')} />Standard</Label>
+                  onChange={handleSMethod('strandard')} />Standard</Label>
                   <Label> <input {...register("shippers", { required: true })} type="radio" value="premium"
-                   onChange={()=>handleSMethod('premium')}/>Premium</Label>
+                   onChange={handleSMethod('premium')}/>Premium</Label>
                   <Error >{errors.shippers?.type === 'required' && "Shipper method is required"}</Error>
                 </div> */}
                 
@@ -3183,9 +3183,10 @@ const OrderButton = styled.button`
               transition: all .5s ease;
               color: #000000;
               border: 2px solid black;
-              min-width: 100%;
+              min-width: 95%;
               text-transform: uppercase;
               text-align: center;
+              margin-left:3%;
               line-height: 1;
               margin-bottom:15px;
               font-size: 20px;
@@ -3485,7 +3486,7 @@ const OSummary = styled.div`
 const Summary = styled.div`
 flex: 1;
 
-
+margin-top:6px;
 border: 0.5px solid lightgray;
 border-radius: 10px;
 padding: 20px;

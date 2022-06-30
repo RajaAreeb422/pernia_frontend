@@ -89,6 +89,15 @@ const Register = () => {
 
     return (
         <Container>
+              <Head>
+        <title>Register Page</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com"  />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
             <Wrapper>
                 <Title>Register</Title>
                 <Form onSubmit={handleSubmit(onSubmitHandler)}>

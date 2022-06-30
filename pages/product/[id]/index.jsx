@@ -41,11 +41,11 @@ const Product = () => {
   ]);
 
   const [icon, setIcon] = useState([
-    { name: "S", status: false },
-    { name: "M", status: false },
-    { name: "L", status: false },
-    { name: "XL", status: false },
-    { name: "XS", status: false },
+    {id:1, name: "S", status: false },
+    {id:2, name: "M", status: false },
+    {id:3, name: "L", status: false },
+    {id:4, name: "XL", status: false },
+    {id:5, name: "XS", status: false },
   ]);
   const [carddiv, setCardDiv] = useState(false);
   const handleClick = (direction) => {
@@ -133,9 +133,25 @@ const Product = () => {
   const incrementCount = () => {
     setCount(count + 1);
   };
-  const ChangeStatus = (i) => {
-    console.log("status", icon[i].status);
-    icon[i].status = !icon[i].status;
+  const ChangeStatus = (recieved_id) => {
+    let list=[]
+    icon.map(ic=>{
+      let flag=false;
+      if(ic.id==recieved_id)
+      {
+        console.log("in change status",ic.status)
+        ic['status']=true;
+        console.log("after changed",ic.status)
+        flag=true
+      }
+      if(flag==false)
+      ic['status']=false;
+   
+      list.push(ic)
+      // router.push(`/product/${id}`);
+    })
+    console.log("list",list)
+    setIcon(list)
   };
   const decCount = () => {
     setCount(count - 1);
@@ -270,6 +286,15 @@ const Product = () => {
 
   return (
     <>
+     <Head>
+        <title>Product Description</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com"  />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
      <Navbar />
     <Container>
      <ToastContainer/>
@@ -377,11 +402,11 @@ const Product = () => {
           </Desc>
 
           <Size>
-            <h4>SIZE</h4>
+            <h4>Size</h4>
             <SizeArea>
               {icon.map((ic, i) => (
                 <Icon key={i}
-                  onClick={() => ChangeStatus(i)}
+                  onClick={() => ChangeStatus(ic.id)}
                   style={
                     ic.status == true
                       ? { backgroundColor: "black", color: "white" }
@@ -393,10 +418,10 @@ const Product = () => {
               ))}
             </SizeArea>
           </Size>
-          {count==0?'':<Button onClick={() => addToCart()}>ADD TO CART</Button>}
+          {count==0?'':<Button onClick={() => addToCart()}>Add To Cart</Button>}
           
           {viewcart==true?
-          <Button onClick={() => viewCart()}>VIEW CART</Button>:''
+          <Button onClick={() => viewCart()}>View Cart</Button>:''
 
           }
          
@@ -409,7 +434,7 @@ const Product = () => {
             }}
           >
             <Details  style={{marginTop:'15px'}}/>
-            <h6 style={{marginLeft:'6px',marginTop:'15px'}}>SIZE GUIDE</h6>
+            <h6 style={{marginLeft:'6px',marginTop:'15px'}}>Size Guide</h6>
             {sizeImg!=true?
             <h2
               style={{
@@ -446,13 +471,14 @@ const Product = () => {
             }}
           >
             <Description style={{marginTop:'15px'}}/>
-            <h6 style={{marginLeft:'6px',marginTop:'15px'}}>PRODUCT DESCRIPTION</h6>
+            <h6 style={{marginLeft:'6px',marginTop:'15px'}}>Product Description</h6>
             {pdescription!=true?
             <h2
               style={{
                 marginLeft: "auto",
                 marginRight: "20px",
-                cursor:'pointer'
+                cursor:'pointer',
+                transitionDelay:'2s'
               }}
               onClick={()=>setPDescription(!pdescription)}
             >
@@ -471,7 +497,7 @@ const Product = () => {
 }
           </div>
           {pdescription&&
-          <div style={{width:'80%',padding:'20px',margin:'20px'}} >
+          <div style={{width:'80%',padding:'20px',margin:'20px',transitionDelay:'15s'}} >
           <p style={{marginLeft:'auto',marginRight:'auto'}}>{item.product_description}</p>
           </div>
 }
@@ -531,7 +557,7 @@ const Product = () => {
       <Carousel />
      
     </Container>
-    <Newsletter/>
+    {/* <Newsletter/> */}
     <Footer />
     </>
   );
@@ -599,6 +625,7 @@ const FilterSizeOpt = styled.span`
 const Container = styled.div`
   background-color: whitesmoke;
   margin-top:10px;
+  margin-bottom:80px;
 `;
 
 const Wrapper = styled.div`
@@ -640,6 +667,7 @@ const Image = styled.img`
 const InfoContainer = styled.div`
   margin-left: 30px;
   width: 600px;
+  height:auto;
   margin-top: 30px;
   background-color: white;
 `;
@@ -647,6 +675,7 @@ const InfoContainer = styled.div`
 const Title = styled.h1`
   font-weight: 700;
   width: 430px;
+  margin-top:10px;
   padding-left: 20px;
   font-size: 20px;
 `;

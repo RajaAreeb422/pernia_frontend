@@ -6,94 +6,23 @@ import { useEffect, useState } from 'react';
 import css from '../index.module.css';
 
 import {
-    HomeOutlined
+    HomeOutlined,Info
   } from "@material-ui/icons";
 import axios from "axios";
 import ProductItem from "../../../components/ProductItem";
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { Button } from "@material-ui/core";
 import Newsletter from "../../../components/foot/Newsletter";
 
 const Category = () => {
     const router = useRouter();
     const { id } = router.query;
     const [items, setItems] = useState([])
+    const [priceSelected, setPrice] = useState('')
     const [colname, setColName] = useState('')
     const [catname, setCatName] = useState('')
-    const [pro, setPro] = useState([
-        {
-            id:1,
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/33_bd16bfee-54ca-48c2-8003-31873146bada_300x.jpg?v=1645728681',
-            name:'ABA',
-            price:4000
-        },
-        {
-            id:2,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/6_fe6aec3c-6c0b-4cec-8e29-0ed6f0708b99_300x.jpg?v=1643117474',
-            price:6000
-        },
-        {
-            id:3,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/47_07f61de4-5425-4719-923f-7ed46d3b5d9a_300x.jpg?v=1640871315',
-            price:7000
-        },
-        {
-            id:4,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/18_32a7bdbd-342c-444b-9bed-2bf0bd4b76bc_300x.jpg?v=1645729065',
-            price:4000
-        },
-        {
-            id:5,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/34_c3b08635-8f70-40fe-972b-f98415bc9e96_300x.jpg?v=1640871557',
-            price:9000
-        },
-        {
-            id:6,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/15_4378d18b-0701-4a7e-8abf-8712f57eef8f_300x.jpg?v=1637755377',
-            price:7000
-        },
-        {
-            id:8,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/65_3d68470d-de58-4c2b-9b09-3567722e2bc9_300x.jpg?v=1637756270',
-            price:3000
-        },
-        {
-            id:9,
-            name:'ABA',
-            img:'//cdn.shopify.com/s/files/1/2337/7003/products/2_ae09fef5-fd82-4c9b-aa0f-12383c54d218_300x.jpg?v=1646656226',
-            price:4000
-        },
-        {
-            id:10,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/54_34eb250d-e0b3-415d-8668-db1f2de4120a_300x.jpg?v=1637756407',
-            price:9000
-        },
-        {
-            id:11,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/85_9b729e8e-a389-460b-adf6-68b3ba5c5c04_300x.jpg?v=1645728747',
-            price:7000
-        },
-        {
-            id:12,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/248716558_2194102894063222_9121287402918461509_n_300x.jpg?v=1640211339',
-            price:7000
-        },
-        {
-            id:13,
-            name:'ABA',
-            img:'https://cdn.shopify.com/s/files/1/2337/7003/products/26_76b7ea66-5056-4ab1-a1b0-f5928c4b612d_300x.jpg?v=1637755257',
-            price:7000
-        },
-    ])
+    const [allProducts, setAllProducts] = useState([])
     const [cat, setCategory] = useState({
         id:null,
         name:'',
@@ -126,34 +55,85 @@ const Category = () => {
          })
          console.log("list",list)
          setItems(list)
+         setAllProducts(list)
       }).catch(err=>console.log(err))
            
     }, [id])
 
-    const handleSelectChange=(e)=>{     
-        
-      
-        
+    const onValueChange=(value)=>{     
+      setPrice(value)
+      console.log("value",value)
+      let list=[]
+      let price1,price2;
+      if(value=='5-10')
+      {  
+      price1=5000;
+      price2=10000
+      }
+      else if(value=='10-20')
+      {
+        price1=11000;
+      price2=20000
+      }
+      else{
+        price1=30000;
+      price2=40000
+      }
+
+
+      allProducts.map(it=>{
+        if(it.price==price1 || it.price==price2)
+        {
+          list.push(it)
+        }
+      })
+      console.log("list",list)
+        setItems(list)
     }
-    function Sort(slist,value)
+    function move()
     {
-      
+      setPrice('')
+      setItems(allProducts);
+    }
+    const handleSelling=e=>{
+    
+      console.log("in asending")
+      if(e.target.value=="asc")
+      {
+      let list=items
+      let sortedData = items.slice().sort((a, b) => a.price - b.price);
+      list.sort(function(a, b){
+        if(a.price<b.price)
+        return 1;
+    });
+    console.log("list",sortedData)
+    setItems(sortedData)
+  }
+  else{
+    let list=items
+      let sortedData = items.slice().sort((a, b) => b.price - a.price);
+      list.sort(function(a, b){
+        if(a.price<b.price)
+        return 1;
+    });
+    console.log("list",sortedData)
+    setItems(sortedData)
+  
+  }
     }
 
-
-
-{/* {items.length==0? <div style={{marginLeft:'auto',marginRight:'auto',marginTop:'200px',fontSize:'22px'}}>
-                Sorry! ..Stock is Empty of this Category</div>:
-                <> */}
-
-       {/* {
-                 spro.map((item) => (
-                    <ProductItem item={item} key={item.id} />
-
-                ))} */}          
-
+    
     return (
       <>
+        <Head>
+        <title>category</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com"  />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
       <Navbar2/>
         <Container>
            
@@ -173,16 +153,17 @@ const Category = () => {
                 
                 
                     <SortText></SortText>
-                    <Select>
-                        <Option selected>Best Selling</Option>
-                        <Option>Price (asc)</Option>
-                        <Option>Price (desc)</Option>
+                    <Select onChange={(e)=>handleSelling(e)}>
+                        <Option selected disabled>Best Selling</Option>
+                        <Option value="asc">Price (asc)</Option>
+                        <Option value="desc">Price (desc)</Option>
                     </Select>
                
                
 
             </FilterContainer>
-
+            
+            {items.length!=0?
             <GridArea>
             <LeftBar>
             <Filter>  
@@ -192,29 +173,35 @@ const Category = () => {
             <Filter>
             <FilterTitle>Price</FilterTitle> 
               <FilterText className={css.pricebox}>
-                  <input type='checkbox' id='' style={{display:'none'}}/>  
-                  <input className={css.pricein} type='checkbox' id='price'/>
-                    <label className={css.pricela} htmlFor="price">Rs. 5,000-10,000</label>  <br/>
-                  <input className={css.pricein} type='checkbox' id='price'/>
-                    <label className={css.pricela} htmlFor="price">Rs. 10,000-20,000</label> <br/>
-                  <input className={css.pricein} type='checkbox' id='price'/>
-                    <label className={css.pricela} htmlFor="price">Rs. 30,000-40,000</label>
+                  
+                  <input className={css.pricein} type='radio'
+                   value='5-10'  
+                   name="price"
+                   checked={priceSelected==='5-10'}
+                   onChange={()=>onValueChange('5-10')}
+                  />
+                    <label className={css.pricela} htmlFor="5-10">Rs. 5,000-10,000</label>  <br/>
+                  <input className={css.pricein} type='radio' value='10-20'
+                    name="price"  checked={priceSelected==='10-20'}  onChange={()=>onValueChange('10-20')}/>
+                    <label className={css.pricela} htmlFor="10-20" >Rs. 10,000-20,000</label> <br/>
+                  <input className={css.pricein} type='radio' value='30-40' 
+                   name="price"  checked={priceSelected==='30-40'}  onChange={()=>onValueChange('30-40')}/>
+                    <label className={css.pricela} htmlFor="30-40" >Rs. 30,000-40,000</label>
+                    {/* <input type="radio" id="age1" name="age" value="30"/>
+  <label for="age1">0 - 30</label>
+  <input type="radio" id="age2" name="age" value="60"/>
+  <label for="age2">31 - 60</label>
+  <input type="radio" id="age3" name="age" value="100"/>
+  <label for="age3">61 - 100</label> */}
               </FilterText>  
             </Filter>
             
-            <Filter>
-            <FilterTitle>Delivery</FilterTitle> 
-              <FilterText> 
-                <input className={css.pricein} type='checkbox' id='w1'/><label className={css.pricela} htmlFor="w1">1-2 Weeks </label><br />
-                <input className={css.pricein} type='checkbox' id='w1'/><label className={css.pricela} htmlFor="w1">3-4 Weeks </label><br />
-                <input className={css.pricein} type='checkbox' id='w1'/><label className={css.pricela} htmlFor="w1">5-6 Weeks </label><br />
-              </FilterText>  
-            </Filter>
+            
 
             <Filter>
             <FilterTitle>Size</FilterTitle> 
               <FilterText>
-                  <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">XL</label> <br />
+                  <input className={css.pricein} type='checkbox' id='price' /><label className={css.pricela} htmlFor="price">XL</label> <br />
                   <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">L</label> <br />
                   <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">M</label> <br />
                   <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">S</label> <br />
@@ -234,9 +221,20 @@ const Category = () => {
             </Productshow>
 
 
-            </GridArea>
-            
-            <Newsletter/>
+            </GridArea>:
+            <center style={{marginBottom:'60px'}}>
+            <div style={{marginBottom:'100px',marginTop:'40px'}}>
+            <div style={{display:'flex',flexDirection:'row',justifyContent:'center',width:'100%'}}>
+                <Info style={{fontSize:'28px'}}/>
+                <p>No Product Found...</p>
+                
+                </div>
+                </div>
+
+                <Button onClick={()=>move()}>Back To Collection Products</Button>
+                </center>
+                }
+          
             <Footer/>
            
         </Container>
@@ -267,7 +265,7 @@ const FilterContainer = styled.div`
 const GridArea = styled.div`
   display: flex;
   flex-direction:row;
-   
+  margin-bottom:50px; 
 `;
 
 const Filter = styled.div`
@@ -291,8 +289,8 @@ const LeftBar = styled.div`
   margin-left:30px;
   margin-top:25px;
   flex:1;
- 
-  height:800px;
+   
+  height:auto;
   margin-right:30px;
   // border-style:groove;
   box-shadow: 0 2px 2px rgb(11 25 28 / 10%);
@@ -324,13 +322,15 @@ const FilterTitle = styled.span`
 
 const Select = styled.select`
   padding: 10px;
-  
-  margin-right: 20px;
+ 
+  margin-right: 5%;
 `;
 const Option = styled.option``;
 
 const Productshow = styled.div`
     padding: 10px;
+    padding-top:0px;
+   // margin-top:-60px;
     flex:4;
     display: flex;
     flex-direction:row;

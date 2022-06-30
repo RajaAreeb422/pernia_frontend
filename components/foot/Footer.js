@@ -65,12 +65,13 @@ return (
 				paddingTop: "10px"}}>
 	<span style={{ color: "white",
 				textAlign: "left",
+				height:'30px',
 				paddingBottom: "10px",
 				marginLeft:'20px',
 				paddingTop: "10px", }}>
 		©️ 2022 Pernia Technologies. All Rights Reserved.
 	</span>
-	<span style={{ color: "white",
+	<span className={fot.spn} style={{ color: "white",
 				float:'right',
 				marginRight:'20px' }}>
 		Term of Sale Terms | Conditions Privacy | Cookie Disclaimers

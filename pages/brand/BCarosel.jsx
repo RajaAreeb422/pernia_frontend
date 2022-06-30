@@ -83,7 +83,7 @@ const BCarosel = ({products}) => {
       >
         {/* <BSlide deal={box} /> */}
 
-          {pro.length!=0?
+          {pro.length!=0 && pro.length>=4?
 
              <Carousel style={{ width: "400px!important" }} show={3.9} slide={1} swiping={true} leftArrow={<B_ItemLeft/>} rightArrow={<B_ItemRight/>}>
              {
@@ -95,7 +95,17 @@ const BCarosel = ({products}) => {
               </div>
              ))
              }
-         </Carousel>:''
+         </Carousel>:
+         <div style={{display:'flex',flexDirection:'row',width:'90%',marginLeft:'auto',marginRight:'auto'}}>
+         { pro.map((it,i) => (
+               <div key={i} style={{cursor:'pointer'}} >
+               <Link href="/product/[id]" as={`/product/${it.id}`}> 
+                 <img src={it.image_paths} style={{ height: "450px",width:'310px',margin:'15px' }}/>
+                 </Link>     
+              </div>
+             ))
+         }
+         </div>
            
             }
    

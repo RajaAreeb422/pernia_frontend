@@ -53,3 +53,15 @@ cursor:pointer;
     text-decoration: underline;
     margin-bottom: 20px;
 }
+
+@media screen and (max-width: 760px) {
+    .spn{
+        display: none !important;
+    }
+    .heading{
+        margin-left:20px ;
+    }
+    .footlink{
+        margin-left:20px;
+    }
+}

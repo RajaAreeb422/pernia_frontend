@@ -26,24 +26,20 @@ import { ItemAssignmentContext } from "twilio/lib/rest/numbers/v2/regulatoryComp
   
       <Container>
         
-        {/* <Circle /> */}
-        {/* <div style={{display:'flex',flexDirection:'column'}}> */}
-        {/* <Image src={item.img}/> */}
+        
         <Link href='/product/[id]' as={`/product/${item.id}`} >
           <div>
         <Border>
-        <Image src={item.path} height='350px' width='250px'/>
+        <Image src={item.path}   height='370px' width='250px'/>
         <Context >
+        <ReadyToShip>
+          <center>Ready to Ship</center>
+        </ReadyToShip>  
         <h5>{item.name}</h5>
-        <p>{item.price} Rs</p> 
+        <p>PKR. {item.price} </p> 
         </Context>
         </Border>
-        
-        {/* <PriceCol>
-            {item.name}
-        </PriceCol> */}
-       {/* </div> */}
-
+       
         <Info>
           
           
@@ -64,21 +60,29 @@ import { ItemAssignmentContext } from "twilio/lib/rest/numbers/v2/regulatoryComp
   
   const Context = styled.div`
    background:white;
-   border:1px solid lightgrey;
+   /* border:1px solid lightgrey; */
   
-   padding:5px;
+   
    align-items:space-between;
    
 `;
 
+const ReadyToShip= styled.div`
+
+background:  #000536;
+color:white;
+font-weight:700px;
+padding:4px;
+
+`;
   
   
   const Border = styled.div`
   display:flex;
   
   flex-direction:column;
-   border:1px solid lightgrey;
-   height:350px;
+   /* border:1px solid lightgrey; */
+   margin-top:0px; 
    min-width: 250px;
 `;
 
@@ -100,19 +104,20 @@ import { ItemAssignmentContext } from "twilio/lib/rest/numbers/v2/regulatoryComp
   `;
   
   const Container = styled.div`
-    
-    margin: 30px;
-    margin-bottom:80px;
+
+    margin: 10px;
+    margin-left:0px;
+    margin-top:0px;
+    margin-bottom:10px;
     min-width: 250px;
-    height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
-      
     position: relative;
-    &:hover ${Info}{
+    /* &:hover ${Info}{
       opacity: 1;
-    }
+      
+    } */
   `;
   
   const Circle = styled.div`
@@ -133,7 +138,7 @@ const PriceCol = styled.div`
 
   
   const Image = styled.img`
-    height: 100%;
+    
     z-index: 2;
   `;
   

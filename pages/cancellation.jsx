@@ -11,6 +11,15 @@ import Newsletter from "../components/foot/Newsletter";
 const Cancellation = () => {
 return(
     <>
+      <Head>
+        <title>Cancellation</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com"  />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
     <Navbar/>
     <Container1>
         <Img src='https://cdn.shopify.com/s/files/1/2337/7003/files/New_Project_12_256x256_crop_center.png?v=1624868361'></Img>

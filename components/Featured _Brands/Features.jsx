@@ -60,11 +60,12 @@ const Features = () => {
       <div className={fea.outline} >
         <div className={fea.borderstyle}>
           <h2 className={fea.spacing}>Features Brands</h2>
-          <div className={fea.alignment}  >
+          <div className={fea.alignment}>
             {box.map((it) => (
               <img key={it.id} src={it.img} className={fea.imgSize} />
             ))}
           </div>
+          
         </div>
       </div>
       <div className={fea.outline}>

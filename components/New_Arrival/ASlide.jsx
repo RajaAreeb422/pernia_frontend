@@ -9,6 +9,9 @@ import { useRouter } from 'next/router';
 import { DeleteOutline, Edit } from '@material-ui/icons';
 import axios from "axios";
 import { List } from "reactstrap";
+import nav from '../../styles/navbar.module.css'
+import Left from "./Left";
+import Right from "./Right";
 const ASlide = (props) => {
   const [tagid, setTagId] = useState(null)
   const [bname, setBName] = useState([])
@@ -45,8 +48,8 @@ const ASlide = (props) => {
  
   return (
     <>
-
-          <Carousel style={{ width: "360px!important" }} show={3.5} slide={1} swiping={true} leftArrow={<Arrival_Item/>} rightArrow={<Arrival_ItemRight/>}>
+          <div className={nav.lgSc}>
+          <Carousel  show={3.5} slide={1} swiping={true} leftArrow={<Arrival_Item/>} rightArrow={<Arrival_ItemRight/>}>
               {
               props.deal.map((it,i) => (
              
@@ -66,7 +69,30 @@ const ASlide = (props) => {
               ))
               }
           </Carousel>
-         
+          </div>   
+
+          <div className={nav.smallSc}>
+          <Carousel  show={1} slide={1} swiping={true} leftArrow={<Left/>} rightArrow={<Right/>}>
+              {
+              props.deal.map((it,i) => (
+             
+                <Link key={it.id} href="/category/[id]" as={`/category/${it.id}`}>
+                  <div>
+                  <img src={it.path} style={{width:'100%',height:'500px'}}/>
+                  <div style={{backgroundColor:'white',height:'60px',border:'2px solid whitesmoke',marginLeft:'25px'}}>
+                  <h4 style={{textAlign:'center',marginTop:'8px'}}>{it.brand}</h4>
+                  <h5 style={{textAlign:'center',marginTop:'15px'}}>{it.name}</h5>
+              
+                  </div>
+                  </div> 
+                 
+                  
+                  </Link>     
+          
+              ))
+              }
+          </Carousel>
+          </div>
       
     </>
   );

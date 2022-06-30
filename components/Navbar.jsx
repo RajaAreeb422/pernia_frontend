@@ -63,7 +63,7 @@ const Navbar2 = () => {
   const removeToken = () => {
        console.log('hry removvee')
        localStorage.removeItem('token')
-        router.push('/')
+        router.push('/account/login')
   };
 
   const handleChange = (e) => {
@@ -131,7 +131,7 @@ const Navbar2 = () => {
         setColl(respo.data.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [loggedIn]);
   return (
     <div className={nav.Container}>
       <div className={nav.Wrapper}>
@@ -144,7 +144,7 @@ const Navbar2 = () => {
                 <Link href="/" as={`/`}>
                   <img
                     src="/pernia.png"
-                    style={{ marginLeft: "600px", marginTop: "10px" }}
+                    
                     className={nav.Logo}
                     width={100}
                   />
@@ -167,18 +167,14 @@ const Navbar2 = () => {
               <div className={nav.StyledLink}>
                 <div className={nav.icons}>
                   <div className={nav.SearchContainer} style={{borderRadius:'8px'}}>
-                     <input type="search" value={text}  onChange={(e)=>setText(e.target.value)} placeholder="Search Product" style={{border:'0.1px solid white',padding:'6px'}}/>
+                     <input className={nav.src} type="search" value={text}  onChange={(e)=>setText(e.target.value)} placeholder="Search Product"/>
                     {/* <Search  style={{color:'black'}}/>  */}
-                   <Search style={{color:'black',cursor:'pointer'}} onClick={()=>showText()}/>
+                   <Search className={nav.srcIcon}   onClick={()=>showText()}/>
                   </div>
                   <LocalShippingOutlined
+                  className={nav.shipping} 
                     color="action"
-                    style={{
-                      cursor: "pointer",
-                      color: "black",
-                      fontSize: "38px",
-                      marginRight: "20px",
-                    }}
+                   
                   />
                    <Link href="/cart" as={`/cart`}>
                   {cartItems.length > -1 && (
@@ -242,8 +238,8 @@ const Navbar2 = () => {
                   </Link>
                 
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#" >
-                  <p onClick={removeToken}>Logout</p>
+                <NavDropdown.Item  >
+                  <p onClick={()=>removeToken()}>Logout</p>
                 </NavDropdown.Item>
                 </NavDropdown>
             
@@ -291,15 +287,15 @@ const Navbar2 = () => {
           <Navbar.Toggle aria-controls="navbar-dark-example" />
           <Navbar.Collapse id="navbar-dark-example">
             <Nav style={{ marginLeft: "auto", marginRight: "auto" }}>
-              <NavDropdown
+              {/* <NavDropdown
                 style={{ marginLeft: "10px" }}
                 id="nav-dropdown-dark-example"
                 title="NewIn"
                 menuVariant="dark"
               >
                 
-              </NavDropdown>
-
+              </NavDropdown> */}
+              <Nav.Link>NewIn</Nav.Link>
               <NavDropdown
                 style={{ marginLeft: "10px" }}
                 id="nav-dropdown-dark-example"
@@ -316,6 +312,9 @@ const Navbar2 = () => {
               </NavDropdown>
 
               {cats.map((cItem) => (
+                cItem.name=='Sale' || cItem.name=='Pret'||cItem.name=='Luxury Pret'
+                ||cItem.name=='MEN'||cItem.name=='KIDS WEAR'?
+                <Nav.Link>{cItem.name}</Nav.Link>:
                 <NavDropdown
                   key={cItem.id}
                   style={{ marginLeft: "10px" }}
