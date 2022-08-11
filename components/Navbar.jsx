@@ -110,7 +110,7 @@ const Navbar2 = () => {
     }
     let list = [];
     axios
-      .get(`https://perniacouture.pk/pernia-api/suppliers`)
+      .get(`https://api.perniacouture.pk/pernia-api/suppliers`)
       .then((resp) => {
         resp.data.data.map((it, i) => {
           list.push(it);
@@ -120,13 +120,13 @@ const Navbar2 = () => {
       .catch((err) => console.log(err));
 
     axios
-      .get(`https://perniacouture.pk/pernia-api/categories`)
+      .get(`https://api.perniacouture.pk/pernia-api/categories`)
       .then((resp) => {
         setCats(resp.data.data);
       })
       .catch((err) => console.log(err));
     axios
-      .get(`https://perniacouture.pk/pernia-api/collections`)
+      .get(`https://api.perniacouture.pk/pernia-api/collections`)
       .then((respo) => {
         setColl(respo.data.data);
       })

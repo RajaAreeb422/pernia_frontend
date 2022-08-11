@@ -50,7 +50,7 @@ const Register = () => {
         const json = JSON.stringify(data);
         console.log(json);
 
-        axios.post(`https://perniacouture.pk/pernia-api/users`, json,
+        axios.post(`https://api.perniacouture.pk/pernia-api/users`, json,
 
             { headers: { 'content-type': 'application/json' } }
         )

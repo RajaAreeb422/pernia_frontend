@@ -330,7 +330,7 @@ const [accountbill, setAccountBill] = useState({
     console.log('json',order_json);
     setModal(true)
   
-    axios.post(`https://perniacouture.pk/pernia-api/orders`,order_json)
+    axios.post(`https://api.perniacouture.pk/pernia-api/orders`,order_json)
     .then(res=>{
       console.log('order postation fhfhftch',res.data)
       toggle()
@@ -451,7 +451,7 @@ const [accountbill, setAccountBill] = useState({
 
 
   const getToken=()=>{
-   axios.get(`https://perniacouture.pk/pernia-api/payment`)
+   axios.get(`https://api.perniacouture.pk/pernia-api/payment`)
    .then(res=>{
     // console.log("res",res.data.clientToken)
      if(res.err)
@@ -489,7 +489,7 @@ const [accountbill, setAccountBill] = useState({
 
   const handleApply = () => {
     
-    axios.get(`https://perniacouture.pk/pernia-api/coupons/byuser`)
+    axios.get(`https://api.perniacouture.pk/pernia-api/coupons/byuser`)
     .then(res=>{
       let curr=new Date()
       setErrorDiv(true)
@@ -522,7 +522,7 @@ const [accountbill, setAccountBill] = useState({
             }
             else{
               console.log('heloooo',ucid)
-              axios.get(`https://perniacouture.pk/pernia-api/coupons/user_coupon_id/${ucid}`)
+              axios.get(`https://api.perniacouture.pk/pernia-api/coupons/user_coupon_id/${ucid}`)
               .then(resp=>{
                 console.log(resp)
                 if(resp.data.success==0)
@@ -532,7 +532,7 @@ const [accountbill, setAccountBill] = useState({
                   // ucid=ucid+user_Id+coupon.id
                   // ucid=parseInt(ucid)
                   console.log('uciddryd',coupon.id)
-                  axios.post(`https://perniacouture.pk/pernia-api/coupons/user_coupon_id`,{id:ucid, cid:coupon.id,usage:coupon.total_usage},
+                  axios.post(`https://api.perniacouture.pk/pernia-api/coupons/user_coupon_id`,{id:ucid, cid:coupon.id,usage:coupon.total_usage},
                   { headers: { 'content-type': 'application/json' } },
                   )
                   .then(res=>{
@@ -563,7 +563,7 @@ const [accountbill, setAccountBill] = useState({
                     let lim=resp.data.data.user_limit;
                     console.log('lim',lim,'and res .dataa',resp.data.limit)
                     lim=lim+1
-                    axios.put(`https://perniacouture.pk/pernia-api/coupons/user_coupon_id/${ucid}`,{limit:lim,cid:coupon.id,usage:coupon.total_usage},
+                    axios.put(`https://api.perniacouture.pk/pernia-api/coupons/user_coupon_id/${ucid}`,{limit:lim,cid:coupon.id,usage:coupon.total_usage},
                     { headers: { 'content-type': 'application/json' } },)                
                     .then(response=>{
                       setSuccess('coupon applied successfully')
@@ -705,7 +705,7 @@ const submitShipHandler=(e)=>{
   })
   setShipping(ship_arr)
   console.warn("rsponsegsffsdfd")
-  axios.put(`https://perniacouture.pk/pernia-api/addresses/${editship.id}`,put_s)
+  axios.put(`https://api.perniacouture.pk/pernia-api/addresses/${editship.id}`,put_s)
   .then(response=>{
     console.warn("rsponse",response)
   })
@@ -719,7 +719,7 @@ const submitShipHandler=(e)=>{
     
       // const ship_arr = [];
       // axios
-      //   .get(`https://perniacouture.pk/pernia-api/addresses/${user_Id}`, config)
+      //   .get(`https://api.perniacouture.pk/pernia-api/addresses/${user_Id}`, config)
       //   .then(response => {
       //     var i = 0;
       //     response.data.data.map(item => {
@@ -760,7 +760,7 @@ const submitEditBillHandler=(e)=>{
   console.log('ship_details details',address)
   setEditBilling(false)
  // setTitle(false)
-  axios.put(`https://perniacouture.pk/pernia-api/addresses/${address.id}`,billput)
+  axios.put(`https://api.perniacouture.pk/pernia-api/addresses/${address.id}`,billput)
   .then(response=>{
     setBill(address)
     console.warn("rsponse",response)
@@ -775,7 +775,7 @@ const submitEditBillHandler=(e)=>{
     
       // const ship_arr = [];
       // axios
-      //   .get(`https://perniacouture.pk/pernia-api/addresses/${user_Id}`, config)
+      //   .get(`https://api.perniacouture.pk/pernia-api/addresses/${user_Id}`, config)
       //   .then(response => {
       //     var i = 0;
       //     response.data.data.map(item => {
@@ -841,7 +841,7 @@ const submitAddShipHandler=(e)=>{
 else{
   addship.type='shipping'
 
-  axios.post(`https://perniacouture.pk/pernia-api/addresses/${user_Id}`,addship,
+  axios.post(`https://api.perniacouture.pk/pernia-api/addresses/${user_Id}`,addship,
 
 {headers: { 'content-type': 'application/json' }}
 )
@@ -867,7 +867,7 @@ else{
   const ship_arr = [];
   const selected_ship = [];
   axios
-    .get(`https://perniacouture.pk/pernia-api/addresses/${user_Id}`, config)
+    .get(`https://api.perniacouture.pk/pernia-api/addresses/${user_Id}`, config)
     .then(response => {
       var i = 0;
       response.data.data.map(item => {
@@ -943,7 +943,7 @@ else{
 
   address.type='billing'
 
-  axios.post(`https://perniacouture.pk/pernia-api/addresses/${user_Id}`,address,
+  axios.post(`https://api.perniacouture.pk/pernia-api/addresses/${user_Id}`,address,
 
 {headers: { 'content-type': 'application/json' }}
 )
@@ -1018,7 +1018,7 @@ const move=()=>{
       
       const u_id = decoded.result.id;
       setUserId(u_id)
-      axios.get(`https://perniacouture.pk/pernia-api/users/${u_id}`,
+      axios.get(`https://api.perniacouture.pk/pernia-api/users/${u_id}`,
 
         { headers: { "Authorization": `Bearer ${token}` } }
       )
@@ -1032,7 +1032,7 @@ const move=()=>{
         });
         const ship_arr = [];
      
-        axios.get(`https://perniacouture.pk/pernia-api/shipping`)
+        axios.get(`https://api.perniacouture.pk/pernia-api/shipping`)
         .then(response => {
           console.log('shipping',response.data.data)
           response.data.data.map(sh=>{
@@ -1048,7 +1048,7 @@ const move=()=>{
         });
     
     axios
-      .get(`https://perniacouture.pk/pernia-api/addresses/${u_id}`, config)
+      .get(`https://api.perniacouture.pk/pernia-api/addresses/${u_id}`, config)
       .then(response => {
         
          var i = 0;
@@ -1112,7 +1112,7 @@ const move=()=>{
 //         payment_method_nonce:nonce,
 //         amount:ptotal
 //       }
-//     axios.post(`https://perniacouture.pk/pernia-api/payment`,paymentData)
+//     axios.post(`https://api.perniacouture.pk/pernia-api/payment`,paymentData)
 //     .then(res=>{
 //       console.log('payment response',res)
 //       if(res.err)

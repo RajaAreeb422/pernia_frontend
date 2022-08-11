@@ -54,7 +54,7 @@ const Move = ({id}) => {
     
           {prod.length!=0?
           <>
-          {console.log('proo',prod)}
+          
           <BCarosel products={prod} />
           </>:''}  
       

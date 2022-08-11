@@ -64,7 +64,7 @@ const MyNavbar = () => {
     let list = [];
 
     axios
-      .get(`https://mazglobal.co.uk/maz-api/categories`)
+      .get(`https://api.perniacouture.pk/pernia-api/categories`)
       .then((resp) => {
         setCats(resp.data.data);
       })

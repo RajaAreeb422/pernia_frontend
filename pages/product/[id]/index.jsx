@@ -249,22 +249,22 @@ const Product = () => {
 }
   useEffect(() => {
     let list=[]
- axios.get(`https://perniacouture.pk/pernia-api/products/${id}`)
+ axios.get(`https://api.perniacouture.pk/pernia-api/products/${id}`)
  .then(res=>{
    let path_list=[]
    res.data.data.images.map(im=>{
-    let pp = 'https://perniacouture.pk/pernia-api/' + im;
+    let pp = 'https://api.perniacouture.pk/pernia-api/' + im;
     path_list.push(pp)
    })
   setPath(path_list)
   console.log("name",path_list)
 
    setItem(res.data.data)  
-      axios.get(`https://perniacouture.pk/pernia-api/collections/${res.data.data.collection_id}`)
+      axios.get(`https://api.perniacouture.pk/pernia-api/collections/${res.data.data.collection_id}`)
  .then(resp=>{
   
        setColName(resp.data.data.name)
-       axios.get(`https://perniacouture.pk/pernia-api/suppliers/${resp.data.data.brand_id}`)
+       axios.get(`https://api.perniacouture.pk/pernia-api/suppliers/${resp.data.data.brand_id}`)
        .then(resp=>{
              setSuppName(resp.data.data.name)
           

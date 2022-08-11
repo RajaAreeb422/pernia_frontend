@@ -14,49 +14,30 @@ const ArrivalCarosel = () => {
   const [tagid, setTagId] = useState(null)
   const [deals, setDeals] = useState([])
   const [box, setBox] = useState([
-    {
-      id: 1,
-      text: "ABBB",
-      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Dastoor-Clothing_21_540x.jpg?v=1646470663",
-    },
-    {
-      id: 2,
-      text: "Sohail",
-      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Hem_28_0238090f-6aa0-476c-8a60-38a35366fee7_540x.jpg?v=1646470690",
-    },
-    {
-      id: 3,
-      text: "Areebb",
-      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Imrozia-Premium_63_540x.jpg?v=1646470651",
-    },
-    {
-      id: 4,
-      text: "WirdanB",
-      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Fascino_29_0fa00a47-e8e9-4351-b410-36c493666dac_540x.jpg?v=1646470731",
-    },
+   
   ]);
 
   useEffect(() => {
         let list=[]
-     axios.get(`https://perniacouture.pk/pernia-api/tag`)
+     axios.get(`https://api.perniacouture.pk/pernia-api/tag`)
      .then(res=>{
         res.data.data.map(tt=>{
           if(tt.name=='Newly Coming')
           {
           setTagId(tt.id)
-          axios.get(`https://perniacouture.pk/pernia-api/collections`)
+          axios.get(`https://api.perniacouture.pk/pernia-api/collections`)
      .then(resp=>{
        console.log("res",resp.data.data)
         resp.data.data.map(it=>{
           if(it.tag_id==tt.id)
           { 
-            let pp = 'https://perniacouture.pk/pernia-api/' + it.path;
+            let pp = 'https://api.perniacouture.pk/pernia-api/' + it.path;
             pp=pp.toString();
             it['path']=pp
             console.log("ppp",pp)
             list.push(it)
          
-            axios.get(`https://perniacouture.pk/pernia-api/suppliers/${it.brand_id}`)
+            axios.get(`https://api.perniacouture.pk/pernia-api/suppliers/${it.brand_id}`)
             .then(res=>{
               it['brand']=res.data.data.name
             }

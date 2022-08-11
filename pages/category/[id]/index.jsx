@@ -31,20 +31,20 @@ const Category = () => {
     })
     useEffect(() => {
         let list=[]
-        axios.get(`https://perniacouture.pk/pernia-api/collections/${id}`)
+        axios.get(`https://api.perniacouture.pk/pernia-api/collections/${id}`)
         .then(res=>{
            setColName(res.data.data.name)
-           axios.get(`https://perniacouture.pk/pernia-api/categories/${res.data.data.category_id}`)
+           axios.get(`https://api.perniacouture.pk/pernia-api/categories/${res.data.data.category_id}`)
            .then(respo=>setCatName(respo.data.data.name))
         }).catch(err=>console.log(err))
-      axios.get(`https://perniacouture.pk/pernia-api/products`)
+      axios.get(`https://api.perniacouture.pk/pernia-api/products`)
       .then(resp=>{
         console.log("res",resp.data.data)
          resp.data.data.map(it=>{
            console.log("cid",it.collection_id,id)
            if(it.collection_id==id)
            {
-            let pp = 'https://perniacouture.pk/pernia-api/' + it.path;
+            let pp = 'https://api.perniacouture.pk/pernia-api/' + it.path;
             pp=pp.toString();
             it['path']=pp
             console.log("ppp",pp)

@@ -31,10 +31,10 @@ const All_Products = () => {
     })
     useEffect(() => {
         // let list=[]
-        // axios.get(`https://perniacouture.pk/pernia-api/collections/${id}`)
+        // axios.get(`https://api.perniacouture.pk/pernia-api/collections/${id}`)
         // .then(res=>{
         //    setColName(res.data.data.name)
-        //    axios.get(`https://perniacouture.pk/pernia-api/categories/${res.data.data.category_id}`)
+        //    axios.get(`https://api.perniacouture.pk/pernia-api/categories/${res.data.data.category_id}`)
         //    .then(respo=>setCatName(respo.data.data.name))
         // }).catch(err=>console.log(err))
         if(router.query.text==''|| router.query.text==undefined)
@@ -43,12 +43,12 @@ const All_Products = () => {
         }
         else if(router.query.text=='cart')
         {
-          axios.get(`https://perniacouture.pk/pernia-api/products`)
+          axios.get(`https://api.perniacouture.pk/pernia-api/products`)
       .then(resp=>{
         let list1=[]
          resp.data.data.map(it=>{
            
-            let pat = 'https://perniacouture.pk/pernia-api/' + it.path;
+            let pat = 'https://api.perniacouture.pk/pernia-api/' + it.path;
             pat=pat.toString();
             it['path']=pat
             
@@ -63,7 +63,7 @@ const All_Products = () => {
       }).catch(err=>console.log(err))
         }
         else{
-      axios.get(`https://perniacouture.pk/pernia-api/products`)
+      axios.get(`https://api.perniacouture.pk/pernia-api/products`)
       .then(resp=>{
         let list=[]
          resp.data.data.map(it=>{
@@ -71,7 +71,7 @@ const All_Products = () => {
             console.log("text",router.query.text)
            if(it.name==router.query.text)
            {
-            let pp = 'https://perniacouture.pk/pernia-api/' + it.path;
+            let pp = 'https://api.perniacouture.pk/pernia-api/' + it.path;
             pp=pp.toString();
             it['path']=pp
             console.log("ppp",pp)

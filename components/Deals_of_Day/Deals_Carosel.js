@@ -38,19 +38,19 @@ const Deals_Carosel = () => {
 
   useEffect(() => {
         let list=[]
-     axios.get(`https://perniacouture.pk/pernia-api/tag`)
+     axios.get(`https://api.perniacouture.pk/pernia-api/tag`)
      .then(res=>{
         res.data.data.map(tt=>{
           if(tt.name=='Deals of the Day'||tt.name=='deals of the day'||tt.name=='Deals of the day')
           {
           setTagId(tt.id)
-          axios.get(`https://perniacouture.pk/pernia-api/collections`)
+          axios.get(`https://api.perniacouture.pk/pernia-api/collections`)
      .then(resp=>{
        console.log("res",resp.data.data)
         resp.data.data.map(it=>{
           if(it.tag_id==tt.id)
           {
-            let pp = 'https://perniacouture.pk/pernia-api/' + it.path;
+            let pp = 'https://api.perniacouture.pk/pernia-api/' + it.path;
             pp=pp.toString();
             it['path']=pp
             console.log("ppp",pp)

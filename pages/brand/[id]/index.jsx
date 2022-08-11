@@ -34,7 +34,7 @@ const Brand = () => {
     })
     useEffect(() => {
         let list=[]
-      axios.get(`https://perniacouture.pk/pernia-api/collections`)
+      axios.get(`https://api.perniacouture.pk/pernia-api/collections`)
       .then(resp=>{
         console.log("res",resp.data.data)
          resp.data.data.map(it=>{
