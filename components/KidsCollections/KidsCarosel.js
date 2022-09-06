@@ -3,14 +3,12 @@ import { Carousel } from "@trendyol-js/react-carousel";
 import Highlight from "react-highlight";
 import { useState, useEffect } from "react";
 import Link from 'next/link'
-import Arrival_Item from "./Arrival_Item";
-import Arrival_ItemRight from "./Arrival_ItemRight";
 import { useRouter } from 'next/router';
 import { DeleteOutline, Edit } from '@material-ui/icons';
 import axios from "axios";
 import { List } from "reactstrap";
 import ASlide from "./ASlide";
-const ArrivalCarosel = () => {
+const KidsCarosel = () => {
   const [tagid, setTagId] = useState(null)
   const [deals, setDeals] = useState([])
   const [box, setBox] = useState([
@@ -18,45 +16,27 @@ const ArrivalCarosel = () => {
   ]);
 
   useEffect(() => {
-        let list=[]
-     axios.get(`https://api.perniacouture.pk/pernia-api/tag`)
-     .then(res=>{
-        res.data.data.map(tt=>{
-          if(tt.name=='Newly Coming')
-          {
-          setTagId(tt.id)
-          axios.get(`https://api.perniacouture.pk/pernia-api/collections`)
+       
+      axios.get(`https://api.perniacouture.pk/pernia-api/collections`)
      .then(resp=>{
-       console.log("res",resp.data.data)
+       let list=[]
         resp.data.data.map(it=>{
-          if(it.tag_id==tt.id)
+          if(it.category_id==96)
           { 
             let pp = 'https://api.perniacouture.pk/pernia-api/' + it.path;
             pp=pp.toString();
             it['path']=pp
             console.log("ppp",pp)
             list.push(it)
-         
-            axios.get(`https://api.perniacouture.pk/pernia-api/suppliers/${it.brand_id}`)
-            .then(res=>{
-              it['brand']=res.data.data.name
-            }
-              )
-            .catch(err=>console.log(err))
-           
-            
           
-             
           }
         
         })
         console.log("list",list)
         setDeals(list)
-     }).catch(err=>console.log(err))
-          console.log("id",tt.id)
-          }
-        })
-     }).catch(err=>console.log(err))
+      }).catch(err=>console.log(err))
+       
+     
      
            
   }, [])
@@ -70,17 +50,15 @@ const ArrivalCarosel = () => {
       <div
         style={{
           backgroundColor: "white",
-          
+          padding:"8px",
         }}
       >
 
          
         <div style={borderstyle}>
-          <center>
-          <h2 style={{letterSpacing:'.15em',fontWeight:'600',
-          marginTop:'10px',marginBottom:'20px',padding:'20px'}}>New Arrivals</h2>
-          </center>
-        
+          <h2 style={{textAlign:'center',padding:'8px',wordSpacing:'10px',fontWeight:'700'}}>
+           THE KIDS EDIT - THE VERY BEST FROM KIDSWEAR
+            </h2>
 
          
           
@@ -93,4 +71,4 @@ const ArrivalCarosel = () => {
     </>
   );
 };
-export default ArrivalCarosel;
+export default KidsCarosel;

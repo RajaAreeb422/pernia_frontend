@@ -84,8 +84,10 @@ const Deals_Carosel = () => {
 
          
         <div style={borderstyle}>
-          <h2 style={{marginLeft:'30px',fontSize:'1.8em',letterSpacing:'.15em',marginTop:'20px',marginBottom:'20px'}}>DEALS OF THE DAY</h2>
-
+         <center>
+          <h2 style={{letterSpacing:'.15em',fontWeight:'600',
+          marginTop:'10px',marginBottom:'20px',padding:'20px'}}>DEALS OF THE DAY</h2>
+          </center>
          
           
           {deals.length!=0?

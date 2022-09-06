@@ -8,8 +8,7 @@ import B_ItemRight from "./B_ItemRight";
 import { useRouter } from 'next/router';
 import { DeleteOutline, Edit } from '@material-ui/icons';
 import axios from "axios";
-import { List } from "reactstrap";
-import BSlide from "./BSlide";
+
 const BCarosel = ({products}) => {
   const [tagid, setTagId] = useState(null)
   const [pro, setPro] = useState([])
@@ -38,34 +37,8 @@ const BCarosel = ({products}) => {
 
   useEffect(() => {
 
-
-    console.log("productss",products)
     setPro(products)
-    //     let list=[]
-    //  axios.get(`http://localhost:8080/ecom-api/tag`)
-    //  .then(res=>{
-    //     res.data.data.map(tt=>{
-    //       if(tt.name=='Deals of the Day'||tt.name=='deals of the day'||tt.name=='Deals of the day')
-    //       {
-    //       setTagId(tt.id)
-    //       axios.get(`http://localhost:8080/ecom-api/collections`)
-    //  .then(resp=>{
-    //    console.log("res",resp.data.data)
-    //     resp.data.data.map(it=>{
-    //       if(it.tag_id==tt.id)
-    //       {
-    //         list.push(it)
-    //       }
-        
-    //     })
-    //     console.log("list",list)
-    //     setDeals(list)
-    //  }).catch(err=>console.log(err))
-    //       console.log("id",tt.id)
-    //       }
-    //     })
-    //  }).catch(err=>console.log(err))
-     
+    
            
   }, [])
 
@@ -77,28 +50,38 @@ const BCarosel = ({products}) => {
     <>
       <div
         style={{
+          backgroundColor: "white",
          
-          width:'100%',
-          marginLeft:'auto',
-          marginRight:'auto'
         }}
       >
-        {/* <BSlide deal={box} /> */}
+      
 
-          {pro.length!=0 && pro.length>3 ?
+          {pro.length!=0 && pro.length>=4?
 
-             <Carousel show={4} slide={1} swiping={true} leftArrow={<B_ItemLeft/>} rightArrow={<B_ItemRight/>}>
+             <Carousel  show={4} slide={1} swiping={true} leftArrow={<B_ItemLeft/>} rightArrow={<B_ItemRight/>}>
              {
              pro.map((it,i) => (
                <div key={i} >
                <Link href="/product/[id]" as={`/product/${it.id}`}> 
-                 <img src={it.image_paths} style={{ width: "312px",borderRadius:'8px' }}/>
-                 </Link>     
+                 <img src={it.image_paths} style={{width:'312px',borderRadius:'8px'}}/>
+               </Link>     
               </div>
              ))
              }
-         </Carousel>:''
-}
+         </Carousel>:
+         <div style={{display:'flex',flexDirection:'row',width:'90%',marginLeft:'auto',marginRight:'auto'}}>
+         { pro.map((it,i) => (
+               <div key={i} style={{cursor:'pointer'}} >
+               <Link href="/product/[id]" as={`/product/${it.id}`}> 
+                 <img src={it.image_paths} style={{ height: "450px",width:'310px',margin:'15px' }}/>
+                 </Link>     
+              </div>
+             ))
+         }
+         </div>
+           
+            }
+   
       </div>
     </>
   );

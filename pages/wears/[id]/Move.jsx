@@ -9,11 +9,8 @@ import {
     HomeOutlined
   } from "@material-ui/icons";
 import axios from "axios";
-import BCarosel from "../BCarosel";
-import Newsletter from "../../../components/foot/Newsletter";
-import Footer from "../../../components/foot/Footer";
-import { useRouter } from 'next/router'
-import Head from 'next/head'
+import BCarosel from "./BCarosel";
+
 const Move = ({id}) => {
     // const router = useRouter();
     // const { id } = router.query;
@@ -37,7 +34,7 @@ const Move = ({id}) => {
                 else{
                 pr['image_paths']=pp
                 }
-                console.log("ppp",pp)
+             
                 list.push(pr)
                })
                setPro(list)

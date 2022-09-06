@@ -23,9 +23,9 @@ const Slider = () => {
 
   return (
     <Container>
-      <div style={{marginBottom:'60px'}}>
-    <Carousel>
-      <Carousel>
+      <div style={{marginBottom:'0px'}}>
+    <Carousel controls={false}>
+      <Carousel controls={false}>
    {sliderItems.map((it,key)=>(
      <Carousel.Item key={key} interval={5000}>
      <img
@@ -67,7 +67,6 @@ export default Slider;
 const Container = styled.div`
   width: 100% !important;
   display: flex;
-  
   height:70vh;
   position: relative;
   overflow: hidden;

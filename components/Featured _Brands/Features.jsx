@@ -1,9 +1,14 @@
-//import Carousel from "react-bootstrap/Carousel";
+
+import { Carousel } from "@trendyol-js/react-carousel";
 import Highlight from "react-highlight";
 import { useState, useEffect } from "react";
 import fea from "../../styles/features.module.css";
-
+import axios from 'axios'
+import FLeft_Item from "./FLeft_Item";
+import FRight_Item from "./FRight";
+import Link from 'next/link'
 const Features = () => {
+  const [brands, setBrands] = useState([])
   const [box, setBox] = useState([
     {
       id: 1,
@@ -21,32 +26,108 @@ const Features = () => {
       img: "https://cdn.shopify.com/s/files/1/2337/7003/files/sana-safinaz_20_200x.jpg?v=1646473607",
     },
     {
-      id: 4,
+      id: 64,
       text: "WirdanB",
       img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Akbar-Aslam_15_6947fd2a-c9f1-4c72-a3f7-e0a6b018c3e3_200x.jpg?v=1646396441",
     },
     {
-      id: 5,
+      id: 65,
       text: "WirdanB",
       img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Sanaya_6_32b91243-e296-4ec2-ad3e-d13d92786f4d_200x.jpg?v=1646473587",
     },
     {
-      id: 6,
+      id: 26,
       text: "WirdanB",
       img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Ramsha_34_200x.jpg?v=1646473466",
     },
     {
-      id: 7,
+      id: 27,
       text: "WirdanB",
       img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Cross-Stitch_30_502c6908-0845-49e1-b15b-e7bc91dc6580_200x.jpg?v=1646473542",
     },
     {
-      id: 8,
+      id:28,
       text: "WirdanB",
       img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Imrozia-Premium_65_200x.jpg?v=1646473482",
     },
     {
-      id: 9,
+      id: 29,
+      text: "WirdanB",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Jazmin_8_8b140f49-4792-4e7d-b686-0d11fe9575f5_200x.jpg?v=1646473359",
+    },
+    {
+      id: 23,
+      text: "Areebb",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/sana-safinaz_20_200x.jpg?v=1646473607",
+    },
+    {
+      id: 24,
+      text: "WirdanB",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Akbar-Aslam_15_6947fd2a-c9f1-4c72-a3f7-e0a6b018c3e3_200x.jpg?v=1646396441",
+    },
+    {
+      id: 29,
+      text: "WirdanB",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Sanaya_6_32b91243-e296-4ec2-ad3e-d13d92786f4d_200x.jpg?v=1646473587",
+    },
+    {
+      id: 15,
+      text: "WirdanB",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Ramsha_34_200x.jpg?v=1646473466",
+    },
+    {
+      id: 10,
+      text: "WirdanB",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Cross-Stitch_30_502c6908-0845-49e1-b15b-e7bc91dc6580_200x.jpg?v=1646473542",
+    },
+    {
+      id: 11,
+      text: "WirdanB",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Imrozia-Premium_65_200x.jpg?v=1646473482",
+    },
+    {
+      id: 48,
+      text: "WirdanB",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Jazmin_8_8b140f49-4792-4e7d-b686-0d11fe9575f5_200x.jpg?v=1646473359",
+    },
+
+    {
+      id: 44,
+      text: "WirdanB",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Akbar-Aslam_15_6947fd2a-c9f1-4c72-a3f7-e0a6b018c3e3_200x.jpg?v=1646396441",
+    },
+    {
+      id: 49,
+      text: "WirdanB",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Sanaya_6_32b91243-e296-4ec2-ad3e-d13d92786f4d_200x.jpg?v=1646473587",
+    },
+    {
+      id: 35,
+      text: "WirdanB",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Ramsha_34_200x.jpg?v=1646473466",
+    },
+    {
+      id: 30,
+      text: "WirdanB",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Cross-Stitch_30_502c6908-0845-49e1-b15b-e7bc91dc6580_200x.jpg?v=1646473542",
+    },
+    {
+      id: 31,
+      text: "WirdanB",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Imrozia-Premium_65_200x.jpg?v=1646473482",
+    },
+    {
+      id: 88,
+      text: "WirdanB",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Jazmin_8_8b140f49-4792-4e7d-b686-0d11fe9575f5_200x.jpg?v=1646473359",
+    },
+    {
+      id: 98,
+      text: "WirdanB",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Jazmin_8_8b140f49-4792-4e7d-b686-0d11fe9575f5_200x.jpg?v=1646473359",
+    },
+    {
+      id: 78,
       text: "WirdanB",
       img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Jazmin_8_8b140f49-4792-4e7d-b686-0d11fe9575f5_200x.jpg?v=1646473359",
     },
@@ -54,16 +135,36 @@ const Features = () => {
   const borderstyle = {
     borderTop: "20px solid #F7F7F7",
   };
+  useEffect(() => {
+    let list=[]
+  axios.get(`https://api.perniacouture.pk/pernia-api/suppliers`)
+  .then(resp=>{
+  setBrands(resp.data.data)
+  }).catch(err=>console.log(err))
+       
+}, [])
+
 
   return (
     <>
       <div className={fea.outline} >
         <div className={fea.borderstyle}>
+          
+          <center>
           <h2 className={fea.spacing}>Features Brands</h2>
+          </center>
           <div className={fea.alignment}>
-            {box.map((it) => (
-              <img key={it.id} src={it.img} className={fea.imgSize} />
+            {brands.length!=0?
+          <Carousel show={7} slide={1} swiping={true}  
+          leftArrow={<FLeft_Item/>} rightArrow={<FRight_Item/>}>
+              
+            {brands.map((it) => (
+              <Link key={it.id} href="/brand/[id]" as={`/brand/${it.id}`}>
+              <img key={it.id} src={box[0].img} className={fea.imgSize} />
+              </Link>
             ))}
+            </Carousel>:''
+}
           </div>
           
         </div>

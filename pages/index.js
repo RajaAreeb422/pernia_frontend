@@ -12,6 +12,8 @@ import Shop_By_Price from '../components/Shop_By_Price/Shop_By_Price'
 import Footer from '../components/foot/Footer'
 import Newsletter from "../components/foot/Newsletter";
 import ArrivalCarosel from '../components/New_Arrival/ArrivalCarosel'
+import Kids_Carosel from '../components/KidsCollections/KidsCarosel'
+import Men_Carosel from '../components/MenCollections/MenCarosel'
 import 'bootstrap/dist/css/bootstrap.css'
 
 import Link from "next/link";
@@ -36,8 +38,11 @@ export default function Home() {
       <ArrivalCarosel/>
       <Deals_Carosel/>
       <Features/>
+      <Kids_Carosel/>
+
+      <Men_Carosel/>
       {/* <Finish_Touch/> */}
-      <Shop_By_Price/>
+      {/* <Shop_By_Price/> */}
       {/* <Newsletter/> */}
 
       <Footer />

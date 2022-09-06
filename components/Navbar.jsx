@@ -23,7 +23,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import {  Nav } from "react-bootstrap";
 
 import { NavDropdown } from "react-bootstrap";
-import { Container } from "react-bootstrap";
+import { Container,Row,Col } from "react-bootstrap";
 
 const Navbar2 = () => {
   const [blist, setBlist] = useState(false);
@@ -287,14 +287,7 @@ const Navbar2 = () => {
           <Navbar.Toggle aria-controls="navbar-dark-example" />
           <Navbar.Collapse id="navbar-dark-example">
             <Nav style={{ marginLeft: "auto", marginRight: "auto" }}>
-              {/* <NavDropdown
-                style={{ marginLeft: "10px" }}
-                id="nav-dropdown-dark-example"
-                title="NewIn"
-                menuVariant="dark"
-              >
-                
-              </NavDropdown> */}
+              
               <Nav.Link>NewIn</Nav.Link>
               <NavDropdown
                 style={{ marginLeft: "10px" }}
@@ -302,19 +295,58 @@ const Navbar2 = () => {
                 title="Brands"
                 menuVariant="dark"
               >
+                <Container style={{background:'white',width:'1000px'}}>
+                <Row style={{padding:'10px'}}>
+
                 {items.map((cl) => (
-                  <Link key={cl.id} href="/brand/[id]" as={`/brand/${cl.id}`}>
-                    <NavDropdown.Item href="brand/`${cl.id}`">
-                      {cl.name}
+                  <>
+                  <Col tyle={{padding:'10px'}} xs="12" md="4" className="text-left">
+                    <NavDropdown.Item >
+                    
+<Link key={cl.id} href="/brand/[id]" as={`/brand/${cl.id}`}>
+                        <p style={{color:'black',fontWeight:'600'}}>{cl.name}</p>
+                    </Link>
+                      </NavDropdown.Item>
+                  </Col>
+                  <Col tyle={{padding:'10px'}} xs="12" md="4" className="text-left">
+                  <NavDropdown.Item >
+                  
+<Link key={cl.id} href="/brand/[id]" as={`/brand/${cl.id}`}>
+<p style={{color:'black',fontWeight:'600'}}>{cl.name}</p>
+</Link>
+                      
+                  
                     </NavDropdown.Item>
-                  </Link>
+                </Col>
+                 </>
                 ))}
+                
+                 
+
+                 
+                </Row>
+                </Container>
               </NavDropdown>
+
+           
+               
+                  {/* <Link key={cItem.id} href="/wears/[id]" as={`/wears/${cItem.id}`}>
+                  
+                  {cItem.name}
+                  
+                </Link> */}
 
               {cats.map((cItem) => (
                 cItem.name=='Sale' || cItem.name=='Pret'||cItem.name=='Luxury Pret'
                 ||cItem.name=='MEN'||cItem.name=='KIDS WEAR'?
-                <Nav.Link>{cItem.name}</Nav.Link>:
+
+                <Nav.Link to="wears/`${cItem.id}`">
+                <Link key={cItem.id} href="/wears/[id]" as={`/wears/${cItem.id}`}>
+                <span style={{textDecoration:'none'}}>{cItem.name}</span>
+                </Link>
+                </Nav.Link> 
+                
+                :
                 <NavDropdown
                   key={cItem.id}
                   style={{ marginLeft: "10px" }}

@@ -1,8 +1,9 @@
 export const sliderItems = [
     {
         id: 1,
+        img:'./perSlider.jpeg',
         // img: "https://i.ibb.co/Hhd5hxX/img.png",
-        img:'//cdn.shopify.com/s/files/1/2337/7003/files/Summer-Lawn_22_Desktop_2365d107-f4a1-4e0e-8d2a-434ccb2adfcd_1500x.progressive.jpg?v=1646417700',
+        //img:'//cdn.shopify.com/s/files/1/2337/7003/files/Summer-Lawn_22_Desktop_2365d107-f4a1-4e0e-8d2a-434ccb2adfcd_1500x.progressive.jpg?v=1646417700',
         title: "WINTER SALE",
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
 
@@ -16,7 +17,8 @@ export const sliderItems = [
     },
     {
         id: 3,
-        img: "//cdn.shopify.com/s/files/1/2337/7003/files/Summer-Lawn_22_Desktop_2365d107-f4a1-4e0e-8d2a-434ccb2adfcd_1500x.progressive.jpg?v=1646417700",
+        img:'./perSlider2.jpeg',
+      //  img: "//cdn.shopify.com/s/files/1/2337/7003/files/Summer-Lawn_22_Desktop_2365d107-f4a1-4e0e-8d2a-434ccb2adfcd_1500x.progressive.jpg?v=1646417700",
         title: "LOUNGEWEAR LOVE",
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
 

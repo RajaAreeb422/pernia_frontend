@@ -109,7 +109,7 @@ const All_Products = () => {
 
 
       allProducts.map(it=>{
-        if(it.price==price1 || it.price==price2)
+        if(it.price > price1 && it.price < price2)
         {
           list.push(it)
         }

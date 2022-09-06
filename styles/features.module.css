@@ -16,6 +16,8 @@
     margin-left: 30px;
     font-size: 1.8em;
     letter-spacing: .15em;
+    font-weight: 600;
+    padding: 20px;
     text-transform: uppercase;
   }
 
@@ -26,7 +28,7 @@
     margin-right: auto;
     /* flex-wrap: wrap; */
    
-    width:1350px;
+    width:88%;
   }
 .imgSize{
     height:112px;

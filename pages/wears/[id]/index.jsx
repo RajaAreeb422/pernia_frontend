@@ -9,13 +9,12 @@ import {
     HomeOutlined
   } from "@material-ui/icons";
 import axios from "axios";
-import BCarosel from "../BCarosel";
-import Newsletter from "../../../components/foot/Newsletter";
+
 import Footer from "../../../components/foot/Footer";
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Move from "./Move";
-const Brand = () => {
+const Wears = () => {
     const router = useRouter();
     const { id } = router.query;
     const [items, setItems] = useState([
@@ -38,14 +37,14 @@ const Brand = () => {
       .then(resp=>{
         console.log("res",resp.data.data)
          resp.data.data.map(it=>{
-           if(it.brand_id==id)
+           if(it.category_id==id)
            {
              
              list.push(it)
            }
          
          })
-         console.log("listtrtdhhf",list)
+        
          setItems(list)
       }).catch(err=>console.log(err))
            
@@ -56,16 +55,12 @@ const Brand = () => {
       
         
     }
-    function Sort(slist,value)
-    {
-      
-    }
-
+   
 
     return (
       <>
         <Head>
-        <title>Brand</title>
+        <title>Wear</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com"  />
         <link
@@ -74,14 +69,21 @@ const Brand = () => {
         />
       </Head>
       <Navbar2 style={{marginBottom:'120px'}}/>
-      <img style={{marginTop:'10px',marginBottom:'15px'}} width='100%' 
-      src='/perSlider.jpeg'/>
+      {id==96?
+      <img style={{marginTop:'20px'}} width='100%' 
+      src='https://cdn.shopify.com/s/files/1/2337/7003/files/Banner_Desktop_8_bc503d93-7d35-4cfc-8957-d6f34d9171a7_1500x.progressive.jpg?v=1660573891'/>
+ :
+ <img style={{marginTop:'20px'}} width='100%' 
+      src='https://cdn.shopify.com/s/files/1/2337/7003/files/Express-Shipping_Desktop_3_1500x.progressive.jpg?v=1661619143'/>
+ 
+
+}
       <Container>
         
        {items.length!=0?
        <> 
        {items.map(cl=>(
-          <div key={cl.id} style={{padding:'20px',margin:'8px',background:'whitesmoke'}}>
+          <div key={cl.id} style={{padding:'10px'}}>
             <center><h1 style={{padding:'20px'}}>{cl.name}</h1></center>
             <Move id={cl.id}/>
           </div> 
@@ -99,7 +101,7 @@ const Brand = () => {
     );
 };
 
-export default Brand;
+export default Wears;
 
 
 

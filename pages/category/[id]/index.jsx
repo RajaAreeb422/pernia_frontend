@@ -82,7 +82,7 @@ const Category = () => {
 
 
       allProducts.map(it=>{
-        if(it.price==price1 || it.price==price2)
+        if(it.price>price1 && it.price<price2)
         {
           list.push(it)
         }
@@ -322,7 +322,7 @@ const FilterTitle = styled.span`
 
 const Select = styled.select`
   padding: 10px;
- 
+  margin:6px;
   margin-right: 5%;
 `;
 const Option = styled.option``;
