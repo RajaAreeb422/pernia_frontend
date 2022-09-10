@@ -19,7 +19,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import Link from "next/link";
 
 import styled from "styled-components";
-
+import StoreCategories from '../components/StoreCategories'
 export default function Home() {
   return (
     <>
@@ -41,6 +41,7 @@ export default function Home() {
       <Kids_Carosel/>
 
       <Men_Carosel/>
+      <StoreCategories/>
       {/* <Finish_Touch/> */}
       {/* <Shop_By_Price/> */}
       {/* <Newsletter/> */}

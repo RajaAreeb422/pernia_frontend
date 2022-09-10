@@ -46,22 +46,22 @@ const Deals_Carosel = () => {
           setTagId(tt.id)
           axios.get(`https://api.perniacouture.pk/pernia-api/collections`)
      .then(resp=>{
-       console.log("res",resp.data.data)
+       
         resp.data.data.map(it=>{
           if(it.tag_id==tt.id)
           {
             let pp = 'https://api.perniacouture.pk/pernia-api/' + it.path;
             pp=pp.toString();
             it['path']=pp
-            console.log("ppp",pp)
+          
             list.push(it)
           }
         
         })
-        console.log("list",list)
+      
         setDeals(list)
      }).catch(err=>console.log(err))
-          console.log("id",tt.id)
+          
           }
         })
      }).catch(err=>console.log(err))

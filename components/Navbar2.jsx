@@ -54,7 +54,7 @@ const MyNavbar = () => {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setloggedIn(localStorage.getItem('token'))
-      console.log('token',localStorage.getItem('token'))
+     
       //setloggedIn("");
       var decoded = jwt_decode(localStorage.getItem("token"));
       setUser(decoded.result);

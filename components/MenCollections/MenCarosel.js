@@ -26,13 +26,13 @@ const MenCarosel = () => {
             let pp = 'https://api.perniacouture.pk/pernia-api/' + it.path;
             pp=pp.toString();
             it['path']=pp
-            console.log("ppp",pp)
+           
             list.push(it)
           
           }
         
         })
-        console.log("list",list)
+   
         setDeals(list)
       }).catch(err=>console.log(err))
        

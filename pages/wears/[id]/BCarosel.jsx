@@ -63,7 +63,7 @@ const BCarosel = ({products}) => {
              pro.map((it,i) => (
                <div key={i} >
                <Link href="/product/[id]" as={`/product/${it.id}`}> 
-                 <img src={it.image_paths} style={{width:'312px',borderRadius:'8px'}}/>
+                 <img src={it.image_paths} style={{width:'312px',height:'390px',borderRadius:'8px'}}/>
                </Link>     
               </div>
              ))

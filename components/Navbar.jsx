@@ -61,7 +61,7 @@ const Navbar2 = () => {
   };
 
   const removeToken = () => {
-       console.log('hry removvee')
+       
        localStorage.removeItem('token')
         router.push('/account/login')
   };
@@ -101,7 +101,7 @@ const Navbar2 = () => {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setloggedIn(localStorage.getItem('token'))
-      console.log('token',localStorage.getItem('token'))
+      
       //setloggedIn("");
       var decoded = jwt_decode(localStorage.getItem("token"));
       setUser(decoded.result);
@@ -303,7 +303,7 @@ const Navbar2 = () => {
                   <Col tyle={{padding:'10px'}} xs="12" md="4" className="text-left">
                     <NavDropdown.Item >
                     
-<Link key={cl.id} href="/brand/[id]" as={`/brand/${cl.id}`}>
+                     <Link key={cl.id} href="/brand/[id]" as={`/brand/${cl.id}`}>
                         <p style={{color:'black',fontWeight:'600'}}>{cl.name}</p>
                     </Link>
                       </NavDropdown.Item>
@@ -337,21 +337,26 @@ const Navbar2 = () => {
                 </Link> */}
 
               {cats.map((cItem) => (
-                cItem.name=='Sale' || cItem.name=='Pret'||cItem.name=='Luxury Pret'
-                ||cItem.name=='MEN'||cItem.name=='KIDS WEAR'?
+                cItem.name=='Sale' ||cItem.name=='MEN'||cItem.name=='KIDS WEAR'?
 
                 <Nav.Link to="wears/`${cItem.id}`">
                 <Link key={cItem.id} href="/wears/[id]" as={`/wears/${cItem.id}`}>
                 <span style={{textDecoration:'none'}}>{cItem.name}</span>
                 </Link>
                 </Nav.Link> 
-                
                 :
+                
                 <NavDropdown
                   key={cItem.id}
                   style={{ marginLeft: "10px" }}
                   id="nav-dropdown-dark-example"
-                  title={cItem.name}
+                  title={
+            
+                <Link key={cItem.id} href="/specificcategory/[id]" as={`/specificcategory/${cItem.id}`}>
+                <span style={{textDecoration:'none'}}>{cItem.name}</span>
+                </Link>
+                
+                  }
                   menuVariant="dark"
                 >
                   {coll.map((cl) =>
