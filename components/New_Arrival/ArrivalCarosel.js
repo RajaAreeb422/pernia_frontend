@@ -33,7 +33,7 @@ const ArrivalCarosel = () => {
           { 
             let pp = 'https://api.perniacouture.pk/pernia-api/' + it.path;
             pp=pp.toString();
-            it['path']=pp
+            it.path=pp
             
             list.push(it)
          

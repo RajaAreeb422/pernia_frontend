@@ -53,12 +53,15 @@ const ShoppingCart = ({ name, id, count, price, image,variant }) => {
         <Image src={image} />
         <Details>
           <ProductName style={{ fontSize: '20px' }} >
-            <b>Product:</b> {name}
+            <b>Name:</b> {name}
           </ProductName>
           <ProductId >
             <b>ID:</b> {id}
           </ProductId>
-
+          
+          <ProductId>
+              <b>Size:</b> {variant.name}<br />
+            </ProductId>
           {/* {variant.length!=0? 
           variant.map((v) => (
             <ProductId>
@@ -107,15 +110,16 @@ const Image = styled.img`
 
 const Details = styled.div`
   padding: 20px;
+  padding-top:4px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+
 `;
 
-const ProductName = styled.span`
-margin-top:-90px`;
+const ProductName = styled.p`
+margin-top:10px`;
 
-const ProductId = styled.span`
+const ProductId = styled.p`
 font-size: 14px;
 `;
 

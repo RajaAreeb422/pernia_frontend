@@ -30,6 +30,7 @@ import css from "../index.module.css";
 import Newsletter from "../../../components/foot/Newsletter";
 const Product = () => {
   const [ratingValue, setRatingValue] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(null);
   const [review, setReview] = useState(0);
   const [votes, setVotes] = useState(0);
   const [modal, setModal] = React.useState(false);
@@ -42,10 +43,11 @@ const Product = () => {
 
   const [icon, setIcon] = useState([
     {id:1, name: "S", status: false },
-    {id:2, name: "M", status: false },
-    {id:3, name: "L", status: false },
-    {id:4, name: "XL", status: false },
-    {id:5, name: "XS", status: false },
+    {id:2, name: "XS", status: false },
+    {id:3, name: "M", status: false },
+    {id:4, name: "L", status: false },
+    {id:5, name: "XL", status: false },
+   
   ]);
   const [carddiv, setCardDiv] = useState(false);
   const handleClick = (direction) => {
@@ -139,9 +141,9 @@ const Product = () => {
       let flag=false;
       if(ic.id==recieved_id)
       {
-        console.log("in change status",ic.status)
+        
         ic['status']=true;
-        console.log("after changed",ic.status)
+        setSelectedSize(ic)
         flag=true
       }
       if(flag==false)
@@ -150,7 +152,7 @@ const Product = () => {
       list.push(ic)
       // router.push(`/product/${id}`);
     })
-    console.log("list",list)
+    
     setIcon(list)
   };
   const decCount = () => {
@@ -192,7 +194,7 @@ const Product = () => {
       setCount(x);
     }
   };
-
+  const [productCategory, setProductCategory] = useState();
   const [comb, setcomb] = useState("");
   const [viewcart, setViewCart] = useState(false);
   const [vid, setvid] = useState();
@@ -230,7 +232,14 @@ const Product = () => {
  }
 
  const addToCart = () => {
-    
+   if(selectedSize==null)
+   {
+    toast.error(`Please Add the Size`)
+   } 
+   else{
+   
+    item.variants=selectedSize
+     
   dispatch(addProduct(
     {
       id:   id,
@@ -243,9 +252,9 @@ const Product = () => {
     }
   ))
   // settoggle(true)
- toast(`${item.name} Added Successfully`)
+ toast.success(`${item.name} Added Successfully`)
  setViewCart(true)
-  //router.push('/cart')
+  }
 }
   useEffect(() => {
     let list=[]
@@ -264,6 +273,7 @@ const Product = () => {
  .then(resp=>{
   
        setColName(resp.data.data.name)
+       setProductCategory(resp.data.data.category_id)
        axios.get(`https://api.perniacouture.pk/pernia-api/suppliers/${resp.data.data.brand_id}`)
        .then(resp=>{
              setSuppName(resp.data.data.name)
@@ -279,7 +289,7 @@ const Product = () => {
   
  
        
-}, [])
+}, [id])
 
 
 
@@ -544,17 +554,11 @@ const Product = () => {
       </Wrapper>
 
       {/* carousel showed in product page */}
-      <h2
-        style={{
-          marginLeft: "30px",
-          fontSize: "1.8em",
-          letterSpacing: ".15em",
-        }}
-      >
-        Related Products
-      </h2>
-
-      <Carousel />
+     
+      {productCategory!=undefined? 
+     <Carousel  category={productCategory}/>:''
+      }
+ 
      
     </Container>
     {/* <Newsletter/> */}

@@ -1,16 +1,17 @@
 import React from "react";
-
+import Image from "next/image";
 import Link from "next/link";
 import 'bootstrap/dist/css/bootstrap.css'
 import styled from "styled-components";
 import fot from "../../styles/footer.module.css"
+import ReactWhatsapp from 'react-whatsapp';
 const Footer = () => {
 return (
 
 	<div className={fot.box}>
 	<div className={fot.container}>
 		<div className={fot.row}>
-		<div className={fot.column} style={{marginTop:'20px', marginLeft:'20px'}}>
+		<div className={fot.columnS} style={{marginTop:'20px',marginLeft:'3px'}}>
 			{/* <Heading>About Us</Heading> */}
 			
 			<div className={fot.footlink} ><Link href='/sellAt' as={`/sellAt`}><p className={fot.footlink}>Become a Partner</p></Link></div>
@@ -21,35 +22,37 @@ return (
 		<div className={fot.column}>
 			<div className={fot.heading}>Help center</div>
 			<div className={fot.footlink}><Link href='/track' as={`/track`}><p className={fot.footlink}>Track your Order</p></Link></div>
-			<div className={fot.footlink}><Link href='/shipanddlv' as={`/shipanddlv`}><p className={fot.footlink}>Shipping and Delivery</p></Link></div>
+			<div className={fot.footlink}><Link href='/shipandlv' as={`/shipandlv`}><p className={fot.footlink}>Shipping and Delivery</p></Link></div>
 			<div className={fot.footlink} ><Link href='/cancellation' as={`/cancellation`}><p className={fot.footlink}>Cancellations</p></Link></div>
 			<div className={fot.cootlink} >FAQs</div>
-			{/* <div className={fot.footlink}><Link href='/exchange' as={`/exchange`}><p className={fot.footlink}>Returns</p></Link></div>
-			<div className={fot.footlink}><Link href='/refund' as={`/refund`}><p className={fot.footlink}>Refund Policy</p></Link></div> */}
-		</div>
+			</div>
 		<div className={fot.column}>
-			{/* <Heading>Contact Us</Heading>
-			<FooterLink href="#">Uttar Pradesh</FooterLink>
-			<FooterLink href="#">Ahemdabad</FooterLink>
-			<FooterLink href="#">Indore</FooterLink>
-			<FooterLink href="#">Mumbai</FooterLink> */}
+			
 
 			<div  className={fot.heading}>Contact Us</div>
-			<div className={fot.footlink} href="#">Whatsapp: +090078601</div>
-			<div className={fot.footlink} href="#">Email: customercare@pernia.pk</div>
-			
+			<ReactWhatsapp className={fot.footlinkS} 
+			 number="+090078601" message="Chat with US" > 
+		
+			<p className={fot.footlink}>Whatsapp: +090078601</p></ReactWhatsapp>
+		
+			<Link href='mailto:customercare@pernia.pk<?subject=SendMail&body=Description'>
+			<div className={fot.footlink} href="#">
+				<p className={fot.footlink}>Email: customercare@pernia.pk</p>
+			</div>
+			</Link>
 			<div style={{marginTop:'10px'}} className={fot.heading}>Partner with Pernia</div>
 			<div className={fot.footlink} ><Link href='/sellAt' as={`/sellAt`}><p className={fot.footlink}>Sell at Pernia</p></Link></div>
-			<div className={fot.footlink}><Link href='/connect' as={`/connect`} ><p className={fot.footlink}>Connect with us</p></Link></div>
-		</div>
+			</div>
 		<div className={fot.column}>
 			{/* <Heading>Social Media</Heading> */}
-			<div className={fot.footlink} href="#">
+			<div className={fot.footlink} href="#" >
+			<div  className={fot.footlinkS}><p className={fot.footlink}>Connect with us</p></div>
+		
 			<i className="fab fa-facebook-f">
 				<span style={{ marginLeft: "10px" }}>
-				<img src="./fb.svg" alt="" style={{ width: "30px",marginLeft:'20px' }} />
-				<img src="./you.svg" alt="" style={{ width: "30px",marginLeft:'20px' }} />
-				<img src="./insta.svg" alt="" style={{ width: "30px" ,marginLeft:'20px'}} />
+				<Image src="/fb.svg" height='30' width="60" alt="" style={{ marginLeft:'20px' }} />
+				<Image src="/you.svg"  height='30' width="60"alt="" style={{ marginLeft:'20px' }} />
+				<Image src="/insta.svg" height='30' width="60"alt="" style={{marginLeft:'20px'}} />
 				</span>
 			</i>
 			</div>
@@ -74,7 +77,7 @@ return (
 	<span className={fot.spn} style={{ color: "white",
 				float:'right',
 				marginRight:'20px' }}>
-		Term of Sale Terms | Conditions Privacy | Cookie Disclaimers
+		Term of Sale | Terms {'&'} Conditions | Privacy {'&'} Cookie | Disclaimers
 
 	</span>
 	</div>

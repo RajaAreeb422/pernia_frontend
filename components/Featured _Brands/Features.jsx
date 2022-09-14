@@ -153,17 +153,30 @@ const Features = () => {
           <center>
           <h2 className={fea.spacing}>Features Brands</h2>
           </center>
-          <div className={fea.alignment}>
+          <div className={fea.lgView}>
             {brands.length!=0?
           <Carousel show={7} slide={1} swiping={true}  
           leftArrow={<FLeft_Item/>} rightArrow={<FRight_Item/>}>
               
-            {brands.map((it) => (
+            {brands.map((it,i) => (
               <Link key={it.id} href="/brand/[id]" as={`/brand/${it.id}`}>
               <img key={it.id} src={box[0].img} className={fea.imgSize} />
               </Link>
             ))}
             </Carousel>:''
+}
+          </div>
+          <div className={fea.mView}>
+            {brands.length!=0?
+        <>
+            {brands.map((it,i) => (
+              i<6?
+              <Link key={it.id} href="/brand/[id]" as={`/brand/${it.id}`}>
+              <img key={it.id} src={box[i].img} className={fea.imgSize} />
+              </Link>:''
+            ))}
+            </>
+           :''
 }
           </div>
           
@@ -172,7 +185,7 @@ const Features = () => {
       <div className={fea.outline}>
           <div  className={fea.borderstyle}>
           <img src='//cdn.shopify.com/s/files/1/2337/7003/files/Faster-_-Better-Desktop-Local_1500x.jpg?v=1646410350'
-            style={{width:'100%'}}
+         className={fea.covImg}
             />
           </div>
       </div>

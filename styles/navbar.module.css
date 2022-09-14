@@ -155,8 +155,9 @@ text-decoration: none;
  .shipping{
    cursor: pointer;
    color: black;
-   font-size: 38px;
+   font-size: 34px !important;
    margin-right: 20px;
+ 
  }
 
  .lgSc{
@@ -218,9 +219,14 @@ text-decoration: none;
    clear: both;
  }
  
- 
+.mbView{
+  display: none !important;
+} 
 
-
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  
+}
 
 
  @media screen and (max-width: 760px) {
@@ -248,5 +254,13 @@ text-decoration: none;
    }
    .smallSc{
       display: block !important;
+   }
+   .mbView{
+    display:flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    width: 99% !important;
    }
  }

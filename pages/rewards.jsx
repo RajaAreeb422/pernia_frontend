@@ -46,7 +46,7 @@ const Rewards = () => {
            </Icon>
          </Flex>
         </Container>
-        <Newsletter/>
+       
         <Footer/>
 
         </>

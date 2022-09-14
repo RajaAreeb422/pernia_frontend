@@ -6,6 +6,7 @@ import {
   import styled from "styled-components";
   import Link from "next/link";
   import { useEffect, useState } from 'react';
+  import fea from "../styles/features.module.css";
 import axios from'axios'
   
   
@@ -32,11 +33,21 @@ import axios from'axios'
         }) .catch((err) => console.log(err));
      
     }, [])
+    const borderstyle={
+      borderTop:'20px solid #F7F7F7',
+    }
     return (
   
   
-      <Container>
-        
+      <div className={fea.storeContainer}>
+         <div style={borderstyle}>
+          <h2 style={{textAlign:'center',padding:'8px',wordSpacing:'10px',fontWeight:'700'}}>
+           Explore Stores 
+            </h2>
+            <center>
+            <p>For All Your Fashion Needs</p>
+            </center>
+            </div>
         {items.length!=0?
         <>
          {items.map((catg,i) => (
@@ -54,7 +65,7 @@ import axios from'axios'
        
         
         
-      </Container>
+      </div>
     );
   };
   
@@ -106,7 +117,7 @@ padding:4px;
   `;
   
   const Container = styled.div`
-      padding:20px;
+      margin-bottom:10px;
       margin-top:20px;
       width:100% !important;
       /* &:hover ${Info}{

@@ -44,7 +44,10 @@ const SellAt = () => {
          </div>
   
          </Flex>
+         <center>
          <Button1>Sign Up Now</Button1>
+         </center>
+        
         </Container>
         <Container2>
          <Flex2>
@@ -65,7 +68,7 @@ const SellAt = () => {
          </Icon>
          </Flex2>
         </Container2>
-        <Newsletter/>
+   
         <Footer/>
         </>
     )
@@ -74,16 +77,16 @@ export default SellAt;
 
 const Container = styled.div`
     background-color:whitesmoke;
-    margin-top:98px;
+    margin-top:8px;
     
   `;
   const Container2 = styled.div`
   background-color:white;
-
+  margin-bottom:20px;
   
 `;
 const ImgWrap = styled.img`
- 
+ width:100% !important;
   
 `;
 const ImgWrap2 = styled.img`
@@ -101,8 +104,9 @@ const Flex = styled.div`
  display:flex;
  flex-direction:row;
  margin-top:20px;
- margin-left:500px;
- margin-right:500px;
+ width:38% !important;
+ margin-left:auto;
+ margin-right:auto;
  margin-bottom:20px;
 
 `;
@@ -120,8 +124,9 @@ const Button1 = styled.button`
   background-color:black;
   color:white;
   padding:10px;
-  margin-left:700px;
-  margin-right:700px;
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
   margin-bottom:30px;
   margin-top:20px;
 `;

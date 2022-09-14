@@ -19,7 +19,7 @@ const SpecificCategory = () => {
     const router = useRouter();
     const { id } = router.query;
     const [items, setItems] = useState([])
-    const [priceSelected, setPrice] = useState('')
+    const [priceSelected, setPrice] = useState('all')
     const [collections, setCollections] = useState([])
     const [catname, setCatName] = useState('')
     const [spin, setSpin] = useState(false)
@@ -33,7 +33,7 @@ const SpecificCategory = () => {
     useEffect(() => {
       if(router.isReady)
     {
-      setPrice('')
+      setPrice('all')
         axios.get(`https://api.perniacouture.pk/pernia-api/collections/category/${id}`)
         .then(res=>{
            setCollections(res.data.data)
@@ -83,7 +83,9 @@ const SpecificCategory = () => {
 
     }
 
-    const onValueChange=(value)=>{     
+    const onValueChange=(value)=>{    
+      if(value!='all') 
+      {
       setPrice(value)
      
       let list=[]
@@ -112,6 +114,11 @@ const SpecificCategory = () => {
       })
     
         setItems(list)
+    }
+    else{
+      setPrice('all')
+      setItems(allProducts)
+    }
     }
     function move()
     {
@@ -193,6 +200,13 @@ const SpecificCategory = () => {
             <Filter>
             <FilterTitle>Price</FilterTitle> 
               <FilterText className={css.pricebox}>
+                  <input className={css.pricein} type='radio'
+                   value='all'  
+                   name="price"
+                   checked={priceSelected==='all'}
+                   onChange={()=>onValueChange('all')}
+                  />
+                    <label className={css.pricela} htmlFor="all">All</label>  <br/>
                   
                   <input className={css.pricein} type='radio'
                    value='5-10'  

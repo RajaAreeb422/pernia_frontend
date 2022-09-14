@@ -35,7 +35,7 @@ const Track = () => {
     <Button1>Track</Button1>
     </Div>
     </Container1>
-    <Newsletter/>
+    
     <Footer/>
     </>
     )
@@ -44,7 +44,7 @@ export default Track;
 
 const Container1 = styled.div`
     background-color:white;
-    margin-top:98px;
+    margin-top:28px;
     
   `;
   const Div= styled.div`
@@ -57,7 +57,7 @@ const Container1 = styled.div`
   `;
    const H2 = styled.h4`
    color:black;
-   margin-top:130px;
+
    margin-bottom:30px;
    text-align:center;
    

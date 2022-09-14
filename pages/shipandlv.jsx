@@ -33,7 +33,11 @@ return(
         ensuring that the outfit is sanitized, packed modestly, and is delivered at your doorsteps in the shortest 
         time possible.
         </P>
+        <center>
+
+        
         <Img2 src='https://cdn.shopify.com/s/files/1/2337/7003/files/New_Project_9_256x256_crop_center.png?v=1623912436'></Img2>
+        </center>
         <H2>ZONE DIVISIONS</H2>
      <Div>
        
@@ -62,11 +66,15 @@ return(
              <Button1>More</Button1>
            </Icon> 
      </Div>
+     <center>
+
+    
      <Img2 src='https://cdn.shopify.com/s/files/1/2337/7003/files/New_Project_10_256x256_crop_center.png?v=1623931521'></Img2>
+     </center>
         <H2>DELIVERY TIMELINE</H2>
       <SmallDiv>
       <Icon1>
-         <P3>Luxury Pret</P3> 
+         <P3> Pret</P3> 
          <P4>4-5 weeks</P4>
       </Icon1>
       <Icon1>
@@ -83,7 +91,7 @@ return(
       </Icon1>
       </SmallDiv>
     </Container1>
-    <Newsletter/>
+   
     <Footer/>
     </>
 )
@@ -106,24 +114,27 @@ margin-bottom:30px;
   `;
 const Container1 = styled.div`
     background-color:white;
-    margin-top:98px;
+    margin-top:28px;
     
   `;
   const Div= styled.div`
   display:flex;
   flex-direction:row;
   flex-wrap:wrap;
-  margin-left:150px;
-  margin-right:100px;
+  justify-content:center;
+  width:85%;
+  margin-left:auto;
+  margin-right:auto;
   
   `;
   const SmallDiv= styled.div`
   display:flex;
   flex-direction:row;
   flex-wrap:wrap;
-  margin-left:400px;
-  margin-right:400px;
-  justify-content:;
+  width:80%;
+  margin-left:auto;
+  margin-right:auto;
+  justify-content:center;
   
   `;
    const H2 = styled.div`
@@ -146,9 +157,8 @@ const Container1 = styled.div`
    `;
     const P = styled.div`
     color:grey;
-
-    justify-content:justify;
-    width:800px;
+    justify-content:center;
+    width:40%;
     margin-left:auto;
     margin-right:auto;
     margin-bottom:20px;
@@ -158,7 +168,6 @@ const Container1 = styled.div`
     
      font-weight:600;
      margin-top:20px;
-     width:800px;
     
      margin-right:270px;
      margin-left:280px;
@@ -170,7 +179,7 @@ const Container1 = styled.div`
       font-weight:600;
       margin-left:30px;
       margin-right:30px;
-      width:800px;
+ 
       
       
       
@@ -180,7 +189,7 @@ const Container1 = styled.div`
        font-weight:400;
        margin-left:30px;
        margin-right:30px;
-       width:600px;
+
        
        
        
@@ -227,9 +236,8 @@ const Container1 = styled.div`
      `;
 
 const Img2 = styled.img`
-     
-margin-left:740px;
-margin-right:600px;
+margin-left:auto;
+margin-right:auto;    
 height:50px;
 margin-top:10px;
 margin-bottom:10px;

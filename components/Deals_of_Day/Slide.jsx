@@ -60,18 +60,17 @@ const Slide = (props) => {
 
           </div>
           <div className={nav.smallSc}>
-          <Carousel  show={1} slide={1} swiping={true} leftArrow={<Left/>} rightArrow={<Right/>}>
+          <Carousel  show={2} slide={1} swiping={true} leftArrow={<Left/>} rightArrow={<Right/>}>
               {
               props.deal.map((it,i) => (
              
                 <Link key={it.id} href="/category/[id]" as={`/category/${it.id}`}>
                   <div>
-                  <img src={it.path} style={{width:'100%',height:'500px'}}/>
-                  <div style={{backgroundColor:'white',height:'60px',border:'2px solid whitesmoke',marginLeft:'25px'}}>
-                  <h4 style={{textAlign:'center',marginTop:'8px'}}>{it.brand}</h4>
-                  <h5 style={{textAlign:'center',marginTop:'15px'}}>{it.name}</h5>
-              
-                  </div>
+                  <img 
+                  src='https://cdn.shopify.com/s/files/1/2337/7003/files/mushq_-_2022-09-06T194930.201_48d6a401-4d8f-44fb-86cf-d351cfe8db20_370x.progressive.jpg?v=1662476523'
+               
+                   style={{width:'100%',height:'300px'}}/>
+                  
                   </div> 
                  
                   

@@ -3,10 +3,14 @@ import { Carousel } from "@trendyol-js/react-carousel";
 import Highlight from "react-highlight";
 import { useState, useEffect } from "react";
 import nav from "../styles/navbar.module.css";
-
+import axios from 'axios'
 import ItemLeft from "./Item";
 import ItemRight from "./ItemRight";
-const Carosel = () => {
+import Related from "./Related";
+const Carosel = ({category}) => {
+  const [collections, setCollections] = useState([])
+  const [items, setItems] = useState([])
+  const [allproducts, setAllProducts] = useState([])
   const [box, setBox] = useState([
     {
       id: 1,
@@ -30,8 +34,57 @@ const Carosel = () => {
     },
   ]);
 
+  useEffect(() => {
+
+    console.log("cat",category)
+   
+      axios.get(`https://api.perniacouture.pk/pernia-api/collections/category/${category}`)
+      .then(res=>{
+         setCollections(res.data.data)
+         
+         axios.get(`https://api.perniacouture.pk/pernia-api/products`)
+         .then(resp=>{
+            getProducts(res.data.data,resp.data.data)
+          }).catch(err=>console.log(err))
+  
+       }).catch(err=>console.log(err))
+
+           
+      
+         
+  }, [])
+  
+  const getProducts=(coList,pList)=>{
+    let list=[]
+    coList.map((col)=>{
+      pList.map(pr=>{
+        if(pr.collection_id==col.id)
+        {
+            pr.path= 'https://api.perniacouture.pk/pernia-api/' + pr.path;
+          
+            list.push(pr)
+        }
+      })
+    })    
+    console.log("list",list)
+     setItems(list)
+     setAllProducts(list)
+   
+
+  }
+
+
+
+
+
+
+
+
   const borderstyle={
-    borderTop:'20px solid #F7F7F7',
+ 
+    width:'95%',
+    marginLeft:'auto',
+    marginRight:'auto'
   }
   return (
     <>
@@ -42,17 +95,24 @@ const Carosel = () => {
         }}
       >
         <div style={borderstyle}>
-          {/* <h2 style={{marginLeft:'30px',fontSize:'1.8em',letterSpacing:'.15em'}}>New Arrivals</h2> */}
-
-
-          <Carousel show={3.5} slide={1} swiping={true} leftArrow={<ItemLeft/>} rightArrow={<ItemRight/>}>
-            
-              {box.map((it) => (
-                <img  key={it.id}src={it.img} style={{ height: "450px" }} />
-          
-              ))}
-            
-          </Carousel>
+          <center>
+          <h2
+        style={{
+          marginLeft: "30px",
+          fontSize: "1.8em",
+          padding:'8px',
+          letterSpacing: ".15em",
+        }}
+      >
+        Related Products
+      </h2>
+          </center>
+       
+       
+         {items.length!=0?
+         <Related items={items}/>:''
+         
+}
          
         </div>
       </div>

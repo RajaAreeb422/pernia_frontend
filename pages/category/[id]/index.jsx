@@ -19,7 +19,7 @@ const Category = () => {
     const router = useRouter();
     const { id } = router.query;
     const [items, setItems] = useState([])
-    const [priceSelected, setPrice] = useState('')
+    const [priceSelected, setPrice] = useState('all')
     const [colname, setColName] = useState('')
     const [catname, setCatName] = useState('')
     const [allProducts, setAllProducts] = useState([])
@@ -60,9 +60,11 @@ const Category = () => {
            
     }, [id])
 
-    const onValueChange=(value)=>{     
+    const onValueChange=(value)=>{    
+      if(value!='all') 
+      {
       setPrice(value)
-      console.log("value",value)
+     
       let list=[]
       let price1,price2;
       if(value=='5-10')
@@ -87,8 +89,13 @@ const Category = () => {
           list.push(it)
         }
       })
-      console.log("list",list)
+    
         setItems(list)
+    }
+    else{
+      setPrice('all')
+      setItems(allProducts)
+    }
     }
     function move()
     {
@@ -173,6 +180,13 @@ const Category = () => {
             <Filter>
             <FilterTitle>Price</FilterTitle> 
               <FilterText className={css.pricebox}>
+              <input className={css.pricein} type='radio'
+                   value='all'  
+                   name="price"
+                   checked={priceSelected==='all'}
+                   onChange={()=>onValueChange('all')}
+                  />
+                    <label className={css.pricela} htmlFor="all">All</label>  <br/>
                   
                   <input className={css.pricein} type='radio'
                    value='5-10'  

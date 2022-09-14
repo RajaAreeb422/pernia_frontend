@@ -31,7 +31,7 @@ return(
         </H2>  
         <P>
         To request for an order cancellation please email us the order # with product name, 
-        original proof of purchase receipt and issue at customercare@laam.pk and our customer care 
+        original proof of purchase receipt and issue at customercare@pernia.pk and our customer care 
         agent will get in contact with you. Alternatively you can call us on +92 316 7776158 from
          Monday to Saturday between 10:00 am - 6:00 pm (Pakistan Standard Time). Further, to proceed with the case,
           your purchase should be sent back to us within 14 days of receiving your order.
@@ -51,7 +51,7 @@ return(
      </Div>
 
     </Container1>
-    <Newsletter/>
+    
     <Footer/>
     </>
 )
@@ -59,7 +59,7 @@ return(
 export default Cancellation;
 const Container1 = styled.div`
     background-color:white;
-    margin-top:98px;
+    margin-top:18px;
     
   `;
   const Div= styled.div`

@@ -63,19 +63,7 @@ const ASlide = (props) => {
   
   useEffect(() => {
         console.log("props",props)
-        // let list=[]
-        // props.deal.map(it=>{
-        //   axios.get(`https://perniacouture.pk/pernia-api/suppliers/${it.brand_id}`)
-        // .then(res=>{
-        //   it['brand']=res.data.data.name
-        //   list.push(res.data.data.name)
-        //   console.log("data",res.data.data.name)
-        // }
-        //   )
-        // .catch(err=>console.log(err))
-        // })
-       
-        // setBName(list)
+      
            
   }, [])
 
@@ -109,21 +97,14 @@ const ASlide = (props) => {
           </div>   
 
           <div className={nav.smallSc}>
-          <Carousel  show={1} slide={1} swiping={true} leftArrow={<Left/>} rightArrow={<Right/>}>
+          <Carousel controls={false} show={2} slide={1} swiping={true} leftArrow={<Left/>} rightArrow={<Right/>}>
               {
               props.deal.map((it,i) => (
              
                 <Link key={it.id} href="/category/[id]" as={`/category/${it.id}`}>
                   <div>
-                  <img src={it.path} style={{width:'100%',height:'500px'}}/>
-                  <div style={{backgroundColor:'white',height:'60px',border:'2px solid whitesmoke',marginLeft:'25px'}}>
-                  <h4 style={{textAlign:'center',marginTop:'8px'}}>{it.brand}</h4>
-                  <h5 style={{textAlign:'center',marginTop:'15px'}}>{it.name}</h5>
-              
-                  </div>
-                  </div> 
-                 
-                  
+                  <img src={box[i].img} style={{width:'100%',height:'300px'}}/>
+                  </div>             
                   </Link>     
           
               ))

@@ -31,6 +31,7 @@
     "react-select-scrollable": "^2.0.2",
     "react-stripe-checkout": "^2.6.3",
     "react-toastify": "^9.0.3",
+    "react-whatsapp": "^0.3.0",
     "reactstrap": "^9.0.1",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",

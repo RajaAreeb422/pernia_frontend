@@ -86,7 +86,7 @@ const Blog = () => {
              </Div>
          </Flex>
          </Container>
-         <Newsletter/>
+         
         <Footer/>
         </>
       
@@ -131,7 +131,7 @@ const Name= styled.div`
 
 const Container = styled.div`
     background-color:white;
-    margin-top:98px;
+    margin-top:18px;
     
   `;
   const Container2 = styled.div`

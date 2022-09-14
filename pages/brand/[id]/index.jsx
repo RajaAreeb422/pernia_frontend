@@ -6,13 +6,14 @@ import { useEffect, useState } from 'react';
 //import css from '../index.module.css';
 
 import {
-    HomeOutlined
+    HomeOutlined,Info
   } from "@material-ui/icons";
 import axios from "axios";
 import BCarosel from "../BCarosel";
 import Newsletter from "../../../components/foot/Newsletter";
 import Footer from "../../../components/foot/Footer";
 import { useRouter } from 'next/router'
+import ft from '../../../styles/footer.module.css'
 import Head from 'next/head'
 import Move from "./Move";
 const Brand = () => {
@@ -74,8 +75,9 @@ const Brand = () => {
         />
       </Head>
       <Navbar2 style={{marginBottom:'120px'}}/>
+      {items.length!=0?
       <img style={{marginTop:'10px',marginBottom:'15px'}} width='100%' 
-      src='/perSlider.jpeg'/>
+      src='/perSlider.jpeg'/>:''}
       <Container>
         
        {items.length!=0?
@@ -89,7 +91,15 @@ const Brand = () => {
         }
         </>:
         <>
-        <center><h5>OOps! .No Collections is Available for now</h5></center>
+        
+        
+        <div className={ft.gap}>
+           
+                <Info style={{fontSize:'28px'}}/>
+                <h5>OOps! .No Collections are Available for now</h5>
+                
+              </div>
+               
         </>
 }
       </Container>

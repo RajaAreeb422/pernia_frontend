@@ -54,14 +54,14 @@ const ASlide = (props) => {
           </Carousel>
           </div>   
 
-          <div className={nav.smallSc}>
-          <Carousel  show={1} slide={1} swiping={true} >
+          <div className={nav.mbView}>
+          
               {
               props.deal.map((it,i) => (
              
                 <Link key={it.id} href="/category/[id]" as={`/category/${it.id}`}>
                   <div>
-                  <img src={it.path} style={{width:'100%',height:'500px'}}/>
+                  <img src={it.path} style={{width:'100%',height:'170px'}}/>
                   
                   </div> 
                  
@@ -70,7 +70,7 @@ const ASlide = (props) => {
           
               ))
               }
-          </Carousel>
+          
           </div>
       
     </>
