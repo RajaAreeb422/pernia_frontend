@@ -45,12 +45,11 @@ const Slide = (props) => {
 
                   <div >
                   <img 
-                  src='https://cdn.shopify.com/s/files/1/2337/7003/files/mushq_-_2022-09-06T194930.201_48d6a401-4d8f-44fb-86cf-d351cfe8db20_370x.progressive.jpg?v=1662476523'
-                   style={{width:'312px' }}/>
-                  {/* <div style={{backgroundColor:'white',height:'70px',width:'300px',border:'2px solid whitesmoke',marginLeft:'25px',}}>
-                   <h5 style={{textAlign:'center',marginTop:'15px'}}>{it.name}</h5>
-
-                  </div> */}
+                  // src='https://cdn.shopify.com/s/files/1/2337/7003/files/mushq_-_2022-09-06T194930.201_48d6a401-4d8f-44fb-86cf-d351cfe8db20_370x.progressive.jpg?v=1662476523'
+                  
+                  src={it.path}
+                  style={{width:'312px' }}/>
+                 
                   </div> 
                   </Link>     
           
@@ -66,10 +65,12 @@ const Slide = (props) => {
              
                 <Link key={it.id} href="/category/[id]" as={`/category/${it.id}`}>
                   <div>
-                  <img 
-                  src='https://cdn.shopify.com/s/files/1/2337/7003/files/mushq_-_2022-09-06T194930.201_48d6a401-4d8f-44fb-86cf-d351cfe8db20_370x.progressive.jpg?v=1662476523'
-               
-                   style={{width:'100%',height:'300px'}}/>
+                  {/* <img 
+                  // src='https://cdn.shopify.com/s/files/1/2337/7003/files/mushq_-_2022-09-06T194930.201_48d6a401-4d8f-44fb-86cf-d351cfe8db20_370x.progressive.jpg?v=1662476523'
+                   
+                  src={it.path}
+                   style={{width:'100%',height:'300px'}}/> */}
+                   <img src={it.path} style={{width:'94%',height:'270px'}}/>
                   
                   </div> 
                  

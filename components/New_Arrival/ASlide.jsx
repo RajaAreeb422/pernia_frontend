@@ -72,20 +72,18 @@ const ASlide = (props) => {
   return (
     <>
           <div className={nav.lgSc} style={{width:'98% !important',margin:'20px'}}>
-          <Carousel  show={4} slide={1} swiping={true} leftArrow={<Arrival_Item/>} rightArrow={<Arrival_ItemRight/>}>
+          <Carousel  show={4} slide={1} swiping={true} 
+          leftArrow={<Arrival_Item/>} rightArrow={<Arrival_ItemRight/>}>
               {
               props.deal.map((it,i) => (
              
                 <Link key={it.id} href="/category/[id]" as={`/category/${it.id}`}>
                   <div>
+
                   <img 
-                  src={box[i].img}
-                  style={{ width:'312px',height:'450px',borderRadius:'8px'}}/>
-                  {/* <div style={{backgroundColor:'white',height:'70px',width:'300px',border:'2px solid whitesmoke',marginLeft:'25px'}}>
-                  <h4 style={{textAlign:'center',marginTop:'8px'}}>{it.brand}</h4>
-                  <h5 style={{textAlign:'center',marginTop:'15px'}}>{it.name}</h5>
-              
-                  </div> */}
+                  src={it.path}
+                  style={{ width:'312px',height:'450px',borderRadius:'8px'}}
+                  />
                   </div> 
                  
                   
@@ -103,7 +101,7 @@ const ASlide = (props) => {
              
                 <Link key={it.id} href="/category/[id]" as={`/category/${it.id}`}>
                   <div>
-                  <img src={box[i].img} style={{width:'100%',height:'300px'}}/>
+                  <img src={it.path} style={{width:'94%',height:'270px',borderRadius:'8px'}}/>
                   </div>             
                   </Link>     
           

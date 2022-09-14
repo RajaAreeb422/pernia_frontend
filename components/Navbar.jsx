@@ -226,7 +226,7 @@ const Navbar2 = () => {
         
         </div>
       </div>
-      <Styles>
+     
         <Navbar variant="dark" bg="dark" expand="lg">
           <Container fluid>
             <Navbar.Brand href="#home"></Navbar.Brand>
@@ -345,7 +345,7 @@ const Navbar2 = () => {
             </Navbar.Collapse>
           </Container>
         </Navbar>
-      </Styles>
+     
     </div>
   );
 };

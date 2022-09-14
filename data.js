@@ -1,7 +1,7 @@
 export const sliderItems = [
     {
         id: 1,
-        img:'./perSlider.jpeg',
+        img:'./PerniaSliders1.png',
         // img: "https://i.ibb.co/Hhd5hxX/img.png",
         //img:'//cdn.shopify.com/s/files/1/2337/7003/files/Summer-Lawn_22_Desktop_2365d107-f4a1-4e0e-8d2a-434ccb2adfcd_1500x.progressive.jpg?v=1646417700',
         title: "WINTER SALE",
@@ -10,14 +10,38 @@ export const sliderItems = [
     },
     {
         id: 2,
-        img: "//cdn.shopify.com/s/files/1/2337/7003/files/Festive-Wear-2022-Desktop_285d4d11-3311-4868-8d92-c9c031097365_1500x.progressive.jpg?v=1646417722",
-        title: "AUTUMN COLLECTION",
+        img:'./PerniaSliders2.png',
+        title:'ksklsl',
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
 
     },
     {
         id: 3,
-        img:'./perSlider2.jpeg',
+        img:'./PerniaSliders3.png',
+      //  img: "//cdn.shopify.com/s/files/1/2337/7003/files/Summer-Lawn_22_Desktop_2365d107-f4a1-4e0e-8d2a-434ccb2adfcd_1500x.progressive.jpg?v=1646417700",
+        title: "LOUNGEWEAR LOVE",
+        desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+
+    },
+    {
+        id: 4,
+        img:'./PerniaSliders4.png',
+      //  img: "//cdn.shopify.com/s/files/1/2337/7003/files/Summer-Lawn_22_Desktop_2365d107-f4a1-4e0e-8d2a-434ccb2adfcd_1500x.progressive.jpg?v=1646417700",
+        title: "LOUNGEWEAR LOVE",
+        desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+
+    },
+    {
+        id: 5,
+        img:'./PerniaSliders5.png',
+      //  img: "//cdn.shopify.com/s/files/1/2337/7003/files/Summer-Lawn_22_Desktop_2365d107-f4a1-4e0e-8d2a-434ccb2adfcd_1500x.progressive.jpg?v=1646417700",
+        title: "LOUNGEWEAR LOVE",
+        desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+
+    },
+    {
+        id: 6,
+        img:'./PerniaSliders6.png',
       //  img: "//cdn.shopify.com/s/files/1/2337/7003/files/Summer-Lawn_22_Desktop_2365d107-f4a1-4e0e-8d2a-434ccb2adfcd_1500x.progressive.jpg?v=1646417700",
         title: "LOUNGEWEAR LOVE",
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",

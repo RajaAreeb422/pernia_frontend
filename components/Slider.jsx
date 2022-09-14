@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Head from 'next/head'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import nav from '../styles/navbar.module.css'
 //import { Carousel } from 'react-responsive-carousel';
 import Carousel from 'react-bootstrap/Carousel'
 import 'bootstrap/dist/css/bootstrap.css';
@@ -22,14 +23,14 @@ const Slider = () => {
   };
 
   return (
-    <Container>
+    <div className={nav.sliderCont}>
       <div style={{marginBottom:'0px'}}>
     <Carousel controls={false}>
       <Carousel controls={false}>
    {sliderItems.map((it,key)=>(
      <Carousel.Item key={key} interval={5000}>
      <img
-       style={{width:'100%',padding:'10px'}}
+       style={{width:'100%'}}
        src={it.img}
        alt="First slide"
      /> 
@@ -40,23 +41,8 @@ const Slider = () => {
 </Carousel>
     </Carousel>
 </div>
-      {/* <Arrow direction="left" onClick={() => handleClick("left")}>
-        <ArrowLeftOutlined />
-      </Arrow>
-      <Wrapper slideIndex={slideIndex}>
-        {sliderItems.map((item) => (
-          <Slide bg={item.bg} key={item.id}>
-            <ImgContainer>
-              <Image src={item.img} />
-            </ImgContainer>
-           
-          </Slide>
-        ))}
-      </Wrapper>
-      <Arrow direction="right" onClick={() => handleClick("right")}>
-        <ArrowRightOutlined />
-      </Arrow> */}
-    </Container>
+      
+    </div>
   );
 };
 
@@ -67,7 +53,6 @@ export default Slider;
 const Container = styled.div`
   width: 100% !important;
   display: flex;
-  height:70vh;
   position: relative;
   overflow: hidden;
   
