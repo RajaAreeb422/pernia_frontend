@@ -72,13 +72,14 @@
     display:flex !important;
     flex-direction:row;
     margin-left: auto;
+    justify-content: center;
     margin-right: auto;
     flex-wrap: wrap;
     width:97% !important;
   }
   .imgSize{
-    height:120px;
-    width:130px;
+    height:100px;
+    width:110px;
 }
 .covImg{
   width: 100% !important;

@@ -61,7 +61,7 @@ const ASlide = (props) => {
              
                 <Link key={it.id} href="/category/[id]" as={`/category/${it.id}`}>
                   <div>
-                  <img src={it.path} style={{width:'100%',height:'170px'}}/>
+                  <img src={it.path} style={{width:'100%',height:'140px'}}/>
                   
                   </div> 
                  
