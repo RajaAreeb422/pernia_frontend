@@ -9,11 +9,10 @@ import {
     HomeOutlined,Info
   } from "@material-ui/icons";
 import axios from "axios";
-import BCarosel from "../BCarosel";
-import Newsletter from "../../../components/foot/Newsletter";
+
 import Footer from "../../../components/foot/Footer";
 import { useRouter } from 'next/router'
-import ft from '../../../styles/footer.module.css'
+import brd from '../../../styles/brand.module.css'
 import Head from 'next/head'
 import Move from "./Move";
 const Brand = () => {
@@ -76,14 +75,14 @@ const Brand = () => {
       </Head>
       <Navbar2 style={{marginBottom:'120px'}}/>
       {items.length!=0?
-      <img style={{marginTop:'10px',marginBottom:'15px'}} width='100%' 
+      <img className={brd.covImg}
       src='/perSlider.jpeg'/>:''}
-      <Container>
+      <div className={brd.container}>
         
        {items.length!=0?
        <> 
        {items.map(cl=>(
-          <div key={cl.id} style={{padding:'20px',margin:'8px',background:'whitesmoke'}}>
+          <div key={cl.id} className={brd.mapImg}>
             <center><h1 style={{padding:'20px'}}>{cl.name}</h1></center>
             <Move id={cl.id}/>
           </div> 
@@ -93,7 +92,7 @@ const Brand = () => {
         <>
         
         
-        <div className={ft.gap}>
+        <div className={brd.gap}>
            
                 <Info style={{fontSize:'28px'}}/>
                 <h5>OOps! .No Collections are Available for now</h5>
@@ -102,8 +101,8 @@ const Brand = () => {
                
         </>
 }
-      </Container>
-      {/* <Newsletter/> */}
+      </div>
+      
       <Footer />
        </>
     );

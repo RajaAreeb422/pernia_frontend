@@ -18,3 +18,14 @@ a {
   display: block;
   
 }
+
+@media (max-width: 768px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+.dropdown-menu{
+  margin-left: -40px !important;
+  min-width:auto !important;
+}
+}

@@ -203,7 +203,7 @@ const Navbar2 = () => {
             </NavDropdown>
           ) : (
             <NavDropdown
-              style={{ marginLeft: "10px" }}
+             
               id="nav-dropdown-dark-example"
               title={<Person />}
               menuVariant="light"
@@ -295,8 +295,8 @@ const Navbar2 = () => {
 
                 {cats.map((cItem) =>
                   cItem.name == "Sale" ||
-                  cItem.name == "MEN" ||
-                  cItem.name == "KIDS WEAR" ? (
+                  cItem.name == "Men" ||
+                  cItem.name == "Kids Wear" ? (
                     <Nav.Link to="wears/`${cItem.id}`">
                       <Link
                         key={cItem.id}

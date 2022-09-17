@@ -1,7 +1,7 @@
 import styled from "styled-components";
 //import Announcement from "../../../components/Announcement";
 import Navbar2 from "../../../components/Navbar"
-
+import brd from '../../../styles/brand.module.css'
 import { useEffect, useState } from 'react';
 //import css from '../index.module.css';
 
@@ -78,7 +78,7 @@ const Wears = () => {
  
 
 }
-      <Container>
+      <div className={brd.container}>
         
        {items.length!=0?
        <> 
@@ -94,8 +94,8 @@ const Wears = () => {
         <center><h5>OOps! .No Collections is Available for now</h5></center>
         </>
 }
-      </Container>
-      {/* <Newsletter/> */}
+      </div>
+      
       <Footer />
        </>
     );

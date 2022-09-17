@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Link from 'next/link'
 import B_ItemLeft from "./B_Item";
 import B_ItemRight from "./B_ItemRight";
+import brd from '../../../styles/brand.module.css'
 import { useRouter } from 'next/router';
 import { DeleteOutline, Edit } from '@material-ui/icons';
 import axios from "axios";
@@ -48,7 +49,7 @@ const BCarosel = ({products}) => {
   }
   return (
     <>
-      <div
+      <div className={brd.lgView} 
         style={{
           backgroundColor: "white",
          
@@ -83,6 +84,25 @@ const BCarosel = ({products}) => {
             }
    
       </div>
+      
+      <div className={brd.smView} >
+              
+              {pro.length!=0 ?
+             <Carousel show={2} slide={1} swiping={true} 
+             leftArrow={<B_ItemLeft/>} rightArrow={<B_ItemRight/>} >
+             {
+             pro.map((it,i) => (
+               <div key={i} >
+               <Link href="/product/[id]" as={`/product/${it.id}`}> 
+                 <img src={it.image_paths} style={{ width: "170px",margin:'8px',borderRadius:'8px' }}/>
+                 </Link>     
+              </div>
+             ))
+             }
+         </Carousel>:''}
+
+      </div>
+
     </>
   );
 };

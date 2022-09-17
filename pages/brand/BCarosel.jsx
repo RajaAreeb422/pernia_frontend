@@ -8,8 +8,7 @@ import B_ItemRight from "./B_ItemRight";
 import { useRouter } from 'next/router';
 import { DeleteOutline, Edit } from '@material-ui/icons';
 import axios from "axios";
-import { List } from "reactstrap";
-import BSlide from "./BSlide";
+import brd from '../../styles/brand.module.css'
 const BCarosel = ({products}) => {
   const [tagid, setTagId] = useState(null)
   const [pro, setPro] = useState([])
@@ -75,19 +74,12 @@ const BCarosel = ({products}) => {
   }
   return (
     <>
-      <div
-        style={{
-         
-          width:'100%',
-          marginLeft:'auto',
-          marginRight:'auto'
-        }}
-      >
-        {/* <BSlide deal={box} /> */}
-
+      <div className={brd.lgView} >
+     
           {pro.length!=0 && pro.length>3 ?
 
-             <Carousel show={4} slide={1} swiping={true} leftArrow={<B_ItemLeft/>} rightArrow={<B_ItemRight/>}>
+             <Carousel show={4} slide={1} swiping={true} 
+             leftArrow={<B_ItemLeft/>} rightArrow={<B_ItemRight/>}>
              {
              pro.map((it,i) => (
                <div key={i} >
@@ -100,6 +92,32 @@ const BCarosel = ({products}) => {
          </Carousel>:''
 }
       </div>
+      
+      <div className={brd.smView} >
+              
+              {pro.length!=0 ?
+             <Carousel show={2} slide={1} swiping={true} 
+             leftArrow={<B_ItemLeft/>} rightArrow={<B_ItemRight/>} >
+             {
+             pro.map((it,i) => (
+               <div key={i} >
+               <Link href="/product/[id]" as={`/product/${it.id}`}> 
+                 <img src={it.image_paths} style={{ width: "170px",margin:'8px',borderRadius:'8px' }}/>
+                 </Link>     
+              </div>
+             ))
+             }
+         </Carousel>:''}
+
+      </div>
+
+
+
+
+
+
+
+
     </>
   );
 };

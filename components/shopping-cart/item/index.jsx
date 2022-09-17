@@ -3,6 +3,7 @@ import { removeProduct } from './../../redux/action';
 import { setCount } from './../../redux/action';
 import { Add, Remove, DeleteOutline } from "@material-ui/icons";
 import styled from "styled-components";
+import crt from '../../../styles/cart.module.css'
 //import { mobile } from "../../../pages/responsive";
 // const ShoppingCart = ({ name, id, count, price, variant,image }) 
 const ShoppingCart = ({ name, id, count, price, image,variant }) => {
@@ -48,9 +49,10 @@ const ShoppingCart = ({ name, id, count, price, image,variant }) => {
 
   return (
 
-    <Product>
+    <Product >
       <ProductDetail>
         <Image src={image} />
+        <div dataContainer>
         <Details>
           <ProductName style={{ fontSize: '20px' }} >
             <b>Name:</b> {name}
@@ -69,8 +71,7 @@ const ShoppingCart = ({ name, id, count, price, image,variant }) => {
             </ProductId>
           )):null} */}
         </Details>
-      </ProductDetail>
-      <PriceDetail>
+        <PriceDetail>
         <ProductAmountContainer>
           <AmountBtn> <Remove onClick={() => setProductCount(count )} /></AmountBtn>
           <Amount><strong>{count}</strong></Amount>
@@ -80,6 +81,9 @@ const ShoppingCart = ({ name, id, count, price, image,variant }) => {
         </ProductAmountContainer>
         <ProductPrice>{price * count} Rs</ProductPrice>
       </PriceDetail>
+      </div>
+      </ProductDetail>
+     
 
 
     </Product>
@@ -96,7 +100,8 @@ export default ShoppingCart
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
-  margin:30px;
+  margin:10px;
+  
 `;
  /* ${mobile({ flexDirection: "column" })} */
 const ProductDetail = styled.div`

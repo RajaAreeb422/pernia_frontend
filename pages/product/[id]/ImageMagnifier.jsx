@@ -1,6 +1,7 @@
 
 import { SettingsRemoteTwoTone } from "@material-ui/icons";
 import { useEffect, useState, } from "react";
+import css from '../index.module.css';
 function ImageMagnifier(props,{
   src='',
   width='500px',
@@ -24,14 +25,15 @@ function ImageMagnifier(props,{
       style={{
         position: "relative",
         height: height,
-        width: width
+        
       }}
+      className={css.imgMagnifier}
     >
       
       <img
         src={props.img}
 
-        style={showMagnifier===true?{ height: height, width: width,filter: 'grayscale(60%)'}:{height: height, width: width }}
+        className={showMagnifier===true?css.showImg:css.showImg2}
         onMouseEnter={(e) => {
           // update image size and turn-on magnifier
           const elem = e.currentTarget;

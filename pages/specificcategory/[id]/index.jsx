@@ -34,6 +34,10 @@ const SpecificCategory = () => {
       if(router.isReady)
     {
       setPrice('all')
+      axios.get(`https://api.perniacouture.pk/pernia-api/categories/${id}`)
+      .then(res=>{
+       setCatName(res.data.data.name)
+      }).catch(err=>console.log(err))
         axios.get(`https://api.perniacouture.pk/pernia-api/collections/category/${id}`)
         .then(res=>{
            setCollections(res.data.data)
@@ -165,41 +169,42 @@ const SpecificCategory = () => {
         />
       </Head>
       <Navbar2/>
-      <Container>
+      <div className={css.container}>
            
-      <FilterContainer>
+      <div className={css.filterContainer}>
             
-            <FilterHome>
-                <FilterHomeText>
+            <div className={css.filterHome}>
+                <div className={css.filterHomeText}>
                     <HomeOutlined/>
-                    </FilterHomeText>
-                    <FilterHomeText>
-                        
-                    </FilterHomeText>
-            </FilterHome>
+                    </div>
+                    <div className={css.filterHomeText}>
+                        {catname}
+                    </div>
+                   </div>
                 
                 
-                    <SortText></SortText>
-                    <Select onChange={(e)=>handleSelling(e)}>
-                        <Option selected disabled>Best Selling</Option>
-                        <Option value="asc">Price (asc)</Option>
-                        <Option value="desc">Price (desc)</Option>
-                    </Select>
+                    <span className={css.sort}></span>
+                    <select className={css.select} onChange={(e)=>handleSelling(e)}>
+                        <option selected disabled>Best Selling</option>
+                        <option value="asc">Price (asc)</option>
+                        <option value="desc">Price (desc)</option>
+                    </select>
                
                
 
-            </FilterContainer>
+            </div>
             
             {spin==true && items.length!=0?
-            <GridArea>
-            <LeftBar>
-            <Filter>  
-            <FilterTitle style={{backgroundColor:'white'}}>FILTER PRODUCTS</FilterTitle>
-            </Filter> 
+            <div className={css.gridArea}>
+            <div className={css.leftBar}>
+            <div className={css.filter}>  
+            <div className={css.filterTitle} style={{backgroundColor:'white'}}>
+              FILTER PRODUCTS</div>
+            </div> 
             
-            <Filter>
-            <FilterTitle>Price</FilterTitle> 
-              <FilterText className={css.pricebox}>
+            <div className={css.filter}>
+            <div className={css.filterTitle}FilterTitle>Price</div> 
+              <div className={css.filterText}>
                   <input className={css.pricein} type='radio'
                    value='all'  
                    name="price"
@@ -222,38 +227,38 @@ const SpecificCategory = () => {
                    name="price"  checked={priceSelected==='30-40'}  onChange={()=>onValueChange('30-40')}/>
                     <label className={css.pricela} htmlFor="30-40" >Rs. 30,000-40,000</label>
               
-              </FilterText>  
-            </Filter>
+              </div>  
+            </div>
             
             
 
-            <Filter>
-            <FilterTitle>Size</FilterTitle> 
-              <FilterText>
+            <div className={css.filter}>
+            <span className={css.filterTitle}>Size</span> 
+              <span  className={css.filterText}>
                   <input className={css.pricein} type='checkbox' id='price' /><label className={css.pricela} htmlFor="price">XL</label> <br />
                   <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">L</label> <br />
                   <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">M</label> <br />
                   <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">S</label> <br />
                   <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">XS</label> 
-              </FilterText>  
-            </Filter>
+              </span>  
+            </div>
 
-            </LeftBar>  
+            </div>  
             {
               spin==true?
-              <Productshow>
+              <div div className={css.productShow}>
                  {items.map((it,key)=>(
                  <ProductItem item={it} key={key}/>
              
          
               ))}
          
-            </Productshow>:<p>Loading.....</p>
+            </div>:<p>Loading.....</p>
             } 
             
 
 
-            </GridArea>:
+            </div>:
             <center style={{marginBottom:'60px'}}>
             <div style={{marginBottom:'100px',marginTop:'40px'}}>
             <div style={{display:'flex',flexDirection:'row',justifyContent:'center',width:'100%'}}>
@@ -270,7 +275,7 @@ const SpecificCategory = () => {
           
             <Footer/>
            
-        </Container>
+        </div>
         
        </>
     );

@@ -53,6 +53,9 @@ return (
 				<Image src="/fb.svg" height='30' width="60" alt="" style={{ marginLeft:'20px' }} />
 				<Image src="/you.svg"  height='30' width="60"alt="" style={{ marginLeft:'20px' }} />
 				<Image src="/insta.svg" height='30' width="60"alt="" style={{marginLeft:'20px'}} />
+				<Link href='https://cyberxstudio.com/' >
+				<Image src="/CXS-logo-150.png" height='30' width="40"alt="" style={{marginLeft:'20px'}} />
+				</Link>
 				</span>
 			</i>
 			</div>
@@ -72,7 +75,7 @@ return (
 				paddingBottom: "10px",
 				marginLeft:'20px',
 				paddingTop: "10px", }}>
-		©️ 2022 Pernia Technologies. All Rights Reserved.
+		©️ 2022 Pernia Couture. All Rights Reserved.
 	</span>
 	<span className={fot.spn} style={{ color: "white",
 				float:'right',

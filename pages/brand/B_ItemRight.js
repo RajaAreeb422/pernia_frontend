@@ -1,9 +1,14 @@
 import { ArrowLeftOutlined, ArrowRightOutlined ,ArrowForwardIosRounded} from "@material-ui/icons";
+import brd from '../../styles/brand.module.css'
 const B_ItemRight=()=>{
     return(
-      <div style={{backgroundColor:'white',height:'50px',width:'50px',borderRadius:'50%',marginRight:'50px',marginTop:'160px',marginBottom:'160px'}}>
+      <>
+      <div className={brd.showRightArrow}>
           <ArrowForwardIosRounded style={{marginLeft:'12px',marginRight:'12px',marginTop:'13px',marginBottom:'10px'}}/>
       </div>
+      <div className={brd.notshowArrow}>
+      </div>
+      </>
     )
 }
 export default B_ItemRight

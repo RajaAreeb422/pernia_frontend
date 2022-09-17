@@ -21,6 +21,7 @@ const Category = () => {
     const [items, setItems] = useState([])
     const [priceSelected, setPrice] = useState('all')
     const [colname, setColName] = useState('')
+    const [spin, setSpin] = useState(false)
     const [catname, setCatName] = useState('')
     const [allProducts, setAllProducts] = useState([])
     const [cat, setCategory] = useState({
@@ -56,6 +57,7 @@ const Category = () => {
          console.log("list",list)
          setItems(list)
          setAllProducts(list)
+         setSpin(true)
       }).catch(err=>console.log(err))
            
     }, [id])
@@ -142,7 +144,7 @@ const Category = () => {
         />
       </Head>
       <Navbar2/>
-        <Container>
+        {/* <Container>
            
             
 
@@ -201,12 +203,7 @@ const Category = () => {
                   <input className={css.pricein} type='radio' value='30-40' 
                    name="price"  checked={priceSelected==='30-40'}  onChange={()=>onValueChange('30-40')}/>
                     <label className={css.pricela} htmlFor="30-40" >Rs. 30,000-40,000</label>
-                    {/* <input type="radio" id="age1" name="age" value="30"/>
-  <label for="age1">0 - 30</label>
-  <input type="radio" id="age2" name="age" value="60"/>
-  <label for="age2">31 - 60</label>
-  <input type="radio" id="age3" name="age" value="100"/>
-  <label for="age3">61 - 100</label> */}
+                 
               </FilterText>  
             </Filter>
             
@@ -251,8 +248,114 @@ const Category = () => {
           
             <Footer/>
            
-        </Container>
-        
+        </Container> */}
+         <div className={css.container}>
+           
+      <div className={css.filterContainer}>
+            
+            <div className={css.filterHome}>
+                <div className={css.filterHomeText}>
+                    <HomeOutlined/>
+                    </div>
+                    <div className={css.filterHomeText}>
+                        {catname} {'>'} {colname}
+                    </div>
+                   </div>
+                
+                
+                    <span className={css.sort}></span>
+                    <select className={css.select} onChange={(e)=>handleSelling(e)}>
+                        <option selected disabled>Best Selling</option>
+                        <option value="asc">Price (asc)</option>
+                        <option value="desc">Price (desc)</option>
+                    </select>
+               
+               
+
+            </div>
+            
+            { items.length!=0?
+            <div className={css.gridArea}>
+            <div className={css.leftBar}>
+            <div className={css.filter}>  
+            <div className={css.filterTitle} style={{backgroundColor:'white'}}>
+              FILTER PRODUCTS</div>
+            </div> 
+            
+            <div className={css.filter}>
+            <div className={css.filterTitle}FilterTitle>Price</div> 
+              <div className={css.filterText}>
+                  <input className={css.pricein} type='radio'
+                   value='all'  
+                   name="price"
+                   checked={priceSelected==='all'}
+                   onChange={()=>onValueChange('all')}
+                  />
+                    <label className={css.pricela} htmlFor="all">All</label>  <br/>
+                  
+                  <input className={css.pricein} type='radio'
+                   value='5-10'  
+                   name="price"
+                   checked={priceSelected==='5-10'}
+                   onChange={()=>onValueChange('5-10')}
+                  />
+                    <label className={css.pricela} htmlFor="5-10">Rs. 5,000-10,000</label>  <br/>
+                  <input className={css.pricein} type='radio' value='10-20'
+                    name="price"  checked={priceSelected==='10-20'}  onChange={()=>onValueChange('10-20')}/>
+                    <label className={css.pricela} htmlFor="10-20" >Rs. 10,000-20,000</label> <br/>
+                  <input className={css.pricein} type='radio' value='30-40' 
+                   name="price"  checked={priceSelected==='30-40'}  onChange={()=>onValueChange('30-40')}/>
+                    <label className={css.pricela} htmlFor="30-40" >Rs. 30,000-40,000</label>
+              
+              </div>  
+            </div>
+            
+            
+
+            <div className={css.filter}>
+            <span className={css.filterTitle}>Size</span> 
+              <span  className={css.filterText}>
+                  <input className={css.pricein} type='checkbox' id='price' /><label className={css.pricela} htmlFor="price">XL</label> <br />
+                  <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">L</label> <br />
+                  <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">M</label> <br />
+                  <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">S</label> <br />
+                  <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">XS</label> 
+              </span>  
+            </div>
+
+            </div>  
+            {
+              spin==true?
+              <div div className={css.productShow}>
+                 {items.map((it,key)=>(
+                 <ProductItem item={it} key={key}/>
+             
+         
+              ))}
+         
+            </div>:<p>Loading.....</p>
+            } 
+            
+
+
+            </div>:
+            <center style={{marginBottom:'60px'}}>
+            <div style={{marginBottom:'100px',marginTop:'40px'}}>
+            <div style={{display:'flex',flexDirection:'row',justifyContent:'center',width:'100%'}}>
+                <Info style={{fontSize:'28px'}}/>
+                <p>No Product Found...</p>
+                
+                </div>
+                </div>
+
+                <Button onClick={()=>move()}>Back To Categories Products</Button>
+                </center>
+                }
+          
+          
+            <Footer/>
+           
+        </div>
        </>
     );
 };

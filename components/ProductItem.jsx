@@ -7,7 +7,7 @@ import {
   import Link from "next/link";
   import { useEffect, useState } from 'react';
 import { ItemAssignmentContext } from "twilio/lib/rest/numbers/v2/regulatoryCompliance/bundle/itemAssignment";
-  
+import css from '../pages/specificcategory/index.module.css'  
   
   
   
@@ -30,7 +30,7 @@ import { ItemAssignmentContext } from "twilio/lib/rest/numbers/v2/regulatoryComp
         <Link href='/product/[id]' as={`/product/${item.id}`} >
           <div>
         <Border>
-        <Image src={item.path}   height='370px' width='250px'/>
+        <img src={item.path} className={css.imgSize}  />
         <Context >
         <ReadyToShip>
           <center>Ready to Ship</center>
@@ -83,7 +83,7 @@ padding:4px;
   flex-direction:column;
    /* border:1px solid lightgrey; */
    margin-top:0px; 
-   min-width: 250px;
+  
 `;
 
   const Info = styled.div`
@@ -109,7 +109,6 @@ padding:4px;
     margin-left:0px;
     margin-top:0px;
     margin-bottom:10px;
-    min-width: 250px;
     display: flex;
     align-items: center;
     justify-content: center;

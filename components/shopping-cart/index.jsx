@@ -2,9 +2,11 @@ import { useSelector } from 'react-redux';
 import Item from './item';
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import crt from '../../styles/cart.module.css';
 //import { mobile } from "../../pages/responsive";
 import Link from 'next/link'
 import router, { useRouter } from "next/router";
+import { CropTwoTone } from '@material-ui/icons';
 const ShoppingCart = () => {
     const [cartItem, setPro] = useState([])
   const { cartItems } = useSelector(state => state.cart);
@@ -27,32 +29,39 @@ const ShoppingCart = () => {
   }
 
   return (
-    <Container>
+    <div className={crt.container}>
 
      
 
-      <Wrapper>
-        <Title>YOUR BAG</Title>
-        <Top>
+      <div className={crt.wrapper}>
+        <p className={crt.title} >YOUR BAG</p>
+        <div className={crt.top}>
          
-            
-          <TopButton onClick={()=>move()}>CONTINUE SHOPPING</TopButton>
-          <TopTexts>
-            <TopText>Shopping Bag({cartItems.length})</TopText>
-            <TopText>Your Wishlist (0)</TopText>
-          </TopTexts>
+
+         <div className={crt.topBar}>
+          <div>
+          <button className={crt.chkbtn} onClick={()=>move()}>CONTINUE SHOPPING</button>
+          <div className={crt.topTexts}>
+          
+          </div>
+          </div>
+          <div className={crt.show}>
           {cartItems.length == 0 ?
             
-            
-              <TopButton disabled  type='button'>CHECKOUT NOW</TopButton>
-            :
-            <Link href="/checkout">
-            <TopButton type="filled">CHECKOUT NOW</TopButton>
-          </Link>
-          }
-        </Top>
-        <Bottom>
-          <Info>
+            <button className={crt.topbtn} disabled  type='button'>CHECKOUT NOW</button>
+          :
+          <Link href="/checkout">
+          <button className={crt.topbtn}  type="filled">CHECKOUT NOW</button>
+        </Link>
+        }
+          </div>
+          
+        </div>
+      
+        </div>
+        <center><p className={crt.topP}>Shopping Bag({cartItems.length})</p></center>
+        <div className={crt.bottom}>
+          < div className={crt.info}>
             {cartItems.length > 0 &&
               <>
                 {cartItems.map(item => (
@@ -75,37 +84,37 @@ const ShoppingCart = () => {
             {cartItems.length === 0 &&
               <p>Nothing in the cart</p>
             }
-          </Info>
-          <Summary>
-            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-            <SummaryItem>
-              <SummaryItemText>Subtotal</SummaryItemText>
+          </div>
+          <div className={crt.summary}>
+            <p  className={crt.summaryTitle}>ORDER SUMMARY</p>
+            <div className={crt.summaryItem} >
+              <span>Subtotal</span>
              
-              <SummaryItemPrice> {priceTotal.toFixed(2)} Rs</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ 5.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>$ -5.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem type="total">
-              <SummaryItemText>Total</SummaryItemText>
+              <span> {priceTotal.toFixed(2)} Rs</span>
+            </div>
+            <div className={crt.summaryItem} >
+              <span>Estimated Shipping</span>
+              <span>$ 5.90</span>
+            </div>
+            <div className={crt.summaryItem} >
+              <span>Shipping Discount</span>
+              <span>$ -5.90</span>
+            </div>
+            <div className={crt.summaryItem} type="total">
+              <span className={crt.bold} >Total</span>
             
-              <SummaryItemPrice ><strong>  {priceTotal.toFixed(2)} Rs</strong></SummaryItemPrice>
-            </SummaryItem>
+              <span  ><strong>  {priceTotal.toFixed(2)} Rs</strong></span>
+            </div>
             {cartItems.length == 0? 
-                <TopButton style={{width:'350px',margin:'auto'}} disabled  type='button'>CHECKOUT NOW</TopButton>
+                <button   className={crt.topbtn} style={{width:'350px',margin:'auto'}} disabled  type='button'>CHECKOUT NOW</button>
               :
-              <Link href="/checkout"><Button>CHECKOUT NOW</Button></Link>
+              <Link href="/checkout"><button className={crt.topbtn}>CHECKOUT NOW</button></Link>
             }
-          </Summary>
-        </Bottom>
-      </Wrapper>
+          </div>
+        </div>
+      </div>
 
-    </Container>
+    </div>
 
   )
 };

@@ -54,7 +54,8 @@ const Related = ({items}) => {
 
 
   return (
-    <div style={{padding:'8px'}}>
+    <>
+    <div className={nav.lgSc} style={{padding:'8px'}}>
   
        
          {items.length!=0?
@@ -71,6 +72,24 @@ const Related = ({items}) => {
 }
        
     </div>
+    <div className={nav.smallSc}>
+  
+       
+         {items.length!=0?
+          <Carousel show={2} slide={1} swiping={true} leftArrow={<ItemLeft/>} rightArrow={<ItemRight/>}>
+            
+              {items.map((it,i) => (
+                <Link key={i} href='/product/[id]' as={`/product/${it.id}`} >
+                 <img src={it.path} style={{width:'94%',height:'270px'}}/>
+                </Link>
+          
+              ))}
+            
+          </Carousel>:''
+}
+       
+    </div>
+    </>
   );
 };
 export default Related;
