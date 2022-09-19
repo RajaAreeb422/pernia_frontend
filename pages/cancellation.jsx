@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/foot/Footer";
 import { Button } from "reactstrap";
 import Newsletter from "../components/foot/Newsletter";
+import can from '../styles/cancel.module.css'
 const Cancellation = () => {
 return(
     <>
@@ -21,36 +22,45 @@ return(
         />
       </Head>
     <Navbar/>
-    <Container1>
-        <Img src='https://cdn.shopify.com/s/files/1/2337/7003/files/New_Project_12_256x256_crop_center.png?v=1624868361'></Img>
-      <H>
+    <div className={can.container}>
+      <center>
+
+        <img className={can.imgg}
+        src='https://cdn.shopify.com/s/files/1/2337/7003/files/New_Project_12_256x256_crop_center.png?v=1624868361'/>
+       </center>
+       <center>
+       <h2 style={{padding:'20px'}}>
       ORDER CANCELLATION POLICY   
-      </H>
-      <H2>
+      </h2>
+       </center>
+      <center>
+      <h5 style={{padding:'20px'}}>
       HOW TO REQUEST FOR AN ORDER CANCELLATION?
-        </H2>  
-        <P>
+        </h5>  
+      </center>
+      
+        <p className={can.text}>
         To request for an order cancellation please email us the order # with product name, 
         original proof of purchase receipt and issue at customercare@pernia.pk and our customer care 
         agent will get in contact with you. Alternatively you can call us on +92 316 7776158 from
          Monday to Saturday between 10:00 am - 6:00 pm (Pakistan Standard Time). Further, to proceed with the case,
           your purchase should be sent back to us within 14 days of receiving your order.
-        </P>
-     <Div>
-         <div style={{display:'flex',flexDirection:'row'}}>
-       <Input type='text' placeholder="Order number"></Input> 
-       <Input type='email' placeholder="Email"></Input> 
+        </p>
+     <div className={can.Div}>
+         <div style={{display:'flex',flexDirection:'row',flexWrap:'wrap'}}>
+       <input className={can.input} type='text' placeholder="Order number"/>
+       <input className={can.input} type='email' placeholder="Email"/> 
        </div> 
-       <Input type='text' placeholder="Product Name"></Input>
-         <Select name='select'>
+       <input className={can.input} type='text' placeholder="Product Name"/>
+         <select className={can.selct} name='select'>
              <option>Request of Refund</option>
              <option>Request for Exchange</option>
              <option>Request for Return</option>
-         </Select>
-         <Button1>Send</Button1>
-     </Div>
+         </select>
+         <button className={can.btn}>Send</button>
+     </div>
 
-    </Container1>
+    </div>
     
     <Footer/>
     </>

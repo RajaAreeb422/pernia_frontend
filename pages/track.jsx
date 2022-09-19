@@ -8,7 +8,7 @@ import Navbar from "../components/Navbar";
 import Head from 'next/head'
 import Footer from "../components/foot/Footer";
 import { Button, Container } from "reactstrap";
-import Newsletter from "../components/foot/Newsletter";
+import tr from '../styles/track.module.css'
 const Track = () => {
     return(
     <>
@@ -22,19 +22,19 @@ const Track = () => {
         />
       </Head>
     <Navbar/>
-    <Container1>
-    <H2>
+    <div className={tr.container}>
+    <h3 className={tr.H}>
       Track Your Order
-    </H2>
-    <P>
+    </h3>
+    <p className={tr.P}>
     Please enter your email address and order number to track your order   
-    </P>
-    <Div>
-    <Input type='text' placeholder="Pernia 123"></Input>
-    <Input type='text' placeholder="Pernia @gmail.com"></Input>
-    <Button1>Track</Button1>
-    </Div>
-    </Container1>
+    </p>
+    <div className={tr.Div}>
+    <input className={tr.input} type='text' placeholder="Pernia 123"></input>
+    <input className={tr.input} type='text' placeholder="Pernia @gmail.com"></input>
+    <button className={tr.btn}>Track</button>
+    </div>
+    </div>
     
     <Footer/>
     </>

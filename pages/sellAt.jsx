@@ -9,6 +9,8 @@ import Footer from "../components/foot/Footer";
 import Head from 'next/head'
 import { Button } from "reactstrap";
 import Newsletter from "../components/foot/Newsletter";
+import { Slide } from "@material-ui/core";
+import sl from '../styles/sellAt.module.css'
 const SellAt = () => {
     return(
         <>
@@ -22,52 +24,57 @@ const SellAt = () => {
         />
       </Head>
         <Navbar/>
-        <Container>
-         <ImgWrap src='https://cdn.shopify.com/s/files/1/2337/7003/files/Cover-Desktop_1_1500x.progressive.jpg?v=1629117255'>
-         </ImgWrap> 
-         <H2>OUR THREE EASY STEPS</H2>
-         <Flex>
-             <div>
-         <ImgWrap2 src='https://cdn.shopify.com/s/files/1/2337/7003/files/1_06259c75-4952-4d24-af55-b7a39e6a7b98_400x.png?v=1628769113'>
-         </ImgWrap2>
-         <P>Fill the Form</P>
-         </div>
-         <div>
-         <ImgWrap2 src='https://cdn.shopify.com/s/files/1/2337/7003/files/2_3b342d5c-ac3b-4ce9-9313-866b9838603a_400x.png?v=1628769113'>
-         </ImgWrap2>
-         <P>Qualifying Process</P>
-         </div>
-         <div>
-         <ImgWrap2 src='https://cdn.shopify.com/s/files/1/2337/7003/files/3_1_400x.png?v=1628769113'>
-         </ImgWrap2>
-         <P>Start Selling</P>
-         </div>
-  
-         </Flex>
+        <div className={sl.container}>
+         <img className={sl.imgWrap} src='https://cdn.shopify.com/s/files/1/2337/7003/files/Cover-Desktop_1_1500x.progressive.jpg?v=1629117255'>
+         </img> 
          <center>
-         <Button1>Sign Up Now</Button1>
+         <h3 style={{margin:'10px'}}>OUR THREE EASY STEPS</h3>
          </center>
         
-        </Container>
-        <Container2>
-         <Flex2>
-         <Icon>
-         <img style={{marginLeft:'150px'}} height='60px' src='https://cdn.shopify.com/s/files/1/2337/7003/files/7_200x.png?v=1629117487'></img> 
+         <div className={sl.flex}>
+             <div>
+         <img className={sl.imgWrap2}src='https://cdn.shopify.com/s/files/1/2337/7003/files/1_06259c75-4952-4d24-af55-b7a39e6a7b98_400x.png?v=1628769113'>
+         </img>
+         <p className={sl.p}>Fill the Form</p>
+         </div>
+         <div>
+         <img className={sl.imgWrap2}src='https://cdn.shopify.com/s/files/1/2337/7003/files/2_3b342d5c-ac3b-4ce9-9313-866b9838603a_400x.png?v=1628769113'>
+         </img>
+         <p className={sl.p}>Qualifying Process</p>
+         </div>
+         <div>
+         <img className={sl.imgWrap2} src='https://cdn.shopify.com/s/files/1/2337/7003/files/3_1_400x.png?v=1628769113'>
+         </img>
+         <p>Start Selling</p>
+         </div>
+  
+         </div>
+         <center>
+         <button  className={sl.btn}>Sign Up Now</button>
+         </center>
+        
+        </div>
+        <div className={sl.container2}>
+         <div className={sl.flex2}>
+         <div className={sl.icon}>
+         <img className={sl.imgWrap2} style={{marginLeft:'150px'}} height='60px' src='https://cdn.shopify.com/s/files/1/2337/7003/files/7_200x.png?v=1629117487'></img> 
          <h4 style={{textAlign:'center',marginTop:'30px'}}>Nationwide Network</h4>
-         <P>We have one of the biggest nationwide ecommerce operations</P>
-         </Icon>
-         <Icon>
-         <img style={{marginLeft:'150px'}}  height='60px' src='https://cdn.shopify.com/s/files/1/2337/7003/files/5_200x.png?v=1629117600'></img> 
+         <p className={sl.p}>We have one of the biggest nationwide ecommerce operations</p>
+         </div>
+         <div className={sl.icon}>
+         <img className={sl.imgWrap2} style={{marginLeft:'150px'}}  height='60px' src='https://cdn.shopify.com/s/files/1/2337/7003/files/5_200x.png?v=1629117600'></img> 
          <h4 style={{textAlign:'center',marginTop:'30px'}}>Easy Payment</h4>
-         <P>LAAM pays sellers conveniently via IBFT on mutually agreed credit days whenever their product is sold through our website.</P>
-         </Icon>
-         <Icon>
-         <img style={{marginLeft:'150px'}}  height='60px' src='https://cdn.shopify.com/s/files/1/2337/7003/files/3_d1ebfe34-37e4-496b-bb7a-43dd38e77d2c_200x.png?v=1629117853'></img> 
+         <p className={sl.p}>Pernia pays sellers conveniently via IBFT on mutually agreed credit days 
+          whenever their product is sold through our website.</p>
+         </div>
+         <div className={sl.icon}>
+         <img className={sl.imgWrap2} style={{marginLeft:'150px'}}  height='60px' src='https://cdn.shopify.com/s/files/1/2337/7003/files/3_d1ebfe34-37e4-496b-bb7a-43dd38e77d2c_200x.png?v=1629117853'></img> 
          <h4 style={{textAlign:'center',marginTop:'30px'}}>Delivery Option</h4>
-         <P>You have the choice to deliver your products to the customers yourself or let LAAM manage the delivery of the orders to customers.</P>
-         </Icon>
-         </Flex2>
-        </Container2>
+         <p className={sl.p}>You have the choice to deliver your products to the customers 
+          yourself or let Pernia manage the delivery of the orders to customers.</p>
+         </div>
+         </div>
+        </div>
    
         <Footer/>
         </>

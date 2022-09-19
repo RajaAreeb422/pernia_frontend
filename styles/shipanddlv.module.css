@@ -1,0 +1,114 @@
+.container{
+    background-color:white;
+    margin-top:28px;
+    
+}
+
+.Div{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:center;
+    width:85%;
+    margin-left:auto;
+    margin-right:auto;
+   
+}
+
+.icon{
+    margin-right:30px;
+    background-color:whitesmoke;
+    width:600px;
+    padding: 10px;
+    margin-bottom:30px;   
+}
+
+.icon1{
+    margin-right:30px;
+    background-color:whitesmoke;
+    width:auto;
+    padding: 15px;
+    height: auto;
+    margin-bottom:30px;  
+}
+
+.smallDiv{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    justify-content:center;
+   
+}
+.btn{
+    width:50px;
+    background-color:transparent;
+    color:black;
+    border-radius:4px;
+    padding:2px;
+    margin-left:280px;
+    margin-right:260px;
+    
+    margin-top:10px;
+}
+
+.img1{
+
+    height:50px;
+    margin-top:20px;
+    margin-bottom:10px;
+  
+}
+.p{
+    color: black;
+    text-align: center;
+    padding: 10px;
+}
+.img2{
+    margin-left:auto;
+    margin-right:auto;    
+    height:50px;
+    margin-top:10px;
+    margin-bottom:10px;
+    
+}
+.P2{
+    width:60%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 760px) {
+
+    .img1{
+        margin-left: auto;
+        margin-right: auto;
+    
+    }
+    .Div{
+        width: auto;
+    }
+
+    .icon{
+       margin-left: auto;
+       margin-right: auto;
+       width: 40%;
+       margin: 10px;
+       padding: 20px;
+    }
+
+    .btn{
+        
+        margin-left: 0;
+        margin-right: 0;
+        text-align: center;
+    }
+    .icon1{
+        width: auto;
+        padding: 20px !important;
+        height: auto;
+    }
+}

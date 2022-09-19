@@ -4,6 +4,7 @@ import { setCount } from './../../redux/action';
 import { Add, Remove, DeleteOutline } from "@material-ui/icons";
 import styled from "styled-components";
 import crt from '../../../styles/cart.module.css'
+import Link from 'next/link';
 //import { mobile } from "../../../pages/responsive";
 // const ShoppingCart = ({ name, id, count, price, variant,image }) 
 const ShoppingCart = ({ name, id, count, price, image,variant }) => {
@@ -49,10 +50,13 @@ const ShoppingCart = ({ name, id, count, price, image,variant }) => {
 
   return (
 
-    <Product >
-      <ProductDetail>
-        <Image src={image} />
-        <div dataContainer>
+    <Product>
+        
+      <div className={crt.productDetail}>
+      <Link href="/product/[id]" as={`/product/${id}`}>
+        <img className={crt.Img} src={image} />
+        </Link>
+        <div className={crt.dataContainer}>
         <Details>
           <ProductName style={{ fontSize: '20px' }} >
             <b>Name:</b> {name}
@@ -82,7 +86,7 @@ const ShoppingCart = ({ name, id, count, price, image,variant }) => {
         <ProductPrice>{price * count} Rs</ProductPrice>
       </PriceDetail>
       </div>
-      </ProductDetail>
+      </div>
      
 
 
@@ -107,15 +111,21 @@ const Product = styled.div`
 const ProductDetail = styled.div`
   flex: 2;
   display: flex;
+  flex-direction:column;
+  border:1px solid lightgrey;
+  justify-content:center;
 `;
 
 const Image = styled.img`
-  width: 200px;
+  width:100%;
+  
 `;
 
 const Details = styled.div`
   padding: 20px;
+ 
   padding-top:4px;
+  padding-bottom:0px;
   display: flex;
   flex-direction: column;
 
@@ -135,8 +145,9 @@ const PriceDetail = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  padding-left:10px;
+  
+  
 `;
 
 const ProductAmountContainer = styled.div`

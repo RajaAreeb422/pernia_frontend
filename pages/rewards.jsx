@@ -6,7 +6,7 @@ import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/foot/Footer";
 import { Button } from "reactstrap";
-import Newsletter from "../components/foot/Newsletter";
+import rwd from '../styles/reward.module.css'
 import Head from 'next/head'
 const Rewards = () => {
     return(
@@ -21,31 +21,32 @@ const Rewards = () => {
         />
       </Head>
         <Navbar/>
-        <Container>
-         <Flex>
-             <Icon>
-              <Img src='https://cdn.shopify.com/s/files/1/2337/7003/files/New_Project_26.png?v=1628161929'>
-              </Img>
-              <H>
+        <div className={rwd.container}>
+         <div className={rwd.flex}>
+             <div className={rwd.icon}>
+              <img p className={rwd.imgg} src='/pernia.png'>
+              </img>
+              <h3 className={rwd.H}>
               Rewards & Cashback
            
-              </H> 
-              <H2>
+              </h3> 
+              <p>
               Shop. Earn. Redeem.
-              </H2>
-             </Icon>
-           <Icon>
-             <H>About Rewards</H>
-             <P>PERNIA rewards are there to make sure your journey of navigating our breadth of brands is always fruitful, fun and meaningful.</P>
-             <P>
+              </p>
+             </div>
+           <div className={rwd.icon} style={{marginBottom:'70px'}}>
+             <h3 className={rwd.H2}>About Rewards</h3>
+             <p className={rwd.P}>PERNIA rewards are there to make sure your journey of navigating 
+              our breadth of brands is always fruitful, fun and meaningful.</p>
+             <p>
              Earn rewards on everyday purchases and by completing actions. Then use these points to get discounts on your next purchases.
-               </P>
-               <P>
+               </p>
+               <p className={rwd.P}>
                We aim to be your one stop shop for all fashion needs and this is our way of thanking you for sticking with us 
-                 </P>          
-           </Icon>
-         </Flex>
-        </Container>
+                 </p>          
+           </div>
+         </div>
+        </div>
        
         <Footer/>
 

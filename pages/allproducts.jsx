@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Navbar2 from "../components/Navbar"
 import Footer from "../components/foot/Footer";
 import { useEffect, useState } from 'react';
- import css from '../styles/index.module.css';
+
 
 import {
     HomeOutlined,Info
@@ -15,10 +15,10 @@ import { useRouter } from 'next/router'
 import Newsletter from "../components/foot/Newsletter";
 import { FlexFlowContext } from "twilio/lib/rest/flexApi/v1/flexFlow";
 import { Button } from "@material-ui/core";
-
+import css from './specificcategory/index.module.css'
 const All_Products = () => {
     const router = useRouter();
-    const [priceSelected, setPrice] = useState('')
+    const [priceSelected, setPrice] = useState('all')
     const [items, setItems] = useState([])
     const [colname, setColName] = useState('')
     const [catname, setCatName] = useState('')
@@ -87,9 +87,11 @@ const All_Products = () => {
     }      
     }, [router.query.text])
 
-    const onValueChange=(value)=>{     
+    const onValueChange=(value)=>{    
+      if(value!='all') 
+      {
       setPrice(value)
-      console.log("value",value)
+     
       let list=[]
       let price1,price2;
       if(value=='5-10')
@@ -109,13 +111,18 @@ const All_Products = () => {
 
 
       allProducts.map(it=>{
-        if(it.price > price1 && it.price < price2)
+        if(it.price>price1 && it.price<price2)
         {
           list.push(it)
         }
       })
-      console.log("list",list,allProducts)
+    
         setItems(list)
+    }
+    else{
+      setPrice('all')
+      setItems(allProducts)
+    }
     }
     function move()
     {
@@ -149,16 +156,7 @@ else{
 
 }
   }
-
-{/* {items.length==0? <div style={{marginLeft:'auto',marginRight:'auto',marginTop:'200px',fontSize:'22px'}}>
-                Sorry! ..Stock is Empty of this Category</div>:
-                <> */}
-
-       {/* {
-                 spro.map((item) => (
-                    <ProductItem item={item} key={item.id} />
-
-                ))} */}          
+      
 
     return (
       <>
@@ -172,7 +170,7 @@ else{
         />
       </Head>
       <Navbar2/>
-        <Container>
+        {/* <Container>
            
            {items.length!=0?
             <FilterContainer>
@@ -261,12 +259,117 @@ else{
                 <Button onClick={()=>move()}>Back To All Products</Button>
                 </center>
                 }
-            
-            {/* <Newsletter/> */}
+     
             <Footer/>
            
-        </Container>
-        
+        </Container> */}
+        <div className={css.container}>
+           
+           <div className={css.filterContainer}>
+                 
+                 <div className={css.filterHome}>
+                     <div className={css.filterHomeText}>
+                         <HomeOutlined/>
+                         </div>
+                         {/* <div className={css.filterHomeText}>
+                             {catname}
+                         </div> */}
+                        </div>
+                     
+                     
+                         <span className={css.sort}></span>
+                         <select className={css.select} onChange={(e)=>handleSelling(e)}>
+                             <option selected disabled>Best Selling</option>
+                             <option value="asc">Price (asc)</option>
+                             <option value="desc">Price (desc)</option>
+                         </select>
+                    
+                    
+     
+                 </div>
+                 
+                 {items.length!=0?
+                 <div className={css.gridArea}>
+                 <div className={css.leftBar}>
+                 <div className={css.filter}>  
+                 <div className={css.filterTitle} style={{backgroundColor:'white'}}>
+                   FILTER PRODUCTS</div>
+                 </div> 
+                 
+                 <div className={css.filter}>
+                 <div className={css.filterTitle}FilterTitle>Price</div> 
+                   <div className={css.filterText}>
+                       <input className={css.pricein} type='radio'
+                        value='all'  
+                        name="price"
+                        checked={priceSelected==='all'}
+                        onChange={()=>onValueChange('all')}
+                       />
+                         <label className={css.pricela} htmlFor="all">All</label>  <br/>
+                       
+                       <input className={css.pricein} type='radio'
+                        value='5-10'  
+                        name="price"
+                        checked={priceSelected==='5-10'}
+                        onChange={()=>onValueChange('5-10')}
+                       />
+                         <label className={css.pricela} htmlFor="5-10">Rs. 5,000-10,000</label>  <br/>
+                       <input className={css.pricein} type='radio' value='10-20'
+                         name="price"  checked={priceSelected==='10-20'}  onChange={()=>onValueChange('10-20')}/>
+                         <label className={css.pricela} htmlFor="10-20" >Rs. 10,000-20,000</label> <br/>
+                       <input className={css.pricein} type='radio' value='30-40' 
+                        name="price"  checked={priceSelected==='30-40'}  onChange={()=>onValueChange('30-40')}/>
+                         <label className={css.pricela} htmlFor="30-40" >Rs. 30,000-40,000</label>
+                   
+                   </div>  
+                 </div>
+                 
+                 
+     
+                 <div className={css.filter}>
+                 <span className={css.filterTitle}>Size</span> 
+                   <span  className={css.filterText}>
+                       <input className={css.pricein} type='checkbox' id='price' /><label className={css.pricela} htmlFor="price">XL</label> <br />
+                       <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">L</label> <br />
+                       <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">M</label> <br />
+                       <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">S</label> <br />
+                       <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">XS</label> 
+                   </span>  
+                 </div>
+     
+                 </div>  
+                 
+                   <div div className={css.productShow}>
+                      {items.map((it,key)=>(
+                      <ProductItem item={it} key={key}/>
+                  
+              
+                   ))}
+              
+                 </div>
+                
+                 
+     
+     
+                 </div>:
+                 <center style={{marginBottom:'60px'}}>
+                 <div style={{marginBottom:'100px',marginTop:'40px'}}>
+                 <div style={{display:'flex',flexDirection:'row',justifyContent:'center',width:'100%'}}>
+                     <Info style={{fontSize:'28px'}}/>
+                     <p>No Product Found...</p>
+                     
+                     </div>
+                     </div>
+     
+                     <Button onClick={()=>move()}>Back To All Products</Button>
+                     </center>
+                     }
+               
+               
+                 <Footer/>
+                
+             </div>
+             
        </>
     );
 };

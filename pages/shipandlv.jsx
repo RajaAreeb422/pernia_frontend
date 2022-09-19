@@ -8,7 +8,7 @@ import Head from 'next/head'
 import Navbar from "../components/Navbar";
 import Footer from "../components/foot/Footer";
 import { Button } from "reactstrap";
-import Newsletter from "../components/foot/Newsletter";
+import ship from '../styles/shipanddlv.module.css'
 const ShipAndDlv = () => {
 return(
     <>
@@ -22,75 +22,87 @@ return(
         />
       </Head>
     <Navbar/>
-    <Container1>
-        <Img src='https://cdn.shopify.com/s/files/1/2337/7003/files/New_Project_8_256x256_crop_center.png?v=1623912436'></Img>
-      <H>
+    <div className={ship.container}>
+      <center>
+        <img  className={ship.img1} src='https://cdn.shopify.com/s/files/1/2337/7003/files/New_Project_8_256x256_crop_center.png?v=1623912436'/>
+        </center>
+      <center>
+      <h2>
       SHIPPING 
-      </H>
+      </h2>
+        </center>  
+      
         
-        <P>
+        <p className={ship.P2} style={{padding:'10px',textAlign:'center'}}>
         We strive to deliver products purchased from Pernia in a highly specialized manner along with 
         ensuring that the outfit is sanitized, packed modestly, and is delivered at your doorsteps in the shortest 
         time possible.
-        </P>
+        </p>
         <center>
 
         
-        <Img2 src='https://cdn.shopify.com/s/files/1/2337/7003/files/New_Project_9_256x256_crop_center.png?v=1623912436'></Img2>
+        <img  className={ship.img2} src='https://cdn.shopify.com/s/files/1/2337/7003/files/New_Project_9_256x256_crop_center.png?v=1623912436'/>
         </center>
-        <H2>ZONE DIVISIONS</H2>
-     <Div>
+        <center>
+        <h2>ZONE DIVISIONS</h2>
+        </center>
+
        
-           <Icon>
-             <P1>Zone1</P1>
-             <P2>Australia</P2>
+     <div className={ship.Div}>
+       
+           <div className={ship.icon}>
+             <p className={ship.p}>Zone1</p>
+             <p className={ship.p}> Australia</p>
              <hr/>
-             <Button1>More</Button1>
-           </Icon>
-           <Icon>
-             <P1>Zone2</P1>
-             <P2>Europe</P2>
+             <button className={ship.btn}>More</button>
+           </div>
+           <div className={ship.icon}>
+             <p className={ship.p}>Zone2</p>
+             <p className={ship.p}>Europe</p>
              <hr/>
-             <Button1>More</Button1>
-           </Icon>
-           <Icon>
-             <P1>Zone3</P1>
-             <P2>India</P2>
+             <button className={ship.btn}>More</button>
+           </div>
+           <div className={ship.icon}>
+             <p className={ship.p}>Zone3</p>
+             <p className={ship.p}>India</p>
              <hr/>
-             <Button1>More</Button1>
-           </Icon>
-           <Icon>
-             <P1>Zone4</P1>
-             <P2>Gulf</P2>
+             <button className={ship.btn}>More</button>
+           </div> 
+           <div className={ship.icon}>
+             <p className={ship.p}>Zone4</p>
+             <p className={ship.p}>Gulf</p>
              <hr/>
-             <Button1>More</Button1>
-           </Icon> 
-     </Div>
+             <button className={ship.btn}>More</button>
+           </div> 
+     </div>
      <center>
 
     
-     <Img2 src='https://cdn.shopify.com/s/files/1/2337/7003/files/New_Project_10_256x256_crop_center.png?v=1623931521'></Img2>
+     <img  className={ship.img2}src='https://cdn.shopify.com/s/files/1/2337/7003/files/New_Project_10_256x256_crop_center.png?v=1623931521'/>
      </center>
-        <H2>DELIVERY TIMELINE</H2>
-      <SmallDiv>
-      <Icon1>
-         <P3> Pret</P3> 
-         <P4>4-5 weeks</P4>
-      </Icon1>
-      <Icon1>
-         <P3>Formals</P3> 
-         <P4>6-8 weeks</P4>
-      </Icon1>
-      <Icon1>
-         <P3>Bridals</P3> 
-         <P4>8-12 weeks</P4>
-      </Icon1>
-      <Icon1>
-         <P3>Unstitched</P3> 
-         <P4>7 days</P4>
-      </Icon1>
-      </SmallDiv>
-    </Container1>
+     <center>
+     <h2>DELIVERY TIMELINE</h2>
+     </center>
+      
+      <div className={ship.smallDiv}>
+      <div className={ship.icon1}>
+         <p> Pret</p> 
+         <p>4-5 weeks</p>
+      </div>
+      <div className={ship.icon1}>
+         <p>Formals</p> 
+         <p>6-8 weeks</p>
+      </div>
+      <div className={ship.icon1}>
+         <p>Bridals</p> 
+         <p>8-12 weeks</p>
+      </div>
+      <div className={ship.icon1}>
+         <p>Unstitched</p> 
+         <p>7 days</p>
+      </div>
+      </div>
+    </div>
    
     <Footer/>
     </>
@@ -227,8 +239,7 @@ const Container1 = styled.div`
      `;
      const Img = styled.img`
      
-     margin-left:730px;
-     margin-right:600px;
+   
      height:50px;
      margin-top:20px;
      margin-bottom:10px;

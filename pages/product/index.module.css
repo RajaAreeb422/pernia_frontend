@@ -99,6 +99,7 @@
 .desc{
     margin: 20px 0px;
     padding-left: 20px;
+    width:340px !important;
 }
 .title{
     font-weight: 700;
@@ -165,22 +166,53 @@
 .imgMagnifier{
     width: 500px!important;
 }
+.btn2{
+  cursor: pointer;
+  width: 500px;
+  margin-bottom: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
+  transition: all 0.5s ease;
+  color: #000000;
+  border: 1px solid teal;
+  text-align: center;
+  background-color: transparent;
+  padding: 8px;
+  outline: none;
+  font-weight: bold;
+  border-radius: 1px;
+ 
+}
+.btn2:hover{
+    
+        color: #ffffff;
+        background-color: teal;
+        border: 1px solid teal;
+     
+}
 @media screen and (max-width: 760px) {
     .desc{
         padding: 10px !important;
+    }
+    .btn2{
+        width: auto !important;
+        margin-left:10px;
     }
     .wrapper{
         flex-direction: column !important;
         justify-content: center !important;
         margin-left: 0 !important;
         padding: 10px;
+        margin-right: 0px;
     }
     .showImg{
-        width:auto !important;
+        width:100% !important;
         height:500px !important;
     }
     .showImg2{
-        width:auto !important;
+        width:100% !important;
+        margin-left: auto;
+        margin-right: auto;
         height:500px !important;
     }
     .arrowl{
@@ -201,13 +233,14 @@
     }     
     .infoContainer{
         margin-left: 0 !important;
-        width:max-content;
+        width:auto !important;
        
     }    
     .box{
         height: auto;
-        width:400px !important;
+        width:150% !important;
         justify-content: center;
+        background-color: rebeccapurple;
     }
     .hr{
         width: auto !important;
@@ -218,13 +251,14 @@
     }
     .imgMagnifier{
         width: auto !important;
-        
+        justify-content: center;
     }
        .slide{
-        width: 80% !important;
+        width: 100% !important;
+        justify-content: center;
     }
     .imgWrapper{
-        width: auto !important;
+        width: 100% !important;
         margin-top: 0px;
         justify-content:center;
         
@@ -232,4 +266,8 @@
     .title{
         width: auto !important;
     }
+    .imgContainer{
+        flex: 4;  
+        justify-content: center;
+       }
 }

@@ -296,23 +296,23 @@ const Product = () => {
       <div className={css.container}>
         <ToastContainer />
         <div className={css.wrapper}>
-          <div className={css.box}>
-            <div className={css.arrowl} direction="left" onClick={() => handleClick("left")}>
+          
+            {/* <div className={css.arrowl} direction="left" onClick={() => handleClick("left")}>
               <ArrowLeftOutlined />
-            </div>
-            <div className={css.imgWrapper} slideIndex={slideIndex}>
+            </div> */}
+            
               {path.map((pa, i) => (
-                <div className={css.slide} bg={item.id} key={i}>
-                  <div className={css.imgContainer}>
-                    <ImageMagnifier img={pa} />
-                  </div>
-                </div>
+                
+                 
+                    <ImageMagnifier key={i} img={pa} />
+                  
+                
               ))}
-            </div>
-            <div className={css.arrowr} direction="right" onClick={() => handleClick("right")}>
+          
+            {/* <div className={css.arrowr} direction="right" onClick={() => handleClick("right")}>
               <ArrowRightOutlined />
-            </div>
-          </div>
+            </div> */}
+          
 
           <div className={css.infoContainer}>
             <p className={css.title}>{item.name}</p>
@@ -397,11 +397,11 @@ const Product = () => {
             {count == 0 ? (
               ""
             ) : (
-              <Button onClick={() => addToCart()}>Add To Cart</Button>
+              <button className={css.btn2} onClick={() => addToCart()}>Add To Cart</button>
             )}
 
             {viewcart == true ? (
-              <Button onClick={() => viewCart()}>View Cart</Button>
+              <button className={css.btn2} onClick={() => viewCart()}>View Cart</button>
             ) : (
               ""
             )}

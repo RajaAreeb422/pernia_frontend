@@ -7,7 +7,7 @@ import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/foot/Footer";
 import { Button } from "reactstrap";
-import Newsletter from "../components/foot/Newsletter";
+import blg from '../styles/blog.module.css'
 const Blog = () => {
     return(
         <>
@@ -21,71 +21,71 @@ const Blog = () => {
         />
       </Head>
         <Navbar/>
-        <Container>
-            <div style={{display:'flex',flexDirection:'row'}}>
-         <ImgWrap src='https://cdn.shopify.com/s/files/1/2337/7003/files/666_1500x.jpg?v=1646047765'>
-         </ImgWrap>
-         <Right>
-             <H2>
+        <div className={blg.container}>
+          <div className={blg.wrapper}>
+         <img className={blg.imgWrap} src='https://cdn.shopify.com/s/files/1/2337/7003/files/666_1500x.jpg?v=1646047765'>
+         </img>
+         <div className={blg.right}>
+             <h2>
                 LAWN BRANDS YOU NEED
-             </H2>
-             <P>
+             </h2>
+             <p>
              To request for an order cancellation please email us the order with product name, 
         original proof of purchase receipt and issue at customercare@laam.pk and our customer care 
         agent will get in contact with you. Alternatively you can call us on +92 316 7776158 from
          Monday to Saturday between 10:00 am - 6:00 pm (Pakistan Standard Time). Further, to proceed with the case,
           your purchase should be sent back to us within 14 days of receiving your order.
-             </P>
-            </Right> 
+             </p>
+            </div> 
          </div>
-         <H2>EXPLORE</H2>
-         <Flex>
-             <Div>
+         <h2 style={{textAlign:'center',padding:'10px'}}>EXPLORE</h2>
+         <div className={blg.flex}>
+             <div className={blg.Div}>
                  
-                <Img src='https://cdn.shopify.com/s/files/1/2337/7003/articles/7_Celebrities_Giving_Us_Fashion_Inspiration_in_HEM_1500x.jpg?v=1644396160'>
-                </Img>
-                <Text>
-                  <Date>February 21, 2022</Date>
-                  <Tag>These Lawn Brands is Exactly What You...</Tag>
-                  <Name>By:Fatima Farooq</Name>
-                  <Read>Continue Reading</Read>
-                </Text> 
+                <img className={blg.img}  src='https://cdn.shopify.com/s/files/1/2337/7003/articles/7_Celebrities_Giving_Us_Fashion_Inspiration_in_HEM_1500x.jpg?v=1644396160'>
+                </img>
+                <div className={blg.text}>
+                  <p className={blg.date}>February 21, 2022</p>
+                  <p className={blg.tag}>These Lawn Brands is Exactly What You...</p>
+                  <p className={blg.name}>By:Fatima Farooq</p>
+                  <p className={blg.read}>Continue Reading</p>
+                </div> 
                 
-               </Div>
-               <Div>
-                <Img src='https://cdn.shopify.com/s/files/1/2337/7003/articles/Chic_Ways_to_Wear_Velvet_This_Winter_Season_1500x.jpg?v=1638338177'>
-                </Img>
-                <Text>
-                <Date>December 30, 2021</Date>
-                  <Tag>7 Celebrities Giving Us Fashion Inspi...</Tag>
-                  <Name>By:Fatima Farooq</Name>
-                  <Read>Continue Reading</Read>
-                </Text> 
+               </div>
+               <div className={blg.Div}>
+                <img className={blg.img}  src='https://cdn.shopify.com/s/files/1/2337/7003/articles/Chic_Ways_to_Wear_Velvet_This_Winter_Season_1500x.jpg?v=1638338177'>
+                </img>
+                <div className={blg.text}>
+                <p className={blg.date}>December 30, 2021</p>
+                  <p className={blg.tag}>7 Celebrities Giving Us Fashion Inspi...</p>
+                  <p className={blg.name}>By:Fatima Farooq</p>
+                  <p className={blg.read}>Continue Reading</p>
+                </div> 
                 
-                </Div>
-                <Div>
-                <Img src='https://cdn.shopify.com/s/files/1/2337/7003/articles/Pakistani_Wedding_Traditions_1500x.jpg?v=1642511819'>
-                </Img>
-                <Text>
-                <Date>January 19, 2022</Date>
-                  <Tag>Pakistani Wedding Traditions; The Eve...</Tag>
-                  <Name>By:Fatima Farooq</Name>
-                  <Read>Continue Reading</Read>
-                </Text> 
-                </Div>
-                <Div>
-                <Img src='https://cdn.shopify.com/s/files/1/2337/7003/articles/Timeless_Pakistani_Suits_For_Every_Occasion_1500x.jpg?v=1640760688'>
-                </Img>
-                <Text>
-                <Date>December 28, 2021</Date>
-                  <Tag>Timeless Pakistani Suits For Every Oc..</Tag>
-                  <Name>By:Fatima Farooq</Name>
-                  <Read>Continue Reading</Read>
-                </Text> 
+                </div>
+                <div className={blg.Div}>
+                <img className={blg.img}  src='https://cdn.shopify.com/s/files/1/2337/7003/articles/Pakistani_Wedding_Traditions_1500x.jpg?v=1642511819'>
+                </img>
+                <div className={blg.text}>
+                <p className={blg.date}>January 19, 2022</p>
+                  <p className={blg.tag}>Pakistani Wedding Traditions; The Eve...</p>
+                  <p className={blg.name}>By:Fatima Farooq</p>
+                  <p className={blg.read}>Continue Reading</p>
+                </div> 
+                </div>
+                <div className={blg.Div}>
+                <img className={blg.img} src='https://cdn.shopify.com/s/files/1/2337/7003/articles/Timeless_Pakistani_Suits_For_Every_Occasion_1500x.jpg?v=1640760688'>
+                </img>
+                <div className={blg.text}>
+                <p className={blg.date}>December 28, 2021</p>
+                  <p className={blg.tag}>Timeless Pakistani Suits For Every Oc..</p>
+                  <p className={blg.name}>By:Fatima Farooq</p>
+                  <p className={blg.read}>Continue Reading</p>
+                </div> 
                 
-             </Div>
-         </Flex>
-         </Container>
+             </div>
+         </div>
+         </div>
          
         <Footer/>
         </>
