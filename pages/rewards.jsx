@@ -24,7 +24,7 @@ const Rewards = () => {
         <div className={rwd.container}>
          <div className={rwd.flex}>
              <div className={rwd.icon}>
-              <img p className={rwd.imgg} src='/pernia.png'>
+              <img  className={rwd.imgg} src='/pernia.png'>
               </img>
               <h3 className={rwd.H}>
               Rewards & Cashback

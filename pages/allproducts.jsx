@@ -301,7 +301,7 @@ else{
                  </div> 
                  
                  <div className={css.filter}>
-                 <div className={css.filterTitle}FilterTitle>Price</div> 
+                 <div className={css.filterTitle}>Price</div> 
                    <div className={css.filterText}>
                        <input className={css.pricein} type='radio'
                         value='all'  
@@ -343,7 +343,7 @@ else{
      
                  </div>  
                  
-                   <div div className={css.productShow}>
+                   <div className={css.productShow}>
                       {items.map((it,key)=>(
                       <ProductItem item={it} key={key}/>
                   
