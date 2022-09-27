@@ -45,8 +45,8 @@ const Product = () => {
   const [path, setPath] = useState([]);
 
   const [icon, setIcon] = useState([
-    { id: 1, name: "S", status: false },
-    { id: 2, name: "XS", status: false },
+    { id: 1, name: "XS", status: false },
+    { id: 2, name: "S", status: false },
     { id: 3, name: "M", status: false },
     { id: 4, name: "L", status: false },
     { id: 5, name: "XL", status: false },

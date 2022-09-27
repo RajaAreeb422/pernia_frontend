@@ -9,7 +9,7 @@ import {
   Person,
 } from "@material-ui/icons";
 import { Avatar, Badge } from "@material-ui/core";
-import router, { useRouter } from "next/router";
+import router from 'next/router';
 import Link from "next/link";
 import nav from "../styles/navbar.module.css";
 import axios from "axios";
@@ -24,6 +24,7 @@ import { Nav } from "react-bootstrap";
 
 import { NavDropdown } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
+import Router from "next/router";
 
 const Navbar2 = () => {
   const [blist, setBlist] = useState(false);
@@ -32,6 +33,7 @@ const Navbar2 = () => {
     first_name: "",
   });
   const [items, setItems] = useState([]);
+  const [products, setProducts] = useState([]);
   const [text, setText] = useState("");
   const [cats, setCats] = useState([]);
   const [coll, setColl] = useState([]);
@@ -90,6 +92,15 @@ const Navbar2 = () => {
     } else {
       setloggedIn("");
     }
+    
+    axios
+    .get(`https://api.perniacouture.pk/pernia-api/products`)
+    .then((resp) => {
+      
+      setProducts(resp.data.data);
+    })
+    .catch((err) => console.log(err));
+
     let list = [];
     axios
       .get(`https://api.perniacouture.pk/pernia-api/suppliers`)
@@ -114,6 +125,86 @@ const Navbar2 = () => {
       })
       .catch((err) => console.log(err));
   }, [loggedIn]);
+
+  
+  const searchText=()=>{
+    let status=0
+    
+    let prId=0;
+    let col_Id=0;
+    let cId=0;
+    let bId=0;
+   products.map(pr=>{
+     
+    
+     if(pr.sku==text||pr.name.toUpperCase()==text.toUpperCase())
+     {
+       
+       prId=pr.id
+       setText('')
+       status=1
+      
+     }
+    
+   })
+  
+   cats.map(ct=>{
+     if(ct.name.toUpperCase()==text.toUpperCase())
+     {
+     status=2
+     cId=ct.id
+     }
+   })
+   
+   coll.map(col=>{
+     if(col.name.toUpperCase()==text.toUpperCase())
+     {
+     status=3
+     col_Id=col.id
+     }
+   })
+   items.map(brand=>{
+    if(brand.name.toUpperCase()==text.toUpperCase())
+    {
+    status=4
+    bId=brand.id
+    }
+  })
+   if(status==0)
+   {
+   // errortoggle()
+   router.push(
+    { pathname: "/allproducts", query: { text: text } }
+   
+  );
+   
+   }
+    if(status==1){
+      Router.push(`/product/${prId}`);
+   }
+    if(status==2){
+      Router.push(`/specificcategory/${cId}`);
+   }
+   
+   if(status==3)
+   {
+    Router.push(`/category/${col_Id}`);
+   }
+   if(status==4)
+   {
+    Router.push(`/brand/${bId}`);
+   }
+
+
+ }
+
+ const handleKeyDown = (e) => {
+  if (e.key == 'Enter') {
+  
+    searchText()
+  }
+}
+
   return (
     <div className={nav.Container}>
       <div className={nav.Wrapper}>
@@ -146,11 +237,14 @@ const Navbar2 = () => {
                     className={nav.src}
                     type="search"
                     value={text}
+                    onKeyDown={ (e)=>handleKeyDown(e)}
                     onChange={(e) => setText(e.target.value)}
                     placeholder="Search Product"
                   />
                   {/* <Search  style={{color:'black'}}/>  */}
-                  <Search className={nav.srcIcon} onClick={() => showText()} />
+                  <Search className={nav.srcIcon} 
+                  onClick={()=>searchText()}
+                  />
                 </div>
                 <LocalShippingOutlined
                   className={nav.shipping}

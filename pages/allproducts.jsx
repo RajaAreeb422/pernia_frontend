@@ -41,7 +41,7 @@ const All_Products = () => {
         {
             setItems([])
         }
-        else if(router.query.text=='cart')
+        else if(router.query.text=='cart' || router.query.text=='all')
         {
           axios.get(`https://api.perniacouture.pk/pernia-api/products`)
       .then(resp=>{
@@ -127,7 +127,11 @@ const All_Products = () => {
     function move()
     {
       setPrice('')
-      setItems(allProducts);
+      router.push(
+        { pathname: "/allproducts", query: { text: 'all'} }
+       
+      );
+      //setItems(allProducts);
     }
 
   const handleSelling=e=>{
