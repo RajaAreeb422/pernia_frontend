@@ -276,7 +276,7 @@ const BillingData = props => {
     console.log('json',order_json);
     setModal(true)
   
-    axios.post(`https://api.perniacouture.pk/pernia-api/orders`,order_json)
+    axios.post(`https://api.mazglobal.co.uk/maz-api/orders`,order_json)
     .then(res=>{
       console.log('order postation fhfhftch',res.data)
       toggle()

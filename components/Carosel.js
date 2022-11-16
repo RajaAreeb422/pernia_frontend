@@ -38,11 +38,11 @@ const Carosel = ({category}) => {
 
     console.log("cat",category)
    
-      axios.get(`https://api.perniacouture.pk/pernia-api/collections/category/${category}`)
+      axios.get(`https://api.mazglobal.co.uk/maz-api/collections/category/${category}`)
       .then(res=>{
          setCollections(res.data.data)
          
-         axios.get(`https://api.perniacouture.pk/pernia-api/products`)
+         axios.get(`https://api.mazglobal.co.uk/maz-api/products`)
          .then(resp=>{
             getProducts(res.data.data,resp.data.data)
           }).catch(err=>console.log(err))
@@ -60,7 +60,7 @@ const Carosel = ({category}) => {
       pList.map(pr=>{
         if(pr.collection_id==col.id)
         {
-            pr.path= 'https://api.perniacouture.pk/pernia-api/' + pr.path;
+            pr.path= 'https://api.mazglobal.co.uk/' + pr.path;
           
             list.push(pr)
         }

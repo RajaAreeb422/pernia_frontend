@@ -17,13 +17,13 @@ const KidsCarosel = () => {
 
   useEffect(() => {
        
-      axios.get(`https://api.perniacouture.pk/pernia-api/collections`)
+      axios.get(`https://api.mazglobal.co.uk/maz-api/collections`)
      .then(resp=>{
        let list=[]
         resp.data.data.map(it=>{
           if(it.category_id==96)
           { 
-            let pp = 'https://api.perniacouture.pk/pernia-api/' + it.path;
+            let pp = 'https://api.mazglobal.co.uk/' + it.path;
             pp=pp.toString();
             it['path']=pp
           

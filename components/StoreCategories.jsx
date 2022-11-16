@@ -17,13 +17,13 @@ import axios from'axios'
     useEffect(() => {
       let list=[]
         axios
-        .get(`https://api.perniacouture.pk/pernia-api/categories`)
+        .get(`https://api.mazglobal.co.uk/maz-api/categories`)
         .then((resp) => {
           resp.data.data.map((it, i) => {
             if(it.name.toLowerCase()=='pret' || it.name.toLowerCase()=='luxury pret' 
             ||it.name.toLowerCase()=='unstiched')
             {
-                it.path= 'https://api.perniacouture.pk/pernia-api/' + it.path;
+                it.path= 'https://api.mazglobal.co.uk/' + it.path;
                 list.push(it);
             }
           

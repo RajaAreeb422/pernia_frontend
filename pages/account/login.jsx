@@ -35,7 +35,7 @@ const Login = () => {
     const json = JSON.stringify(data);
     console.log(json);
 
-    axios.post(`https://api.perniacouture.pk/pernia-api/users/login`, json,
+    axios.post(`https://api.mazglobal.co.uk/maz-api/users/login`, json,
 
       { headers: { 'content-type': 'application/json' } }
     )

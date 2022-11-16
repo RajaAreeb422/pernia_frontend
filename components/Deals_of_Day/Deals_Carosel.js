@@ -38,19 +38,19 @@ const Deals_Carosel = () => {
 
   useEffect(() => {
         let list=[]
-     axios.get(`https://api.perniacouture.pk/pernia-api/tag`)
+     axios.get(`https://api.mazglobal.co.uk/maz-api/tags`)
      .then(res=>{
         res.data.data.map(tt=>{
           if(tt.name=='Deals of the Day'||tt.name=='deals of the day'||tt.name=='Deals of the day')
           {
           setTagId(tt.id)
-          axios.get(`https://api.perniacouture.pk/pernia-api/collections`)
+          axios.get(`https://api.mazglobal.co.uk/maz-api/collections`)
      .then(resp=>{
        
         resp.data.data.map(it=>{
           if(it.tag_id==tt.id)
           {
-            let pp = 'https://api.perniacouture.pk/pernia-api/' + it.path;
+            let pp = 'https://api.mazglobal.co.uk/' + it.path;
             pp=pp.toString();
             it.path=pp
           

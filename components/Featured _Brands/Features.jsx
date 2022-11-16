@@ -137,7 +137,7 @@ const Features = () => {
   };
   useEffect(() => {
     let list=[]
-  axios.get(`https://api.perniacouture.pk/pernia-api/suppliers`)
+  axios.get(`https://api.mazglobal.co.uk/maz-api/suppliers`)
   .then(resp=>{
   setBrands(resp.data.data)
   }).catch(err=>console.log(err))

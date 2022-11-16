@@ -34,15 +34,15 @@ const SpecificCategory = () => {
       if(router.isReady)
     {
       setPrice('all')
-      axios.get(`https://api.perniacouture.pk/pernia-api/categories/${id}`)
+      axios.get(`https://api.mazglobal.co.uk/maz-api/categories/${id}`)
       .then(res=>{
        setCatName(res.data.data.name)
       }).catch(err=>console.log(err))
-        axios.get(`https://api.perniacouture.pk/pernia-api/collections/category/${id}`)
+        axios.get(`https://api.mazglobal.co.uk/maz-api/collections/category/${id}`)
         .then(res=>{
            setCollections(res.data.data)
            
-           axios.get(`https://api.perniacouture.pk/pernia-api/products`)
+           axios.get(`https://api.mazglobal.co.uk/maz-api/products`)
            .then(resp=>{
               getProducts(res.data.data,resp.data.data)
             }).catch(err=>console.log(err))
@@ -60,17 +60,17 @@ const SpecificCategory = () => {
         pList.map(pr=>{
           if(pr.collection_id==col.id)
           {
-              pr.path= 'https://api.perniacouture.pk/pernia-api/' + pr.path;
+              pr.path= 'https://api.mazglobal.co.uk/' + pr.path;
             
               list.push(pr)
           }
         })
-        // axios.get(`https://api.perniacouture.pk/pernia-api/products/collection/${col.id}`)
+        // axios.get(`https://api.mazglobal.co.uk/maz-api/products/collection/${col.id}`)
         // .then(resp=>{
         //    let list1=[]
         //    list.push(resp.data.data)
         //     resp.data.data.map((pr,i)=>{
-        //       pr.image_paths= 'https://api.perniacouture.pk/pernia-api/' + pr.image_paths;
+        //       pr.image_paths= 'https://api.mazglobal.co.uk/maz-api/' + pr.image_paths;
         //       if(pr.path)
         //       pr.path='';
         //       pr["path"]=pr.image_paths

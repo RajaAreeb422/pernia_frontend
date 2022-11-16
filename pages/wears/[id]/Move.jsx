@@ -20,10 +20,10 @@ const Move = ({id}) => {
     useEffect(() => {
         let list=[]
       
-             axios.get(`https://api.perniacouture.pk/pernia-api/products/collection/${id}`).then(ress=>{
+             axios.get(`https://api.mazglobal.co.uk/maz-api/products/collection/${id}`).then(ress=>{
                ress.data.data.map(pr=>{
 
-                let pp = 'https://api.perniacouture.pk/pernia-api/' + pr.image_paths;
+                let pp = 'https://api.mazglobal.co.uk/maz-api/' + pr.image_paths;
                 pp=pp.toString();
                 if(pp.includes(','))
                 {
